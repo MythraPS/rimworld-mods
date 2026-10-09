@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Iranian Rugs (for VFE - Art)</name>
+  <author>MythraPS</author>
+  <packageId>mythraps.iranianrugs</packageId>
+  <supportedVersions>
+    <li>1.5</li>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>Turns Vanilla Furniture Expanded - Art's small, large and grand rugs into Iranian-style hand-knotted rugs. Each size has several designs - medallion, lattice, garden panels, prayer arch, boteh rows and vase - and each rug you build picks one at random.
+
+The main colour of the rug is still the colour of the cloth or leather it is made from; borders and motifs add fixed colours. Names, sizes, costs, beauty and recipes are unchanged.
+
+Requires Vanilla Furniture Expanded - Art.
+
+Current version: v1.1.0
+
+Please remember to rate my mod! Thank you!
+
+Please support: https://www.patreon.com/mythraps
+
+Source: https://github.com/MythraPS/rimworld-mods</description>
+  <modDependencies>
+    <li>
+      <packageId>VanillaExpanded.VFEArt</packageId>
+      <displayName>Vanilla Furniture Expanded - Art</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/1968134023</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>VanillaExpanded.VFEArt</li>
+  </loadAfter>
+</ModMetaData>

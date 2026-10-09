@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- VFE - Art's rugs as Iranian rugs (v2; in game they keep VFE's names): several designs per size, one picked at random per rug (Graphic_Random),
+     and a CutoutComplex mask: the field takes the cloth's or leather's colour, borders and motifs keep fixed colours.
+     Sizes, stats and recipes are untouched. Does nothing if VFE - Art isn't loaded. -->
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Vanilla Furniture Expanded - Art</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="VFE_RugSmall"]/graphicData</xpath>
+          <value>
+            <graphicData>
+              <graphicClass>Graphic_Random</graphicClass>
+              <texPath>IranianRugs/Small</texPath>
+              <shaderType>CutoutComplex</shaderType>
+              <drawSize>(2,2)</drawSize>
+            </graphicData>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="VFE_RugLarge"]/graphicData</xpath>
+          <value>
+            <graphicData>
+              <graphicClass>Graphic_Random</graphicClass>
+              <texPath>IranianRugs/Medium</texPath>
+              <shaderType>CutoutComplex</shaderType>
+              <drawSize>(3,3)</drawSize>
+            </graphicData>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="VFE_RugGrand"]/graphicData</xpath>
+          <value>
+            <graphicData>
+              <graphicClass>Graphic_Random</graphicClass>
+              <texPath>IranianRugs/Large</texPath>
+              <shaderType>CutoutComplex</shaderType>
+              <drawSize>(4,4)</drawSize>
+            </graphicData>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="VFE_RugSmall"]/description</xpath>
+          <value><description>A small hand-knotted rug in one of several traditional Iranian designs, with fringed ends.</description></value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="VFE_RugLarge"]/description</xpath>
+          <value><description>A large hand-knotted rug in one of several traditional Iranian designs - medallion, lattice, garden panels, prayer arch or boteh rows - with fringed ends.</description></value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="VFE_RugGrand"]/description</xpath>
+          <value><description>A grand hand-knotted rug that dominates a room, in one of several traditional Iranian designs - medallion, lattice, garden panels, prayer arch, boteh rows or vase - with fringed ends.</description></value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>
