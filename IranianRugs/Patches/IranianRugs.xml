@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- VFE - Art's rugs as Iranian rugs (v2; in game they keep VFE's names): several designs per size, one picked at random per rug (Graphic_Random),
-     and a CutoutComplex mask: the field takes the cloth's or leather's colour, borders and motifs keep fixed colours.
+<!-- VFE - Art's rugs as Iranian rugs (v3 textures; in game they keep VFE's names): several designs per size, one picked at random per rug (Graphic_Random),
+     and a CutoutComplex mask: the cloth's or leather's colour tints the field and shades of it run through borders and motifs; the rest keeps fixed colours.
      Sizes, stats and recipes are untouched. Does nothing if VFE - Art isn't loaded. -->
 <Patch>
   <Operation Class="PatchOperationFindMod">
@@ -44,15 +44,15 @@
         </li>
         <li Class="PatchOperationReplace">
           <xpath>Defs/ThingDef[defName="VFE_RugSmall"]/description</xpath>
-          <value><description>A small hand-knotted rug in one of several traditional Iranian designs, with fringed ends.</description></value>
+          <value><description>A small rug in one of several Iranian weaving traditions - city medallion, Herati, garden panels, boteh, Heriz, Turkmen, Gabbeh, kilim or Baluch - with fringed ends.</description></value>
         </li>
         <li Class="PatchOperationReplace">
           <xpath>Defs/ThingDef[defName="VFE_RugLarge"]/description</xpath>
-          <value><description>A large hand-knotted rug in one of several traditional Iranian designs - medallion, lattice, garden panels, prayer arch or boteh rows - with fringed ends.</description></value>
+          <value><description>A large rug in one of several Iranian weaving traditions - city medallion, Herati, garden panels, boteh, vase, Heriz, Turkmen, Qashqai, Gabbeh, kilim or afshan - with fringed ends.</description></value>
         </li>
         <li Class="PatchOperationReplace">
           <xpath>Defs/ThingDef[defName="VFE_RugGrand"]/description</xpath>
-          <value><description>A grand hand-knotted rug that dominates a room, in one of several traditional Iranian designs - medallion, lattice, garden panels, prayer arch, boteh rows or vase - with fringed ends.</description></value>
+          <value><description>A grand rug that dominates a room, in one of several Iranian weaving traditions - city medallion, Herati, prayer, garden panels, boteh, vase, Heriz, Turkmen, Qashqai, Gabbeh, kilim, Baluch or afshan - with fringed ends.</description></value>
         </li>
       </operations>
     </match>

@@ -1,4 +1,4 @@
-"""Workshop preview: every design, each in a different material colour, the way CutoutComplex
+"""Workshop preview: a spread of the designs, each in a different material colour, the way CutoutComplex
 shows it in game (mask red = texture x stuff colour, mask black = texture as drawn)."""
 import glob, os, sys
 from PIL import Image, ImageChops
@@ -15,10 +15,12 @@ def tinted(path, col):
     return rgb.crop(rgb.getbbox())
 
 img = Image.new("RGB", (W, H), BG)
+# a spread of the designs (all of them would be too small to see at this size)
+PICK = {"Large": "AHIJLMN", "Medium": "BDFGKL", "Small": "BEGI"}
 rows = [("Large", 178), ("Medium", 170), ("Small", 140)]
 y, k = 70, 0
 for size, cell in rows:
-    files = sorted(f for f in glob.glob(f"{T}/{size}/*.png") if not f.endswith("_m.png"))
+    files = [f"{T}/{size}/Iranian{size}_{c}.png" for c in PICK[size]]
     gap = (W - len(files) * cell) / (len(files) + 1)
     for i, f in enumerate(files):
         r = tinted(f, STUFF[k % len(STUFF)]); k += 1
