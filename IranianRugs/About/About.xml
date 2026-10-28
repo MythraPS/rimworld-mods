@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>Iranian Rugs (for VFE - Art)</name>
+  <name>Handwoven Rugs (for VFE - Art)</name>
   <author>MythraPS</author>
   <packageId>mythraps.iranianrugs</packageId>
   <supportedVersions>
     <li>1.5</li>
     <li>1.6</li>
   </supportedVersions>
-  <description>Turns Vanilla Furniture Expanded - Art's small, large and grand rugs into Iranian hand-knotted and flat-woven rugs, from several of Iran's weaving traditions: city medallions, Herati lattice, prayer rugs, Bakhtiari garden panels, boteh, vase, Heriz, Turkmen guls, Qashqai, Gabbeh, kilim, Baluch and afshan. There are 35 designs (9 small, 12 large, 14 grand), and each rug you build picks one at random.
+  <description>Turns Vanilla Furniture Expanded - Art's small, large and grand rugs into photos of real antique carpets. There are 22, and each rug you build picks one at random: medallion carpets (including the Ardabil Carpet), prayer rugs, a Safavid Herat rug, garden carpets, a boteh carpet, vase carpets, Heriz rugs, a Qashqai kilim, a Luri gabbeh, Sehna and Shushtar kilims, Baluch rugs, and Tekke, Salor and Saryk Turkmen main carpets.
 
-The colour of the cloth or leather a rug is made from runs through the whole design: the field, and also shades of it in the borders, stripes, medallions and motifs, alongside fixed traditional colours. Names, sizes, costs, beauty and recipes are unchanged.
+All photos are public domain or CC0, from museums and archives via Wikimedia Commons. The full list with sources is in the mod folder (Source/CARPET_SOURCES.md).
 
-Requires Vanilla Furniture Expanded - Art.
+Every rug shows the real carpet's own colours, whatever cloth or leather it's made from. Names, sizes, costs, beauty and recipes are unchanged.
 
-Current version: v1.2.0
+With Ideology, rugs follow your ideoligion's style (on by default; a tick box in the mod settings turns it off):
+- Islamic: prayer rugs and a saf (mosque prayer) carpet
+- Christian: an Armenian church carpet
+Other styles use the everyday carpets. A rug made by a robot or anyone else with no ideoligion takes your colony's main ideoligion.
+
+Requires Vanilla Furniture Expanded - Art and Harmony.
+
+Current version: v1.3.0
+v1.3.0: renamed to Handwoven Rugs; every rug is now a photo of a real carpet in its own colours; Islamic and Christian styles with Ideology; robot-made rugs take the colony's ideoligion.
 v1.2.0: 35 designs (was 17) from more traditions; the material's colour now shows in the patterns, not just the field.
 
 Please remember to rate my mod! Thank you!
@@ -23,12 +31,19 @@ Please support: https://www.patreon.com/mythraps
 Source: https://github.com/MythraPS/rimworld-mods</description>
   <modDependencies>
     <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+    <li>
       <packageId>VanillaExpanded.VFEArt</packageId>
       <displayName>Vanilla Furniture Expanded - Art</displayName>
       <steamWorkshopUrl>steam://url/CommunityFilePage/1968134023</steamWorkshopUrl>
     </li>
   </modDependencies>
   <loadAfter>
+    <li>brrainz.harmony</li>
     <li>VanillaExpanded.VFEArt</li>
   </loadAfter>
 </ModMetaData>

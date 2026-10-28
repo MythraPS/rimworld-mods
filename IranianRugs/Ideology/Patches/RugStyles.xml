@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- With Ideology: a colony whose ideoligion has a style builds VFE - Art's rugs in that style's designs. A tick box in
+     the mod settings (on by default) turns this off; rugs then all use the random mix. Only Islamic (prayer and saf
+     carpets) and Christian (an Armenian church carpet) have their own rugs; other styles use the everyday carpets.
+     Written by Source/make_xml.py. -->
+<Patch>
+  <Operation Class="ModSettingsFramework.PatchOperationModOption">
+    <defaultValue>True</defaultValue>
+    <label>Rugs follow your ideoligion's style</label>
+    <tooltip>With Ideology, rugs made or built by a colony whose ideoligion uses the Islamic or Christian style use real carpets of that tradition: prayer and saf carpets, or an Armenian church carpet. Other styles use the everyday carpets. A rug made by someone with no ideoligion, such as a robot, takes the colony's main ideoligion. Unticked, every rug picks from the general mix. Takes effect after a restart.</tooltip>
+    <id>IranianRugs_FollowStyle</id>
+    <category>IranianRugs_General</category>
+    <order>10</order>
+    <operations>
+      <li Class="PatchOperationFindMod">
+        <mods>
+          <li>Vanilla Furniture Expanded - Art</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="VFE_RugSmall"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="VFE_RugSmall"]/comps</xpath>
+                <value>
+                  <li Class="CompProperties_Styleable" />
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="VFE_RugSmall"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="CompProperties_Styleable" />
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="VFE_RugLarge"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="VFE_RugLarge"]/comps</xpath>
+                <value>
+                  <li Class="CompProperties_Styleable" />
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="VFE_RugLarge"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="CompProperties_Styleable" />
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="VFE_RugGrand"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="VFE_RugGrand"]/comps</xpath>
+                <value>
+                  <li Class="CompProperties_Styleable" />
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="VFE_RugGrand"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="CompProperties_Styleable" />
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <success>Always</success>
+              <xpath>Defs/StyleCategoryDef[defName="Islamic"]/thingDefStyles</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/StyleCategoryDef[defName="Islamic"]/thingDefStyles</xpath>
+                <value>
+                  <li>
+                    <thingDef>VFE_RugSmall</thingDef>
+                    <styleDef>IranianRugs_Islamic_Small</styleDef>
+                  </li>
+                  <li>
+                    <thingDef>VFE_RugLarge</thingDef>
+                    <styleDef>IranianRugs_Islamic_Medium</styleDef>
+                  </li>
+                  <li>
+                    <thingDef>VFE_RugGrand</thingDef>
+                    <styleDef>IranianRugs_Islamic_Large</styleDef>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <success>Always</success>
+                <xpath>Defs/StyleCategoryDef[defName="Islamic"]</xpath>
+                <value>
+                  <thingDefStyles>
+                    <li>
+                      <thingDef>VFE_RugSmall</thingDef>
+                      <styleDef>IranianRugs_Islamic_Small</styleDef>
+                    </li>
+                    <li>
+                      <thingDef>VFE_RugLarge</thingDef>
+                      <styleDef>IranianRugs_Islamic_Medium</styleDef>
+                    </li>
+                    <li>
+                      <thingDef>VFE_RugGrand</thingDef>
+                      <styleDef>IranianRugs_Islamic_Large</styleDef>
+                    </li>
+                  </thingDefStyles>
+                </value>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <success>Always</success>
+              <xpath>Defs/StyleCategoryDef[defName="Christian"]/thingDefStyles</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/StyleCategoryDef[defName="Christian"]/thingDefStyles</xpath>
+                <value>
+                  <li>
+                    <thingDef>VFE_RugSmall</thingDef>
+                    <styleDef>IranianRugs_Christian_Small</styleDef>
+                  </li>
+                  <li>
+                    <thingDef>VFE_RugLarge</thingDef>
+                    <styleDef>IranianRugs_Christian_Medium</styleDef>
+                  </li>
+                  <li>
+                    <thingDef>VFE_RugGrand</thingDef>
+                    <styleDef>IranianRugs_Christian_Large</styleDef>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <success>Always</success>
+                <xpath>Defs/StyleCategoryDef[defName="Christian"]</xpath>
+                <value>
+                  <thingDefStyles>
+                    <li>
+                      <thingDef>VFE_RugSmall</thingDef>
+                      <styleDef>IranianRugs_Christian_Small</styleDef>
+                    </li>
+                    <li>
+                      <thingDef>VFE_RugLarge</thingDef>
+                      <styleDef>IranianRugs_Christian_Medium</styleDef>
+                    </li>
+                    <li>
+                      <thingDef>VFE_RugGrand</thingDef>
+                      <styleDef>IranianRugs_Christian_Large</styleDef>
+                    </li>
+                  </thingDefStyles>
+                </value>
+              </nomatch>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

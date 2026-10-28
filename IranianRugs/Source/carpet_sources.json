@@ -1,0 +1,222 @@
+[
+ {
+  "n": 0,
+  "tradition": "medallion",
+  "title": "File:The Ardabil Carpet - Google Art Project.jpg",
+  "label": "Ardabil Carpet, 1539-40",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Ardabil_Carpet_-_Google_Art_Project.jpg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/00_medallion.jpg",
+  "tint": false
+ },
+ {
+  "n": 1,
+  "tradition": "medallion",
+  "title": "File:Carpet - Iran - 16th century - MET - Inventory number 17.120.127.jpg",
+  "label": "Carpet, Iran, second half 16th century (Met 17.120.127)",
+  "page": "https://commons.wikimedia.org/wiki/File:Carpet_-_Iran_-_16th_century_-_MET_-_Inventory_number_17.120.127.jpg",
+  "license": "CC0",
+  "file": "/home/mythraps/.cache/rug-src/full/01_medallion.jpg",
+  "tint": false
+ },
+ {
+  "n": 2,
+  "tradition": "prayer",
+  "title": "File:Kn\u00fcpfteppich Iran makffm 14991.jpg",
+  "label": "Silk prayer rug, Tabriz, Iran, 18th/19th century (Museum Angewandte Kunst Frankfurt 14991)",
+  "page": "https://commons.wikimedia.org/wiki/File:Kn%C3%BCpfteppich_Iran_makffm_14991.jpg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/02_medallion.jpg",
+  "tint": false
+ },
+ {
+  "n": 3,
+  "tradition": "herati",
+  "title": "File:Safavid Herat Spiral Vine and Palmette Rug.jpg",
+  "label": "Safavid Herat spiral vine and palmette rug, 16th-17th century",
+  "page": "https://commons.wikimedia.org/wiki/File:Safavid_Herat_Spiral_Vine_and_Palmette_Rug.jpg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/03_herati.jpg",
+  "tint": false
+ },
+ {
+  "n": 4,
+  "tradition": "prayer",
+  "title": "File:Prayer Rug - Iran - 16th century - MET - Inventory number 17.120.124.jpg",
+  "label": "Prayer rug, Iran, late 16th century (Met 17.120.124)",
+  "page": "https://commons.wikimedia.org/wiki/File:Prayer_Rug_-_Iran_-_16th_century_-_MET_-_Inventory_number_17.120.124.jpg",
+  "license": "CC0",
+  "file": "/home/mythraps/.cache/rug-src/full/04_prayer.jpg",
+  "tint": false
+ },
+ {
+  "n": 5,
+  "tradition": "prayer",
+  "title": "File:Kashan Mohtasham Prayer Rug, Central Persia, ca. 1890.jpg",
+  "label": "Kashan 'Mohtasham' prayer rug, central Iran, c. 1890",
+  "page": "https://commons.wikimedia.org/wiki/File:Kashan_Mohtasham_Prayer_Rug,_Central_Persia,_ca._1890.jpg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/05_prayer.jpg",
+  "tint": false
+ },
+ {
+  "n": 6,
+  "tradition": "garden",
+  "title": "File:Wagner Garden Carpet, Burrell Gollection.jpg",
+  "label": "Wagner Garden Carpet, 17th century (Burrell Collection)",
+  "page": "https://commons.wikimedia.org/wiki/File:Wagner_Garden_Carpet,_Burrell_Gollection.jpg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/06_garden.jpg",
+  "tint": false
+ },
+ {
+  "n": 7,
+  "tradition": "garden",
+  "title": "File:The Jaipur Garden Carpet.jpg",
+  "label": "Jaipur Garden Carpet, before 1632",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Jaipur_Garden_Carpet.jpg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/07_garden.jpg",
+  "tint": false
+ },
+ {
+  "n": 8,
+  "tradition": "boteh",
+  "title": "File:Serabend carpet, ca. 1880.jpg",
+  "label": "Serabend boteh carpet, west Iran, c. 1880",
+  "page": "https://commons.wikimedia.org/wiki/File:Serabend_carpet,_ca._1880.jpg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/08_boteh.jpg",
+  "tint": false
+ },
+ {
+  "n": 9,
+  "tradition": "vase",
+  "title": "File:Vase-technique Carpet with Overlapping Cartouches MET DP343829.jpg",
+  "label": "Vase-technique carpet with overlapping cartouches, 17th century (Met)",
+  "page": "https://commons.wikimedia.org/wiki/File:Vase-technique_Carpet_with_Overlapping_Cartouches_MET_DP343829.jpg",
+  "license": "CC0",
+  "file": "/home/mythraps/.cache/rug-src/full/09_vase.jpg",
+  "tint": false
+ },
+ {
+  "n": 10,
+  "tradition": "vase",
+  "title": "File:B\u00e9hague 'Vase' Carpet.jpg",
+  "label": "B\u00e9hague 'Vase' Carpet, Kerman, c. 1625-75 (Museum of Islamic Art, Doha)",
+  "page": "https://commons.wikimedia.org/wiki/File:B%C3%A9hague_%27Vase%27_Carpet.jpg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/10_vase.jpg",
+  "tint": false
+ },
+ {
+  "n": 11,
+  "tradition": "heriz",
+  "title": "File:Antique Persian Heriz Serapi Allover Geometric Design Rug.jpg",
+  "label": "Heriz Serapi rug, Iran, 19th century",
+  "page": "https://commons.wikimedia.org/wiki/File:Antique_Persian_Heriz_Serapi_Allover_Geometric_Design_Rug.jpg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/11_heriz.jpg",
+  "tint": false
+ },
+ {
+  "n": 12,
+  "tradition": "heriz",
+  "title": "File:Antique Persian Serapi Heriz Rug.jpg",
+  "label": "Serapi Heriz rug, Iran, 19th century",
+  "page": "https://commons.wikimedia.org/wiki/File:Antique_Persian_Serapi_Heriz_Rug.jpg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/12_heriz.jpg",
+  "tint": false
+ },
+ {
+  "n": 13,
+  "tradition": "turkmen",
+  "title": "File:Tekke Main Carpet MET DP328949.jpg",
+  "label": "Tekke main carpet, early 19th century (Met)",
+  "page": "https://commons.wikimedia.org/wiki/File:Tekke_Main_Carpet_MET_DP328949.jpg",
+  "license": "CC0",
+  "file": "/home/mythraps/.cache/rug-src/full/13_turkmen.jpg",
+  "tint": false
+ },
+ {
+  "n": 14,
+  "tradition": "turkmen",
+  "title": "File:Salor Main Carpet MET DP331125.jpg",
+  "label": "Salor main carpet, late 18th-early 19th century (Met)",
+  "page": "https://commons.wikimedia.org/wiki/File:Salor_Main_Carpet_MET_DP331125.jpg",
+  "license": "CC0",
+  "file": "/home/mythraps/.cache/rug-src/full/14_turkmen.jpg",
+  "tint": false
+ },
+ {
+  "n": 15,
+  "tradition": "turkmen",
+  "title": "File:Turkmenistan or Afghanistan, Saryk tribe, 19th century - Turkmen Main Carpet - 2006.201 - Cleveland Museum of Art.tif",
+  "label": "Saryk main carpet, Turkmenistan or Afghanistan, 1870s (Cleveland 2006.201)",
+  "page": "https://commons.wikimedia.org/wiki/File:Turkmenistan_or_Afghanistan,_Saryk_tribe,_19th_century_-_Turkmen_Main_Carpet_-_2006.201_-_Cleveland_Museum_of_Art.tif",
+  "license": "CC0",
+  "file": "/home/mythraps/.cache/rug-src/full/15_turkmen.jpg",
+  "tint": false
+ },
+ {
+  "n": 16,
+  "tradition": "qashqai",
+  "title": "File:Qashqai Kilim 19th C.JPG",
+  "label": "Qashqai kilim, southwest Iran, 19th century",
+  "page": "https://commons.wikimedia.org/wiki/File:Qashqai_Kilim_19th_C.JPG",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/16_qashqai.jpg",
+  "tint": false
+ },
+ {
+  "n": 17,
+  "tradition": "gabbeh",
+  "title": "File:Luri Gabbeh Camel Hair Rug.png",
+  "label": "Luri gabbeh, camel hair, Iran, late 19th century",
+  "page": "https://commons.wikimedia.org/wiki/File:Luri_Gabbeh_Camel_Hair_Rug.png",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/17_gabbeh.jpg",
+  "tint": false
+ },
+ {
+  "n": 18,
+  "tradition": "kilim",
+  "title": "File:Sehna Kilim.jpg",
+  "label": "Sehna kilim, first half 19th century (VOK Collection)",
+  "page": "https://commons.wikimedia.org/wiki/File:Sehna_Kilim.jpg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/18_kilim.jpg",
+  "tint": false
+ },
+ {
+  "n": 19,
+  "tradition": "kilim",
+  "title": "File:Shustar kilim ca. 1900.png",
+  "label": "Shushtar kilim, Bakhtiari, Iran, c. 1900",
+  "page": "https://commons.wikimedia.org/wiki/File:Shustar_kilim_ca._1900.png",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/19_kilim.jpg",
+  "tint": false
+ },
+ {
+  "n": 20,
+  "tradition": "baluch",
+  "title": "File:Carpet, Iran, Vicinity of Mashhad (Baluchistan), 20th century.jpeg",
+  "label": "Baluch carpet, Iran, vicinity of Mashhad, 20th century (Cleveland)",
+  "page": "https://commons.wikimedia.org/wiki/File:Carpet,_Iran,_Vicinity_of_Mashhad_(Baluchistan),_20th_century.jpeg",
+  "license": "CC0",
+  "file": "/home/mythraps/.cache/rug-src/full/20_baluch.jpg",
+  "tint": false
+ },
+ {
+  "n": 21,
+  "tradition": "baluch",
+  "title": "File:Baluch mid 19th C..jpeg",
+  "label": "Baluch rug, northeast Iran, second half 19th century",
+  "page": "https://commons.wikimedia.org/wiki/File:Baluch_mid_19th_C..jpeg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/21_baluch.jpg",
+  "tint": false
+ }
+]

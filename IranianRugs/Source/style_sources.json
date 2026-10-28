@@ -1,0 +1,83 @@
+[
+ {
+  "n": 2,
+  "tradition": "prayer",
+  "title": "File:Kn\u00fcpfteppich Iran makffm 14991.jpg",
+  "label": "Silk prayer rug, Tabriz, Iran, 18th/19th century (Museum Angewandte Kunst Frankfurt 14991)",
+  "page": "https://commons.wikimedia.org/wiki/File:Kn%C3%BCpfteppich_Iran_makffm_14991.jpg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/02_medallion.jpg",
+  "style": "Islamic",
+  "tint": false
+ },
+ {
+  "n": 4,
+  "tradition": "prayer",
+  "title": "File:Prayer Rug - Iran - 16th century - MET - Inventory number 17.120.124.jpg",
+  "label": "Prayer rug, Iran, late 16th century (Met 17.120.124)",
+  "page": "https://commons.wikimedia.org/wiki/File:Prayer_Rug_-_Iran_-_16th_century_-_MET_-_Inventory_number_17.120.124.jpg",
+  "license": "CC0",
+  "file": "/home/mythraps/.cache/rug-src/full/04_prayer.jpg",
+  "style": "Islamic",
+  "tint": false
+ },
+ {
+  "n": 5,
+  "tradition": "prayer",
+  "title": "File:Kashan Mohtasham Prayer Rug, Central Persia, ca. 1890.jpg",
+  "label": "Kashan 'Mohtasham' prayer rug, central Iran, c. 1890",
+  "page": "https://commons.wikimedia.org/wiki/File:Kashan_Mohtasham_Prayer_Rug,_Central_Persia,_ca._1890.jpg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/05_prayer.jpg",
+  "style": "Islamic",
+  "tint": false
+ },
+ {
+  "n": 100,
+  "style": "Islamic",
+  "tradition": "prayer",
+  "title": "File:\"Bellini\" carpet MET DT5444.jpg",
+  "label": "'Bellini' prayer carpet (Met)",
+  "page": "https://commons.wikimedia.org/wiki/File:%22Bellini%22_carpet_MET_DT5444.jpg",
+  "license": "CC0",
+  "file": "/home/mythraps/.cache/rug-src/full/s0_Islamic.jpg",
+  "date": "16th\u201317th century",
+  "tint": false
+ },
+ {
+  "n": 101,
+  "style": "Islamic",
+  "tradition": "prayer",
+  "title": "File:\"Senneh\" Prayer Rug MET DP166864.jpg",
+  "label": "'Senneh' prayer rug (Met)",
+  "page": "https://commons.wikimedia.org/wiki/File:%22Senneh%22_Prayer_Rug_MET_DP166864.jpg",
+  "license": "CC0",
+  "file": "/home/mythraps/.cache/rug-src/full/s1_Islamic.jpg",
+  "date": "late 18th\u2013early 19th century",
+  "tint": false
+ },
+ {
+  "n": 102,
+  "style": "Islamic",
+  "tradition": "prayer",
+  "title": "File:Unknown, India - Fragment of a Saf Carpet - Google Art Project.jpg",
+  "label": "Fragment of a saf (mosque prayer) carpet, India",
+  "page": "https://commons.wikimedia.org/wiki/File:Unknown,_India_-_Fragment_of_a_Saf_Carpet_-_Google_Art_Project.jpg",
+  "license": "Public domain",
+  "file": "/home/mythraps/.cache/rug-src/full/s2_Islamic.jpg",
+  "date": "(1600 - 1650)",
+  "tint": false
+ },
+ {
+  "n": 103,
+  "style": "Christian",
+  "tradition": "armenian",
+  "title": "File:Rugs and carpets of Armenia5.jpg",
+  "label": "Carpet of the rectory of Tavush Diocese, Ijevan, Armenia",
+  "page": "https://commons.wikimedia.org/wiki/File:Rugs_and_carpets_of_Armenia5.jpg",
+  "license": "CC0",
+  "file": "/home/mythraps/.cache/rug-src/full/s3_Christian.jpg",
+  "date": "2023-12-16",
+  "tint": false
+ }
+]
