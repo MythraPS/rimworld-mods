@@ -7,20 +7,27 @@
     <li>1.5</li>
     <li>1.6</li>
   </supportedVersions>
-  <description>Turns Vanilla Furniture Expanded - Art's small, large and grand rugs into photos of real antique carpets. There are 22, and each rug you build picks one at random: medallion carpets (including the Ardabil Carpet), prayer rugs, a Safavid Herat rug, garden carpets, a boteh carpet, vase carpets, Heriz rugs, a Qashqai kilim, a Luri gabbeh, Sehna and Shushtar kilims, Baluch rugs, and Tekke, Salor and Saryk Turkmen main carpets.
+  <description>Turns Vanilla Furniture Expanded - Art's small, large and grand rugs into handwoven rugs. There are two sets, and a setting chooses which to use: both (the default), only the photos, or only the drawn designs. Each rug you build picks one at random.
+
+Photos of 22 real antique carpets: medallion carpets (including the Ardabil Carpet), prayer rugs, a Safavid Herat rug, garden carpets, a boteh carpet, vase carpets, Heriz rugs, a Qashqai kilim, a Luri gabbeh, Sehna and Shushtar kilims, Baluch rugs, and Tekke, Salor and Saryk Turkmen main carpets.
 
 All photos are public domain or CC0, from museums and archives via Wikimedia Commons. The full list with sources is in the mod folder (Source/CARPET_SOURCES.md).
 
-Every rug shows the real carpet's own colours, whatever cloth or leather it's made from. Names, sizes, costs, beauty and recipes are unchanged.
+The photo rugs show the real carpet's own colours, whatever cloth or leather they're made from.
+
+Drawn designs: the 35 rugs from before version 1.3.0, after Iranian and neighbouring weaving traditions (medallion, Herati, garden, boteh, vase, Heriz, Turkmen, Qashqai, Gabbeh, kilim, Baluch, afshan). The cloth or leather tints their field.
+
+The setting is in Options > Mod Settings > Handwoven Rugs; the change shows at once, on rugs already built too. Names, sizes, costs, beauty and recipes are unchanged.
 
 With Ideology, rugs follow your ideoligion's style (on by default; a tick box in the mod settings turns it off):
-- Islamic: prayer rugs and a saf (mosque prayer) carpet
-- Christian: an Armenian church carpet
+- Islamic: prayer rugs and a saf (mosque prayer) carpet, plus drawn designs
+- Christian: an Armenian church carpet, plus drawn designs
 Other styles use the everyday carpets. A rug made by a robot or anyone else with no ideoligion takes your colony's main ideoligion.
 
 Requires Vanilla Furniture Expanded - Art and Harmony.
 
-Current version: v1.3.0
+Current version: v1.4.0
+v1.4.0: the drawn rugs are back. A setting picks both sets, only the photos, or only the drawn designs, and the change shows at once.
 v1.3.0: renamed to Handwoven Rugs; every rug is now a photo of a real carpet in its own colours; Islamic and Christian styles with Ideology; robot-made rugs take the colony's ideoligion.
 v1.2.0: 35 designs (was 17) from more traditions; the material's colour now shows in the patterns, not just the field.
 

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Written by Source/make_look.py: what each "Rug pictures" option sets, for switching without a restart. -->
+<Defs>
+  <HandwovenRugs.RugLookDef>
+    <defName>IranianRugs_Look_Both</defName>
+    <things>
+      <li><def>VFE_RugSmall</def><texPath>IranianRugs/Small</texPath><description>A small handwoven rug: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></li>
+      <li><def>VFE_RugLarge</def><texPath>IranianRugs/Medium</texPath><description>A large handwoven rug: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></li>
+      <li><def>VFE_RugGrand</def><texPath>IranianRugs/Large</texPath><description>A grand handwoven rug that dominates a room: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></li>
+    </things>
+    <styles>
+      <li><def>IranianRugs_Islamic_Small</def><texPath>IranianRugs/Styles/Islamic/Small</texPath></li>
+      <li><def>IranianRugs_Islamic_Medium</def><texPath>IranianRugs/Styles/Islamic/Medium</texPath></li>
+      <li><def>IranianRugs_Islamic_Large</def><texPath>IranianRugs/Styles/Islamic/Large</texPath></li>
+      <li><def>IranianRugs_Christian_Small</def><texPath>IranianRugs/Styles/Christian/Small</texPath></li>
+      <li><def>IranianRugs_Christian_Medium</def><texPath>IranianRugs/Styles/Christian/Medium</texPath></li>
+      <li><def>IranianRugs_Christian_Large</def><texPath>IranianRugs/Styles/Christian/Large</texPath></li>
+    </styles>
+  </HandwovenRugs.RugLookDef>
+  <HandwovenRugs.RugLookDef>
+    <defName>IranianRugs_Look_Photo</defName>
+    <things>
+      <li><def>VFE_RugSmall</def><texPath>IranianRugs/Small/Photo</texPath><description>A small handwoven rug, copied from a photo of a real antique carpet: city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch.</description></li>
+      <li><def>VFE_RugLarge</def><texPath>IranianRugs/Medium/Photo</texPath><description>A large handwoven rug, copied from a photo of a real antique carpet: city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch.</description></li>
+      <li><def>VFE_RugGrand</def><texPath>IranianRugs/Large/Photo</texPath><description>A grand handwoven rug that dominates a room, copied from a photo of a real antique carpet: city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch.</description></li>
+    </things>
+    <styles>
+      <li><def>IranianRugs_Islamic_Small</def><texPath>IranianRugs/Styles/Islamic/Small/Photo</texPath></li>
+      <li><def>IranianRugs_Islamic_Medium</def><texPath>IranianRugs/Styles/Islamic/Medium/Photo</texPath></li>
+      <li><def>IranianRugs_Islamic_Large</def><texPath>IranianRugs/Styles/Islamic/Large/Photo</texPath></li>
+      <li><def>IranianRugs_Christian_Small</def><texPath>IranianRugs/Styles/Christian/Small/Photo</texPath></li>
+      <li><def>IranianRugs_Christian_Medium</def><texPath>IranianRugs/Styles/Christian/Medium/Photo</texPath></li>
+      <li><def>IranianRugs_Christian_Large</def><texPath>IranianRugs/Styles/Christian/Large/Photo</texPath></li>
+    </styles>
+  </HandwovenRugs.RugLookDef>
+  <HandwovenRugs.RugLookDef>
+    <defName>IranianRugs_Look_Drawn</defName>
+    <things>
+      <li><def>VFE_RugSmall</def><texPath>IranianRugs/Small/Drawn</texPath><description>A small handwoven rug in one of several weaving traditions - city medallion, Herati, garden panels, boteh, Heriz, Turkmen, Gabbeh, kilim or Baluch - with fringed ends.</description></li>
+      <li><def>VFE_RugLarge</def><texPath>IranianRugs/Medium/Drawn</texPath><description>A large handwoven rug in one of several weaving traditions - city medallion, Herati, garden panels, boteh, vase, Heriz, Turkmen, Qashqai, Gabbeh, kilim or afshan - with fringed ends.</description></li>
+      <li><def>VFE_RugGrand</def><texPath>IranianRugs/Large/Drawn</texPath><description>A grand handwoven rug that dominates a room, in one of several weaving traditions - city medallion, Herati, prayer, garden panels, boteh, vase, Heriz, Turkmen, Qashqai, Gabbeh, kilim, Baluch or afshan - with fringed ends.</description></li>
+    </things>
+    <styles>
+      <li><def>IranianRugs_Islamic_Small</def><texPath>IranianRugs/Styles/Islamic/Small/Drawn</texPath></li>
+      <li><def>IranianRugs_Islamic_Medium</def><texPath>IranianRugs/Styles/Islamic/Medium/Drawn</texPath></li>
+      <li><def>IranianRugs_Islamic_Large</def><texPath>IranianRugs/Styles/Islamic/Large/Drawn</texPath></li>
+      <li><def>IranianRugs_Christian_Small</def><texPath>IranianRugs/Styles/Christian/Small/Drawn</texPath></li>
+      <li><def>IranianRugs_Christian_Medium</def><texPath>IranianRugs/Styles/Christian/Medium/Drawn</texPath></li>
+      <li><def>IranianRugs_Christian_Large</def><texPath>IranianRugs/Styles/Christian/Large/Drawn</texPath></li>
+    </styles>
+  </HandwovenRugs.RugLookDef>
+</Defs>

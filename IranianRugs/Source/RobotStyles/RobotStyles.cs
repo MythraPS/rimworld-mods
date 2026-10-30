@@ -14,10 +14,18 @@ namespace HandwovenRugs
     {
         public HandwovenRugsMod(ModContentPack content) : base(content)
         {
+            var harmony = new Harmony("mythraps.iranianrugs");
+            try
+            {
+                RugLook.Patch(harmony);
+            }
+            catch (Exception e)
+            {
+                Log.Warning("[Handwoven Rugs] could not hook the rug pictures setting, it will need a restart: " + e.Message);
+            }
             if (!ModsConfig.IdeologyActive) return;
             try
             {
-                var harmony = new Harmony("mythraps.iranianrugs");
                 var target = AccessTools.Method(typeof(GenRecipe), "PostProcessProduct");
                 harmony.Patch(target, prefix: new HarmonyMethod(typeof(RobotStyles), nameof(RobotStyles.Prefix)));
             }

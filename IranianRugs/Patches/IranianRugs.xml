@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- VFE - Art's rugs as handwoven rugs (photos of real carpets, see Source/carpet_sources.json; in game they keep VFE's names): several designs per size, one picked at random per rug (Graphic_Random),
-     and a CutoutComplex mask: the masks are all black, so every rug keeps the photo's own colours (material colour not used).
+<!-- VFE - Art's rugs as handwoven rugs (in game they keep VFE's names): photos of real carpets (Photo/, see Source/carpet_sources.json) and drawn designs (Drawn/),
+     one picked at random per rug (HandwovenRugs.Graphic_RugFolders reads both subfolders). CutoutComplex masks: the photos' are all black, so they keep their own colours; the drawn ones' let the
+     cloth or leather tint the field. The "Rug pictures" mod setting at the end of this file can narrow it to one set; it must stay in this file, after the replace.
      Sizes, stats and recipes are untouched. Does nothing if VFE - Art isn't loaded. -->
 <Patch>
   <Operation Class="PatchOperationFindMod">
@@ -13,7 +14,7 @@
           <xpath>Defs/ThingDef[defName="VFE_RugSmall"]/graphicData</xpath>
           <value>
             <graphicData>
-              <graphicClass>Graphic_Random</graphicClass>
+              <graphicClass>HandwovenRugs.Graphic_RugFolders</graphicClass>
               <texPath>IranianRugs/Small</texPath>
               <shaderType>CutoutComplex</shaderType>
               <drawSize>(2,2)</drawSize>
@@ -24,7 +25,7 @@
           <xpath>Defs/ThingDef[defName="VFE_RugLarge"]/graphicData</xpath>
           <value>
             <graphicData>
-              <graphicClass>Graphic_Random</graphicClass>
+              <graphicClass>HandwovenRugs.Graphic_RugFolders</graphicClass>
               <texPath>IranianRugs/Medium</texPath>
               <shaderType>CutoutComplex</shaderType>
               <drawSize>(3,3)</drawSize>
@@ -35,7 +36,7 @@
           <xpath>Defs/ThingDef[defName="VFE_RugGrand"]/graphicData</xpath>
           <value>
             <graphicData>
-              <graphicClass>Graphic_Random</graphicClass>
+              <graphicClass>HandwovenRugs.Graphic_RugFolders</graphicClass>
               <texPath>IranianRugs/Large</texPath>
               <shaderType>CutoutComplex</shaderType>
               <drawSize>(4,4)</drawSize>
@@ -44,17 +45,199 @@
         </li>
         <li Class="PatchOperationReplace">
           <xpath>Defs/ThingDef[defName="VFE_RugSmall"]/description</xpath>
-          <value><description>A small handwoven rug, copied from a photo of a real antique carpet: city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch.</description></value>
+          <value><description>A small handwoven rug: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></value>
         </li>
         <li Class="PatchOperationReplace">
           <xpath>Defs/ThingDef[defName="VFE_RugLarge"]/description</xpath>
-          <value><description>A large handwoven rug, copied from a photo of a real antique carpet: city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch.</description></value>
+          <value><description>A large handwoven rug: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></value>
         </li>
         <li Class="PatchOperationReplace">
           <xpath>Defs/ThingDef[defName="VFE_RugGrand"]/description</xpath>
-          <value><description>A grand handwoven rug that dominates a room, copied from a photo of a real antique carpet: city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch.</description></value>
+          <value><description>A grand handwoven rug that dominates a room: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></value>
         </li>
       </operations>
     </match>
   </Operation>
+  <!-- rug pictures setting (written by Source/make_look.py) -->
+  <Operation Class="ModSettingsFramework.PatchOperationRadioButtons">
+    <id>IranianRugs_Look</id>
+    <label>Rug pictures</label>
+    <tooltip>Which pictures the rugs use. Changes right away, rugs already built too.</tooltip>
+    <category>IranianRugs_General</category>
+    <order>5</order>
+    <options>
+      <li>
+        <id>IranianRugs_Look_Both</id>
+        <label>Both</label>
+        <tooltip>Every rug picks at random from the photos and the drawn designs together.</tooltip>
+        <defaultValue>True</defaultValue>
+        <operations>
+          <li Class="PatchOperationFindMod">
+            <mods>
+              <li>Vanilla Furniture Expanded - Art</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugSmall"]/description</xpath>
+                  <value><description>A small handwoven rug: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugLarge"]/description</xpath>
+                  <value><description>A large handwoven rug: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugGrand"]/description</xpath>
+                  <value><description>A grand handwoven rug that dominates a room: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></value>
+                </li>
+              </operations>
+            </match>
+          </li>
+        </operations>
+      </li>
+      <li>
+        <id>IranianRugs_Look_Photo</id>
+        <label>Photos of real carpets</label>
+        <tooltip>Rugs are photos of 22 real antique carpets, in the carpets' own colours.</tooltip>
+        <defaultValue>False</defaultValue>
+        <operations>
+          <li Class="PatchOperationFindMod">
+            <mods>
+              <li>Vanilla Furniture Expanded - Art</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugSmall"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Small/Photo</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugSmall"]/description</xpath>
+                  <value><description>A small handwoven rug: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugLarge"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Medium/Photo</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugLarge"]/description</xpath>
+                  <value><description>A large handwoven rug: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugGrand"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Large/Photo</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugGrand"]/description</xpath>
+                  <value><description>A grand handwoven rug that dominates a room: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <success>Always</success>
+                  <xpath>Defs/ThingStyleDef[defName="IranianRugs_Islamic_Small"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Styles/Islamic/Small/Photo</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <success>Always</success>
+                  <xpath>Defs/ThingStyleDef[defName="IranianRugs_Islamic_Medium"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Styles/Islamic/Medium/Photo</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <success>Always</success>
+                  <xpath>Defs/ThingStyleDef[defName="IranianRugs_Islamic_Large"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Styles/Islamic/Large/Photo</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <success>Always</success>
+                  <xpath>Defs/ThingStyleDef[defName="IranianRugs_Christian_Small"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Styles/Christian/Small/Photo</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <success>Always</success>
+                  <xpath>Defs/ThingStyleDef[defName="IranianRugs_Christian_Medium"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Styles/Christian/Medium/Photo</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <success>Always</success>
+                  <xpath>Defs/ThingStyleDef[defName="IranianRugs_Christian_Large"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Styles/Christian/Large/Photo</texPath></value>
+                </li>
+              </operations>
+            </match>
+          </li>
+        </operations>
+      </li>
+      <li>
+        <id>IranianRugs_Look_Drawn</id>
+        <label>Drawn designs</label>
+        <tooltip>The drawn designs from before version 1.3.0 (35 of them), tinted by the cloth or leather the rug is made from.</tooltip>
+        <defaultValue>False</defaultValue>
+        <operations>
+          <li Class="PatchOperationFindMod">
+            <mods>
+              <li>Vanilla Furniture Expanded - Art</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugSmall"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Small/Drawn</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugSmall"]/description</xpath>
+                  <value><description>A small handwoven rug: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugLarge"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Medium/Drawn</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugLarge"]/description</xpath>
+                  <value><description>A large handwoven rug: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugGrand"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Large/Drawn</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="VFE_RugGrand"]/description</xpath>
+                  <value><description>A grand handwoven rug that dominates a room: either a photo of a real antique carpet or a drawn design in the same weaving traditions (city medallion, prayer, Herat vine and palmette, garden, boteh, vase, Heriz, Turkmen, Qashqai kilim, Gabbeh, kilim or Baluch).</description></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <success>Always</success>
+                  <xpath>Defs/ThingStyleDef[defName="IranianRugs_Islamic_Small"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Styles/Islamic/Small/Drawn</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <success>Always</success>
+                  <xpath>Defs/ThingStyleDef[defName="IranianRugs_Islamic_Medium"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Styles/Islamic/Medium/Drawn</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <success>Always</success>
+                  <xpath>Defs/ThingStyleDef[defName="IranianRugs_Islamic_Large"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Styles/Islamic/Large/Drawn</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <success>Always</success>
+                  <xpath>Defs/ThingStyleDef[defName="IranianRugs_Christian_Small"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Styles/Christian/Small/Drawn</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <success>Always</success>
+                  <xpath>Defs/ThingStyleDef[defName="IranianRugs_Christian_Medium"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Styles/Christian/Medium/Drawn</texPath></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <success>Always</success>
+                  <xpath>Defs/ThingStyleDef[defName="IranianRugs_Christian_Large"]/graphicData/texPath</xpath>
+                  <value><texPath>IranianRugs/Styles/Christian/Large/Drawn</texPath></value>
+                </li>
+              </operations>
+            </match>
+          </li>
+        </operations>
+      </li>
+    </options>
+  </Operation>
+  <!-- end rug pictures setting -->
 </Patch>

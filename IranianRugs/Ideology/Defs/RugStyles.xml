@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- One rug look per ideoligion style and rug size. Loaded only with Ideology (see LoadFolders.xml). Written by Source/make_xml.py. -->
 <Defs>
-  <ModSettingsFramework.ModOptionCategoryDef>
-    <defName>IranianRugs_General</defName>
-    <label>General</label>
-    <order>0</order>
-  </ModSettingsFramework.ModOptionCategoryDef>
-
   <ThingStyleDef>
     <defName>IranianRugs_Islamic_Small</defName>
     <graphicData>
-      <graphicClass>Graphic_Random</graphicClass>
+      <graphicClass>HandwovenRugs.Graphic_RugFolders</graphicClass>
       <texPath>IranianRugs/Styles/Islamic/Small</texPath>
       <shaderType>CutoutComplex</shaderType>
       <drawSize>(2,2)</drawSize>
@@ -20,7 +14,7 @@
   <ThingStyleDef>
     <defName>IranianRugs_Islamic_Medium</defName>
     <graphicData>
-      <graphicClass>Graphic_Random</graphicClass>
+      <graphicClass>HandwovenRugs.Graphic_RugFolders</graphicClass>
       <texPath>IranianRugs/Styles/Islamic/Medium</texPath>
       <shaderType>CutoutComplex</shaderType>
       <drawSize>(3,3)</drawSize>
@@ -30,7 +24,7 @@
   <ThingStyleDef>
     <defName>IranianRugs_Islamic_Large</defName>
     <graphicData>
-      <graphicClass>Graphic_Random</graphicClass>
+      <graphicClass>HandwovenRugs.Graphic_RugFolders</graphicClass>
       <texPath>IranianRugs/Styles/Islamic/Large</texPath>
       <shaderType>CutoutComplex</shaderType>
       <drawSize>(4,4)</drawSize>
@@ -40,7 +34,7 @@
   <ThingStyleDef>
     <defName>IranianRugs_Christian_Small</defName>
     <graphicData>
-      <graphicClass>Graphic_Random</graphicClass>
+      <graphicClass>HandwovenRugs.Graphic_RugFolders</graphicClass>
       <texPath>IranianRugs/Styles/Christian/Small</texPath>
       <shaderType>CutoutComplex</shaderType>
       <drawSize>(2,2)</drawSize>
@@ -50,7 +44,7 @@
   <ThingStyleDef>
     <defName>IranianRugs_Christian_Medium</defName>
     <graphicData>
-      <graphicClass>Graphic_Random</graphicClass>
+      <graphicClass>HandwovenRugs.Graphic_RugFolders</graphicClass>
       <texPath>IranianRugs/Styles/Christian/Medium</texPath>
       <shaderType>CutoutComplex</shaderType>
       <drawSize>(3,3)</drawSize>
@@ -60,7 +54,7 @@
   <ThingStyleDef>
     <defName>IranianRugs_Christian_Large</defName>
     <graphicData>
-      <graphicClass>Graphic_Random</graphicClass>
+      <graphicClass>HandwovenRugs.Graphic_RugFolders</graphicClass>
       <texPath>IranianRugs/Styles/Christian/Large</texPath>
       <shaderType>CutoutComplex</shaderType>
       <drawSize>(4,4)</drawSize>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The mod-settings page's one category. Here, not in Ideology/, so the rug-pictures option exists without Ideology too. -->
+<Defs>
+  <ModSettingsFramework.ModOptionCategoryDef>
+    <defName>IranianRugs_General</defName>
+    <label>General</label>
+    <order>0</order>
+  </ModSettingsFramework.ModOptionCategoryDef>
+</Defs>

@@ -10,11 +10,12 @@ MODDED = {}
 SIZES = [("Small", "VFE_RugSmall", "(2,2)"), ("Medium", "VFE_RugLarge", "(3,3)"), ("Large", "VFE_RugGrand", "(4,4)")]
 ALL = {**VANILLA, **MODDED}
 
-d = ['<?xml version="1.0" encoding="utf-8"?>', '<!-- One rug look per ideoligion style and rug size. Loaded only with Ideology (see LoadFolders.xml). Written by Source/make_xml.py. -->', '<Defs>',
-     '  <ModSettingsFramework.ModOptionCategoryDef>\n    <defName>IranianRugs_General</defName>\n    <label>General</label>\n    <order>0</order>\n  </ModSettingsFramework.ModOptionCategoryDef>\n']
+# The settings category (IranianRugs_General) is in Defs/Settings.xml, so it exists without Ideology too.
+# Each style's texPath is the style folder, which holds Photo/ and Drawn/; the "Rug pictures" setting at the end of Patches/IranianRugs.xml narrows it to one of them.
+d = ['<?xml version="1.0" encoding="utf-8"?>', '<!-- One rug look per ideoligion style and rug size. Loaded only with Ideology (see LoadFolders.xml). Written by Source/make_xml.py. -->', '<Defs>']
 for folder in ALL.values():
     for sz, _td, ds in SIZES:
-        d.append(f'  <ThingStyleDef>\n    <defName>IranianRugs_{folder}_{sz}</defName>\n    <graphicData>\n      <graphicClass>Graphic_Random</graphicClass>\n'
+        d.append(f'  <ThingStyleDef>\n    <defName>IranianRugs_{folder}_{sz}</defName>\n    <graphicData>\n      <graphicClass>HandwovenRugs.Graphic_RugFolders</graphicClass>\n'
                  f'      <texPath>IranianRugs/Styles/{folder}/{sz}</texPath>\n      <shaderType>CutoutComplex</shaderType>\n      <drawSize>{ds}</drawSize>\n    </graphicData>\n  </ThingStyleDef>\n')
 d.append('</Defs>')
 
