@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Nodes are not laid out on VPE's three-column grid: TreeLayout.cs places them
+       on the infinity sign drawn in the background. The levels below only order
+       the rows if that patch ever fails, and each level holds at most three. -->
+  <VanillaPsycastsExpanded.PsycasterPathDef>
+    <defName>Gojo_Path</defName>
+    <label>limitless</label>
+    <description>Limitless — the Gojo clan's inherited technique, made usable by the Six Eyes. It brings infinity into the real world: the endless series of halves that keeps two things from ever quite touching.</description>
+    <background>UI/Backgrounds/GojoPath</background>
+    <altBackground>UI/AlternativeBackgrounds/PathBG_Gojo</altBackground>
+    <tab>Psycasts</tab>
+    <tooltip>Limitless takes calculations no ordinary brain can run fast enough to survive. Without the Six Eyes it would burn its user out in seconds. Satoru Gojo is the first in four hundred years born with both.</tooltip>
+    <lockedReason>Only Satoru Gojo can use Limitless</lockedReason>
+    <ignoreLockRestrictionsForNeurotrainers>False</ignoreLockRestrictionsForNeurotrainers>
+    <ensureLockRequirement>True</ensureLockRequirement>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+
+</Defs>

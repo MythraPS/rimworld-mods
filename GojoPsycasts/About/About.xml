@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Satoru Gojo</name>
+  <author>Pouya Sattari</author>
+  <packageId>mythraps.satorugojo</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <modVersion>1.0.0</modVersion>
+  <modDependencies>
+    <li>
+      <packageId>Ludeon.RimWorld.Royalty</packageId>
+      <displayName>Royalty</displayName>
+    </li>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
+    </li>
+    <li>
+      <packageId>OskarPotocki.VanillaFactionsExpanded.Core</packageId>
+      <displayName>Vanilla Expanded Framework</displayName>
+      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2023507013</steamWorkshopUrl>
+    </li>
+    <li>
+      <packageId>VanillaExpanded.VPsycastsE</packageId>
+      <displayName>Vanilla Psycasts Expanded</displayName>
+      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2842502659</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>Ludeon.RimWorld</li>
+    <li>Ludeon.RimWorld.Royalty</li>
+    <li>brrainz.harmony</li>
+    <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
+    <li>VanillaExpanded.VPsycastsE</li>
+  </loadAfter>
+  <description>Satoru Gojo, the strongest sorcerer, and his Limitless path for Vanilla Psycasts Expanded, laid out on an infinity sign.
+
+Gojo arrives once per game as a wanderer (day 10 at the earliest). Only someone with the Six Eyes can walk the Limitless path. The Six Eyes halve psyfocus and neural heat costs, see through walls, give light blue eyes, and are passed on to children.
+
+Abilities:
+- Infinity: always on. Attacks never reach him while it holds, and neither do poison, tox gas, fire or food poisoning, and a stopped hit doesn't stagger him. It drops when neural heat hits its limit or psyfocus runs out.
+- Blue: a point that drags everything nearby in and crushes it, and leaves a crater. Wider the more psyfocus he has. Comes with Pull.
+- Red: an orb that waits until something touches it, then bursts outward, or a beam that hammers everything in a line. Comes with Push.
+- Hollow Purple: erases everything it passes through. A Blue that reaches one of his waiting Reds bursts into Purple on the spot.
+- Domain Expansion: Infinite Void. A barrier that paralyses everyone inside who isn't his ally.
+- Blue Fist, Black Flash, Speed, reverse cursed technique, cursed energy reinforcement, and teleportation anywhere on the map or the planet.
+- Fly: a toggle. He flies over walls, water and anything on the ground, as long as no roof is in the way.
+
+Mod options: ability icons as pictures or kanji; Black Flash chance (0% to 300%); whether abilities as well as melee can trigger Black Flash.
+
+Requires Royalty, Harmony, Vanilla Expanded Framework and Vanilla Psycasts Expanded.
+
+Current version: v1.0.0
+
+Please remember to rate my mod! Thank you!
+
+Please support: https://www.patreon.com/mythraps
+
+Source: https://github.com/MythraPS/rimworld-mods</description>
+</ModMetaData>

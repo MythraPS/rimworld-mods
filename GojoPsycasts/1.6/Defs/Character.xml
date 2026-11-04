@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- The Six Eyes. Never rolled at random (commonality 0); Gojo is made with it,
+       and anyone given it in a pawn editor gets the path and the hediff too. -->
+  <TraitDef>
+    <defName>Gojo_SixEyes</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>six eyes</label>
+        <description>[PAWN_nameDef] was born with the Six Eyes, the first in four hundred years. [PAWN_pronoun] sees cursed energy down to the particle, sees through walls, and wastes almost nothing on any technique. It is the only reason Limitless can be used at all.</description>
+        <statFactors>
+          <VPE_PsyfocusCostFactor>0.5</VPE_PsyfocusCostFactor>
+          <PsychicEntropyGain>0.5</PsychicEntropyGain>
+        </statFactors>
+        <statOffsets>
+          <PsychicEntropyRecoveryRate>0.3</PsychicEntropyRecoveryRate>
+          <MeditationFocusGain>0.3</MeditationFocusGain>
+          <PsychicSensitivity>0.5</PsychicSensitivity>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+  </TraitDef>
+
+  <HairDef>
+    <defName>Gojo_Hair</defName>
+    <label>gojo spikes</label>
+    <styleGender>Male</styleGender>
+    <texPath>Things/Pawn/Humanlike/Hairs/Gojo_Hair</texPath>
+  </HairDef>
+
+  <!-- The old blindfold, drawn as a face tattoo. Kept only so saves from before
+       2026-10-31 load; the Limitless hediff swaps it for the apparel below. -->
+  <TattooDef>
+    <defName>Gojo_Blindfold</defName>
+    <label>blindfold</label>
+    <texPath>Things/Pawn/Humanlike/Tattoos/Gojo_Blindfold/Gojo_Blindfold</texPath>
+    <tattooType>Face</tattooType>
+    <visibleNorth>true</visibleNorth>
+    <category>Urban</category>
+  </TattooDef>
+
+  <!-- The blindfold as clothing (her call 2026-10-31): worn on the eye layer over
+       his blue eyes, taken off and put on like any apparel. Looks only: unlike
+       Ideology's blindfold it doesn't block sight. -->
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>Gojo_BlindfoldApparel</defName>
+    <smeltable>false</smeltable>
+    <label>gojo's blindfold</label>
+    <description>A strip of black cloth wrapped over the eyes. Satoru Gojo wears it to rest the Six Eyes, and sees perfectly well through it.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Gojo_Blindfold/Gojo_Blindfold_south</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+      <Mass>0.07</Mass>
+      <EquipDelay>0.8</EquipDelay>
+    </statBases>
+    <thingCategories>
+      <li>Headgear</li>
+    </thingCategories>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <bodyPartGroups>
+        <li>Eyes</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Gojo_Blindfold/Gojo_Blindfold</wornGraphicPath>
+      <layers>
+        <li>EyeCover</li>
+      </layers>
+      <drawData>
+        <defaultData>
+          <layer>61</layer>
+        </defaultData>
+      </drawData>
+      <renderSkipFlags>
+        <li>None</li>
+      </renderSkipFlags>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+    </apparel>
+  </ThingDef>
+
+  <!-- His face under the blindfold: only his blue eyes show. Looks only. -->
+  <TattooDef>
+    <defName>Gojo_Eyes</defName>
+    <label>six eyes</label>
+    <texPath>Things/Pawn/Humanlike/Tattoos/Gojo_Eyes/Gojo_Eyes</texPath>
+    <tattooType>Face</tattooType>
+    <visibleNorth>false</visibleNorth>
+    <overrideShaderTypeDef>Cutout</overrideShaderTypeDef>
+    <category>Urban</category>
+  </TattooDef>
+
+  <BackstoryDef>
+    <defName>Gojo_Childhood</defName>
+    <title>gojo clan heir</title>
+    <titleShort>heir</titleShort>
+    <description>The moment [PAWN_nameDef] was born with the Six Eyes and Limitless together, the balance of the whole jujutsu world shifted, and the price on [PAWN_possessive] head rose so high that assassins came for [PAWN_objective] in [PAWN_possessive] crib.</description>
+    <slot>Childhood</slot>
+    <spawnCategories>
+      <li>GojoUnique</li>
+    </spawnCategories>
+    <skillGains>
+      <Melee>4</Melee>
+      <Intellectual>3</Intellectual>
+    </skillGains>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Gojo_Adulthood</defName>
+    <title>the strongest</title>
+    <titleShort>sorcerer</titleShort>
+    <description>[PAWN_nameDef] is a special-grade sorcerer and a teacher, and fairly sure [PAWN_pronoun] is the strongest there is. [PAWN_pronoun] fights barehanded, because [PAWN_possessive] technique is a better weapon than anything [PAWN_pronoun] could carry, and has never needed a gun.</description>
+    <slot>Adulthood</slot>
+    <spawnCategories>
+      <li>GojoUnique</li>
+    </spawnCategories>
+    <skillGains>
+      <Melee>8</Melee>
+      <Social>3</Social>
+    </skillGains>
+    <workDisables>
+      <li>Shooting</li>
+    </workDisables>
+  </BackstoryDef>
+
+  <PawnKindDef ParentName="BasePlayerPawnKind">
+    <defName>Gojo_Satoru</defName>
+    <initialResistanceRange>13~21</initialResistanceRange>
+    <label>jujutsu sorcerer</label>
+    <race>Human</race>
+    <combatPower>500</combatPower>
+    <apparelMoney>0~0</apparelMoney>
+    <weaponMoney>0~0</weaponMoney>
+    <apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+    <techHediffsMoney>0~0</techHediffsMoney>
+  </PawnKindDef>
+
+  <!-- Once per game, as a wanderer who asks to join. -->
+  <IncidentDef>
+    <defName>Gojo_Arrives</defName>
+    <label>satoru gojo arrives</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>GojoPsycasts.IncidentWorker_GojoArrives</workerClass>
+    <baseChance>0.4</baseChance>
+    <minRefireDays>9999</minRefireDays>
+    <earliestDay>10</earliestDay>
+  </IncidentDef>
+
+</Defs>
