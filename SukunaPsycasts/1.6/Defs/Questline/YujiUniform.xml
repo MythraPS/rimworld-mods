@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Yuji's school uniform (her note 2026-11-06: red scarf, closed coat). Colours are baked into the
+       textures (tools/art_uniform.py, built on vanilla's Parka), so it is drawn white = untinted. -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>Sukuna_YujiUniform</defName>
+    <label>jujutsu high uniform</label>
+    <description>A dark, high-collared school coat, zipped shut, with a red hood worn down like a scarf. Sturdier than it looks: it's made for fighting curses.</description>
+    <graphicData>
+      <texPath>Things/Item/Apparel/Sukuna_YujiUniform/Sukuna_YujiUniform</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.90</drawSize>
+      <color>(1, 1, 1)</color>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <tradeability>None</tradeability>
+    <smeltable>false</smeltable>   <!-- cloth with no recipe: nothing to smelt back out -->
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>220</MaxHitPoints>
+      <Mass>1.6</Mass>
+      <MarketValue>260</MarketValue>
+      <ArmorRating_Sharp>0.14</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.08</ArmorRating_Blunt>
+      <Insulation_Cold>14</Insulation_Cold>
+      <Insulation_Heat>2</Insulation_Heat>
+      <Flammability>0.6</Flammability>
+      <EquipDelay>2</EquipDelay>
+    </statBases>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Sukuna_YujiUniform/Sukuna_YujiUniform</wornGraphicPath>
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+    </apparel>
+    <generateCommonality>0</generateCommonality>
+  </ThingDef>
+  <!-- Modulo Yuji's hoodie (her note 2026-11-07). Drawn in greys (tools/art_hoodie.py, built on vanilla's
+       Parka), so it takes its colour: charcoal on him, any colour at a styling station. -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>Sukuna_ModuloHoodie</defName>
+    <label>hoodie</label>
+    <description>A plain, worn hoodie with the hood down. Comfortable, warm enough, and nothing like a uniform.</description>
+    <graphicData>
+      <texPath>Things/Item/Apparel/Sukuna_ModuloHoodie/Sukuna_ModuloHoodie</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.90</drawSize>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <tradeability>None</tradeability>
+    <smeltable>false</smeltable>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>140</MaxHitPoints>
+      <Mass>0.8</Mass>
+      <MarketValue>90</MarketValue>
+      <ArmorRating_Sharp>0.04</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.02</ArmorRating_Blunt>
+      <Insulation_Cold>10</Insulation_Cold>
+      <Insulation_Heat>2</Insulation_Heat>
+      <Flammability>1</Flammability>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Sukuna_ModuloHoodie/Sukuna_ModuloHoodie</wornGraphicPath>
+      <layers>
+        <li>Middle</li>
+      </layers>
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+    </apparel>
+    <generateCommonality>0</generateCommonality>
+  </ThingDef>
+</Defs>

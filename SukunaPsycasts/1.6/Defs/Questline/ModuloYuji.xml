@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Yuji Itadori as he is in JJK Modulo (her call 2026-11-01). Made in code by
+       ModuloYuji.Make; arrives once per game and joins. -->
+
+  <BackstoryDef>
+    <defName>Sukuna_ModuloAdulthood</defName>
+    <title>sorcerer who outlived them</title>
+    <titleShort>sorcerer</titleShort>
+    <description>Decades after the King of Curses was finally put down, [PAWN_nameDef] still looks barely grown. [PAWN_pronoun] has outlived nearly everyone [PAWN_pronoun] fought beside. The slashing technique the King left carved into [PAWN_possessive] body is [PAWN_possessive] own now, and so is [PAWN_possessive] brother's blood. [PAWN_pronoun] still helps whoever needs it.</description>
+    <slot>Adulthood</slot>
+    <spawnCategories>
+      <li>SukunaUnique</li>
+    </spawnCategories>
+    <skillGains>
+      <Melee>8</Melee>
+      <Social>3</Social>
+      <Medicine>2</Medicine>
+    </skillGains>
+    <workDisables>
+      <li>Shooting</li>
+    </workDisables>
+  </BackstoryDef>
+
+  <PawnKindDef ParentName="BasePlayerPawnKind">
+    <defName>Sukuna_ModuloYuji</defName>
+    <initialResistanceRange>13~21</initialResistanceRange>
+    <label>jujutsu sorcerer</label>
+    <race>Human</race>
+    <combatPower>600</combatPower>
+    <apparelMoney>0~0</apparelMoney>
+    <weaponMoney>0~0</weaponMoney>
+    <apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+    <techHediffsMoney>0~0</techHediffsMoney>
+  </PawnKindDef>
+
+  <!-- Old scars: the two Mahito left on his cheeks, and more since. Drawn in their own
+       colour (Cutout), so skin tone doesn't tint them. Looks only. -->
+  <TattooDef>
+    <defName>Sukuna_ModuloScars</defName>
+    <label>old scars</label>
+    <texPath>Things/Pawn/Humanlike/Tattoos/Sukuna_ModuloScars/Sukuna_ModuloScars</texPath>
+    <tattooType>Face</tattooType>
+    <visibleNorth>false</visibleNorth>
+    <overrideShaderTypeDef>Cutout</overrideShaderTypeDef>
+    <category>Tribal</category>
+  </TattooDef>
+
+  <IncidentDef>
+    <defName>Sukuna_ModuloYujiArrives</defName>
+    <label>yuji itadori arrives</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>SukunaPsycasts.IncidentWorker_ModuloYujiArrives</workerClass>
+    <!-- Dev mode only since the questline makes Modulo Yuji itself (2026-11-01). -->
+    <baseChance>0</baseChance>
+    <minRefireDays>9999</minRefireDays>
+  </IncidentDef>
+
+</Defs>

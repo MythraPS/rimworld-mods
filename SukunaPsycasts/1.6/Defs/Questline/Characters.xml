@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- ===================================================================
+       Character art. No styleTags, so neither style is ever rolled for a
+       random pawn; they are set in code on Yuji and on whoever Sukuna takes.
+       =================================================================== -->
+  <HairDef>
+    <defName>Sukuna_YujiHair</defName>
+    <label>itadori spikes</label>
+    <styleGender>Male</styleGender>
+    <texPath>Things/Pawn/Humanlike/Hairs/Sukuna_YujiHair</texPath>
+  </HairDef>
+
+  <!-- Modulo Yuji: neat, combed to one side (her note 2026-11-06). -->
+  <HairDef>
+    <defName>Sukuna_ModuloHair</defName>
+    <label>combed side sweep</label>
+    <styleGender>Male</styleGender>
+    <texPath>Things/Pawn/Humanlike/Hairs/Sukuna_ModuloHair</texPath>
+  </HairDef>
+
+  <HairDef>
+    <defName>Sukuna_KingHair</defName>
+    <label>swept-back spikes</label>
+    <styleGender>Male</styleGender>
+    <texPath>Things/Pawn/Humanlike/Hairs/Sukuna_KingHair</texPath>
+  </HairDef>
+
+  <!-- Sukuna in a body that is not yet his own: the King's spikes, shorter still and only
+       slightly spiky, in the pawn's own hair colour (her call 2026-11-01). The pink King hair
+       comes with the four-armed form. -->
+  <HairDef>
+    <defName>Sukuna_VesselHair</defName>
+    <label>curse-raised spikes</label>
+    <styleGender>Any</styleGender>
+    <texPath>Things/Pawn/Humanlike/Hairs/Sukuna_VesselHair</texPath>
+  </HairDef>
+
+  <TattooDef>
+    <defName>Sukuna_Markings</defName>
+    <label>curse markings</label>
+    <texPath>Things/Pawn/Humanlike/Tattoos/Sukuna_Markings/Sukuna_Markings</texPath>
+    <tattooType>Face</tattooType>
+    <visibleNorth>false</visibleNorth>
+    <overrideShaderTypeDef>Cutout</overrideShaderTypeDef>
+    <category>Tribal</category>
+  </TattooDef>
+
+  <!-- The true form's face markings (2026-11-06): his right side left bare for the mask, which is a
+       skin-coloured hediff render node (Sukuna_Mask), not part of this tattoo. -->
+  <TattooDef>
+    <defName>Sukuna_KingMarkings</defName>
+    <label>true form markings</label>
+    <texPath>Things/Pawn/Humanlike/Tattoos/Sukuna_KingMarkings/Sukuna_KingMarkings</texPath>
+    <tattooType>Face</tattooType>
+    <visibleNorth>false</visibleNorth>
+    <overrideShaderTypeDef>Cutout</overrideShaderTypeDef>
+    <category>Tribal</category>
+  </TattooDef>
+
+  <!-- Yuji's own: the short marks under his eyes (her call 2026-11-02). -->
+  <TattooDef>
+    <defName>Sukuna_YujiMarks</defName>
+    <label>under-eye marks</label>
+    <texPath>Things/Pawn/Humanlike/Tattoos/Sukuna_YujiMarks/Sukuna_YujiMarks</texPath>
+    <tattooType>Face</tattooType>
+    <visibleNorth>false</visibleNorth>
+    <overrideShaderTypeDef>Cutout</overrideShaderTypeDef>
+    <category>Tribal</category>
+  </TattooDef>
+
+  <!-- ===================================================================
+       Yuji Itadori
+       =================================================================== -->
+  <HediffDef>
+    <defName>Sukuna_YujiPhysique</defName>
+    <label>abnormal physique</label>
+    <description>Yuji Itadori was born strong enough to throw a shot put like a baseball and fast enough to outrun a car. Nobody taught him either. On top of that, the King of Curses cannot take his body from him: every finger he swallows makes him stronger, and none of them make him hungrier.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.95, 0.55, 0.65)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li><compClass>SukunaPsycasts.HediffComp_YujiBlood</compClass></li>
+    </comps>
+    <stages>
+      <li>
+        <statOffsets>
+          <MoveSpeed>1.6</MoveSpeed>
+          <MeleeHitChance>8</MeleeHitChance>
+          <MeleeDodgeChance>12</MeleeDodgeChance>
+          <PainShockThreshold>0.25</PainShockThreshold>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>2.5</MeleeDamageFactor>   <!-- was 1.8; her call 2026-11-06: more -->
+          <CarryingCapacity>2.0</CarryingCapacity>
+          <IncomingDamageFactor>0.8</IncomingDamageFactor>
+          <MeleeCooldownFactor>0.75</MeleeCooldownFactor>
+        </statFactors>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.25</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.15</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.20</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.20</offset></li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <BackstoryDef>
+    <defName>Sukuna_YujiChildhood</defName>
+    <title>grandfather's boy</title>
+    <titleShort>grandson</titleShort>
+    <description>[PAWN_nameDef] was raised by [PAWN_possessive] grandfather in a quiet town, and spent most of [PAWN_possessive] childhood failing to hide how strong [PAWN_pronoun] was. [PAWN_possessive] grandfather's last words were to help people, and to die surrounded by them.</description>
+    <slot>Childhood</slot>
+    <spawnCategories>
+      <li>SukunaUnique</li>
+    </spawnCategories>
+    <skillGains>
+      <Melee>4</Melee>
+      <Cooking>2</Cooking>
+      <Social>2</Social>
+    </skillGains>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Sukuna_YujiAdulthood</defName>
+    <title>jujutsu sorcerer</title>
+    <titleShort>sorcerer</titleShort>
+    <description>[PAWN_nameDef] swallowed a cursed finger to save [PAWN_possessive] friends, and woke up sharing [PAWN_possessive] body with the King of Curses. [PAWN_pronoun] has been sentenced to die once every finger is inside [PAWN_objective], and has decided to make that sentence worth carrying out. [PAWN_pronoun] fights with [PAWN_possessive] fists.</description>
+    <slot>Adulthood</slot>
+    <spawnCategories>
+      <li>SukunaUnique</li>
+    </spawnCategories>
+    <skillGains>
+      <Melee>8</Melee>
+      <Medicine>1</Medicine>
+    </skillGains>
+    <workDisables>
+      <li>Shooting</li>
+    </workDisables>
+  </BackstoryDef>
+
+  <PawnKindDef ParentName="BasePlayerPawnKind">
+    <defName>Sukuna_Yuji</defName>
+    <initialResistanceRange>13~21</initialResistanceRange>
+    <label>jujutsu sorcerer</label>
+    <race>Human</race>
+    <combatPower>200</combatPower>
+    <apparelMoney>0~0</apparelMoney>
+    <weaponMoney>0~0</weaponMoney>
+    <apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+    <techHediffsMoney>0~0</techHediffsMoney>
+  </PawnKindDef>
+
+  <!-- ===================================================================
+       The King of Curses. Hidden, hostile to everyone, made on demand
+       (SukunaFaction.Get) so it also appears in existing saves.
+       =================================================================== -->
+  <FactionDef ParentName="FactionBase">
+    <defName>Sukuna_KingOfCurses</defName>
+    <label>King of Curses</label>
+    <fixedName>King of Curses</fixedName>
+    <pawnSingular>curse</pawnSingular>
+    <pawnsPlural>curses</pawnsPlural>
+    <categoryTag>Sukuna</categoryTag>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <factionIconPath>World/Sukuna/ShrineIcon</factionIconPath>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <permanentEnemy>true</permanentEnemy>
+    <permanentEnemyToEveryoneExcept>
+      <li>Sukuna_KingOfCurses</li>
+    </permanentEnemyToEveryoneExcept>
+    <autoFlee>false</autoFlee>
+    <raidsForbidden>true</raidsForbidden>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 0)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Offworld</li>
+        </categories>
+      </li>
+    </backstoryFilters>
+    <basicMemberKind>Villager</basicMemberKind>
+  </FactionDef>
+
+</Defs>

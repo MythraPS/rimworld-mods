@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- ===================================================================
+       SukunaVessel — the marker every other system reads.
+       Severity == number of fingers this pawn has eaten. Each stage adds
+       psychic sensitivity, which is what every ability in the path scales on.
+       =================================================================== -->
+  <HediffDef>
+    <defName>Sukuna_Vessel</defName>
+    <label>vessel of the king of curses</label>
+    <description>Something that was sealed away is sitting inside this person, using their body as a container. It is patient, and it is not asleep.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.65, 0.15, 0.15)</defaultLabelColor>
+    <isBad>false</isBad>
+    <maxSeverity>20</maxSeverity>
+    <initialSeverity>1</initialSeverity>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="SukunaPsycasts.HediffCompProperties_VesselPassives" />
+      <li Class="SukunaPsycasts.HediffCompProperties_PassivePsyfocus">
+        <regenPerDayBase>0.35</regenPerDayBase>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <minSeverity>1</minSeverity>
+        <label>one finger</label>
+        <statOffsets>
+          <PsychicSensitivity>0.05</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>1.59</MeleeDamageFactor>
+          <MoveSpeed>1.03</MoveSpeed>
+          <CarryingCapacity>1.05</CarryingCapacity>
+          <IncomingDamageFactor>0.98</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>1.15</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.025</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.025</offset></li>
+          <li><capacity>Eating</capacity><offset>0.025</offset></li>
+          <li><capacity>Sight</capacity><offset>0.025</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.025</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.025</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.025</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.025</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.025</offset></li>
+        </capMods>
+        <painFactor>0.95</painFactor>
+      </li>
+      <li>
+        <minSeverity>2</minSeverity>
+        <label>two fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.10</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>1.68</MeleeDamageFactor>
+          <MoveSpeed>1.06</MoveSpeed>
+          <CarryingCapacity>1.10</CarryingCapacity>
+          <IncomingDamageFactor>0.96</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>1.30</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.050</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.050</offset></li>
+          <li><capacity>Eating</capacity><offset>0.050</offset></li>
+          <li><capacity>Sight</capacity><offset>0.050</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.050</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.050</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.050</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.050</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.050</offset></li>
+        </capMods>
+        <painFactor>0.91</painFactor>
+      </li>
+      <li>
+        <minSeverity>3</minSeverity>
+        <label>three fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.15</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>1.77</MeleeDamageFactor>
+          <MoveSpeed>1.09</MoveSpeed>
+          <CarryingCapacity>1.15</CarryingCapacity>
+          <IncomingDamageFactor>0.94</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>1.45</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.075</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.075</offset></li>
+          <li><capacity>Eating</capacity><offset>0.075</offset></li>
+          <li><capacity>Sight</capacity><offset>0.075</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.075</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.075</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.075</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.075</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.075</offset></li>
+        </capMods>
+        <painFactor>0.86</painFactor>
+      </li>
+      <li>
+        <minSeverity>4</minSeverity>
+        <label>four fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.20</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>1.86</MeleeDamageFactor>
+          <MoveSpeed>1.12</MoveSpeed>
+          <CarryingCapacity>1.20</CarryingCapacity>
+          <IncomingDamageFactor>0.92</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>1.60</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.100</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.100</offset></li>
+          <li><capacity>Eating</capacity><offset>0.100</offset></li>
+          <li><capacity>Sight</capacity><offset>0.100</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.100</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.100</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.100</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.100</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.100</offset></li>
+        </capMods>
+        <painFactor>0.82</painFactor>
+      </li>
+      <li>
+        <minSeverity>5</minSeverity>
+        <label>five fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.25</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>1.95</MeleeDamageFactor>
+          <MoveSpeed>1.15</MoveSpeed>
+          <CarryingCapacity>1.25</CarryingCapacity>
+          <IncomingDamageFactor>0.90</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>1.75</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.125</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.125</offset></li>
+          <li><capacity>Eating</capacity><offset>0.125</offset></li>
+          <li><capacity>Sight</capacity><offset>0.125</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.125</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.125</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.125</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.125</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.125</offset></li>
+        </capMods>
+        <painFactor>0.78</painFactor>
+      </li>
+      <li>
+        <minSeverity>6</minSeverity>
+        <label>six fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.30</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>2.04</MeleeDamageFactor>
+          <MoveSpeed>1.18</MoveSpeed>
+          <CarryingCapacity>1.30</CarryingCapacity>
+          <IncomingDamageFactor>0.88</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>1.90</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.150</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.150</offset></li>
+          <li><capacity>Eating</capacity><offset>0.150</offset></li>
+          <li><capacity>Sight</capacity><offset>0.150</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.150</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.150</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.150</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.150</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.150</offset></li>
+        </capMods>
+        <painFactor>0.73</painFactor>
+      </li>
+      <li>
+        <minSeverity>7</minSeverity>
+        <label>seven fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.35</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>2.13</MeleeDamageFactor>
+          <MoveSpeed>1.21</MoveSpeed>
+          <CarryingCapacity>1.35</CarryingCapacity>
+          <IncomingDamageFactor>0.86</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>2.05</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.175</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.175</offset></li>
+          <li><capacity>Eating</capacity><offset>0.175</offset></li>
+          <li><capacity>Sight</capacity><offset>0.175</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.175</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.175</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.175</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.175</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.175</offset></li>
+        </capMods>
+        <painFactor>0.69</painFactor>
+      </li>
+      <li>
+        <minSeverity>8</minSeverity>
+        <label>eight fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.40</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>2.22</MeleeDamageFactor>
+          <MoveSpeed>1.24</MoveSpeed>
+          <CarryingCapacity>1.40</CarryingCapacity>
+          <IncomingDamageFactor>0.84</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>2.20</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.200</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.200</offset></li>
+          <li><capacity>Eating</capacity><offset>0.200</offset></li>
+          <li><capacity>Sight</capacity><offset>0.200</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.200</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.200</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.200</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.200</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.200</offset></li>
+        </capMods>
+        <painFactor>0.64</painFactor>
+      </li>
+      <li>
+        <minSeverity>9</minSeverity>
+        <label>nine fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.45</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>2.31</MeleeDamageFactor>
+          <MoveSpeed>1.27</MoveSpeed>
+          <CarryingCapacity>1.45</CarryingCapacity>
+          <IncomingDamageFactor>0.82</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>2.35</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.225</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.225</offset></li>
+          <li><capacity>Eating</capacity><offset>0.225</offset></li>
+          <li><capacity>Sight</capacity><offset>0.225</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.225</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.225</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.225</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.225</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.225</offset></li>
+        </capMods>
+        <painFactor>0.59</painFactor>
+      </li>
+      <li>
+        <minSeverity>10</minSeverity>
+        <label>ten fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.50</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>2.40</MeleeDamageFactor>
+          <MoveSpeed>1.30</MoveSpeed>
+          <CarryingCapacity>1.50</CarryingCapacity>
+          <IncomingDamageFactor>0.80</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>2.50</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.250</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.250</offset></li>
+          <li><capacity>Eating</capacity><offset>0.250</offset></li>
+          <li><capacity>Sight</capacity><offset>0.250</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.250</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.250</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.250</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.250</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.250</offset></li>
+        </capMods>
+        <painFactor>0.55</painFactor>
+      </li>
+      <li>
+        <minSeverity>11</minSeverity>
+        <label>eleven fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.55</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>2.49</MeleeDamageFactor>
+          <MoveSpeed>1.33</MoveSpeed>
+          <CarryingCapacity>1.55</CarryingCapacity>
+          <IncomingDamageFactor>0.78</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>2.65</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.275</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.275</offset></li>
+          <li><capacity>Eating</capacity><offset>0.275</offset></li>
+          <li><capacity>Sight</capacity><offset>0.275</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.275</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.275</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.275</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.275</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.275</offset></li>
+        </capMods>
+        <painFactor>0.51</painFactor>
+      </li>
+      <li>
+        <minSeverity>12</minSeverity>
+        <label>twelve fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.60</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>2.58</MeleeDamageFactor>
+          <MoveSpeed>1.36</MoveSpeed>
+          <CarryingCapacity>1.60</CarryingCapacity>
+          <IncomingDamageFactor>0.76</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>2.80</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.300</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.300</offset></li>
+          <li><capacity>Eating</capacity><offset>0.300</offset></li>
+          <li><capacity>Sight</capacity><offset>0.300</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.300</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.300</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.300</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.300</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.300</offset></li>
+        </capMods>
+        <painFactor>0.46</painFactor>
+      </li>
+      <li>
+        <minSeverity>13</minSeverity>
+        <label>thirteen fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.65</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>2.67</MeleeDamageFactor>
+          <MoveSpeed>1.39</MoveSpeed>
+          <CarryingCapacity>1.65</CarryingCapacity>
+          <IncomingDamageFactor>0.74</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>2.95</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.325</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.325</offset></li>
+          <li><capacity>Eating</capacity><offset>0.325</offset></li>
+          <li><capacity>Sight</capacity><offset>0.325</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.325</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.325</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.325</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.325</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.325</offset></li>
+        </capMods>
+        <painFactor>0.42</painFactor>
+      </li>
+      <li>
+        <minSeverity>14</minSeverity>
+        <label>fourteen fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.70</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>2.76</MeleeDamageFactor>
+          <MoveSpeed>1.42</MoveSpeed>
+          <CarryingCapacity>1.70</CarryingCapacity>
+          <IncomingDamageFactor>0.72</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>3.10</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.350</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.350</offset></li>
+          <li><capacity>Eating</capacity><offset>0.350</offset></li>
+          <li><capacity>Sight</capacity><offset>0.350</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.350</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.350</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.350</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.350</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.350</offset></li>
+        </capMods>
+        <painFactor>0.37</painFactor>
+      </li>
+      <li>
+        <minSeverity>15</minSeverity>
+        <label>fifteen fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.75</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>2.85</MeleeDamageFactor>
+          <MoveSpeed>1.45</MoveSpeed>
+          <CarryingCapacity>1.75</CarryingCapacity>
+          <IncomingDamageFactor>0.70</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>3.25</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.375</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.375</offset></li>
+          <li><capacity>Eating</capacity><offset>0.375</offset></li>
+          <li><capacity>Sight</capacity><offset>0.375</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.375</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.375</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.375</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.375</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.375</offset></li>
+        </capMods>
+        <painFactor>0.33</painFactor>
+      </li>
+      <li>
+        <minSeverity>16</minSeverity>
+        <label>sixteen fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.80</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>2.94</MeleeDamageFactor>
+          <MoveSpeed>1.48</MoveSpeed>
+          <CarryingCapacity>1.80</CarryingCapacity>
+          <IncomingDamageFactor>0.68</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>3.40</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.400</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.400</offset></li>
+          <li><capacity>Eating</capacity><offset>0.400</offset></li>
+          <li><capacity>Sight</capacity><offset>0.400</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.400</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.400</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.400</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.400</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.400</offset></li>
+        </capMods>
+        <painFactor>0.28</painFactor>
+      </li>
+      <li>
+        <minSeverity>17</minSeverity>
+        <label>seventeen fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.85</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>3.03</MeleeDamageFactor>
+          <MoveSpeed>1.51</MoveSpeed>
+          <CarryingCapacity>1.85</CarryingCapacity>
+          <IncomingDamageFactor>0.66</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>3.55</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.425</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.425</offset></li>
+          <li><capacity>Eating</capacity><offset>0.425</offset></li>
+          <li><capacity>Sight</capacity><offset>0.425</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.425</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.425</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.425</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.425</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.425</offset></li>
+        </capMods>
+        <painFactor>0.23</painFactor>
+      </li>
+      <li>
+        <minSeverity>18</minSeverity>
+        <label>eighteen fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.90</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>3.12</MeleeDamageFactor>
+          <MoveSpeed>1.54</MoveSpeed>
+          <CarryingCapacity>1.90</CarryingCapacity>
+          <IncomingDamageFactor>0.64</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>3.70</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.450</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.450</offset></li>
+          <li><capacity>Eating</capacity><offset>0.450</offset></li>
+          <li><capacity>Sight</capacity><offset>0.450</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.450</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.450</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.450</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.450</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.450</offset></li>
+        </capMods>
+        <painFactor>0.19</painFactor>
+      </li>
+      <li>
+        <minSeverity>19</minSeverity>
+        <label>nineteen fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>0.95</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>3.21</MeleeDamageFactor>
+          <MoveSpeed>1.57</MoveSpeed>
+          <CarryingCapacity>1.95</CarryingCapacity>
+          <IncomingDamageFactor>0.62</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>3.85</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.475</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.475</offset></li>
+          <li><capacity>Eating</capacity><offset>0.475</offset></li>
+          <li><capacity>Sight</capacity><offset>0.475</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.475</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.475</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.475</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.475</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.475</offset></li>
+        </capMods>
+        <painFactor>0.15</painFactor>
+      </li>
+      <li>
+        <minSeverity>20</minSeverity>
+        <label>twenty fingers</label>
+        <statOffsets>
+          <PsychicSensitivity>1.00</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>3.30</MeleeDamageFactor>
+          <MoveSpeed>1.60</MoveSpeed>
+          <CarryingCapacity>2.00</CarryingCapacity>
+          <IncomingDamageFactor>0.60</IncomingDamageFactor>
+        </statFactors>
+        <!-- The body is being rebuilt around him. Every physical capacity
+             climbs, and the fuel bill climbs with it. -->
+        <hungerRateFactor>4.00</hungerRateFactor>
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.500</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.500</offset></li>
+          <li><capacity>Eating</capacity><offset>0.500</offset></li>
+          <li><capacity>Sight</capacity><offset>0.500</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.500</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.500</offset></li>
+          <li><capacity>BloodFiltration</capacity><offset>0.500</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.500</offset></li>
+          <li><capacity>Metabolism</capacity><offset>0.500</offset></li>
+        </capMods>
+        <painFactor>0.10</painFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ===================================================================
+       L2 · Slash Defense: Thorns
+       Mechanically VPE_FireShield with Cut instead of Flame, and no absorb.
+       =================================================================== -->
+  <HediffDef>
+    <defName>Sukuna_ThornsShield</defName>
+    <label>slash defense: thorns</label>
+    <description>A lattice of standing cuts held just off the skin. Whoever hits this person in melee is cut in return, every time a blow lands.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <initialSeverity>1</initialSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="VEF.Hediffs.HediffCompProperties_Shield">
+        <compClass>VEF.Hediffs.HediffComp_Shield</compClass>
+        <absorbAttackType>None</absorbAttackType>
+        <damageOnAttack>Melee</damageOnAttack>
+        <damageType>Sukuna_Slash</damageType>
+        <damageAmount>8</damageAmount>
+        <armorPenetration>0.4</armorPenetration>
+        <doDust>false</doDust>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ===================================================================
+       L2 · Cursed Energy Reinforcement (was Slash Defense: Pseudo-Infinity;
+       defName kept so saves keep it). PASSIVE once learned; the toggle sets
+       Boosted (double output). The class builds its stage live from
+       Scaling.Power: armour, melee damage, move speed; Furnace adds heat.
+       =================================================================== -->
+  <HediffDef>
+    <defName>Sukuna_PseudoInfinity</defName>
+    <label>cursed energy reinforcement</label>
+    <description>Cursed energy coats the body, hardening the skin, putting more weight behind every blow and quickening every step. Always on; raising the output doubles it. Grows stronger with each finger.</description>
+    <hediffClass>SukunaPsycasts.Hediff_CursedEnergyReinforcement</hediffClass>
+    <initialSeverity>1</initialSeverity>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <label>reinforced</label>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ===================================================================
+       L3 · Reverse Cursed Technique — PASSIVE.
+       No duration comp: this is maintained by HediffComp_VesselPassives for
+       as long as the pawn has the ability unlocked. Its speed is read from
+       the psyfocus pool every tick, and it stops dead at 0 psyfocus or at
+       maximum neural heat.
+       =================================================================== -->
+  <HediffDef>
+    <defName>Sukuna_ReverseCursedTechnique</defName>
+    <label>reverse cursed technique</label>
+    <description>Cursed energy turned back against itself and multiplied, producing an output that does the opposite of what it was made to do. Wounds close on their own, at whatever speed there is energy to close them.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <initialSeverity>1</initialSeverity>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="SukunaPsycasts.HediffCompProperties_ReverseCursedTechnique">
+        <selfHealPerTickAtFullPsyfocus>1.5</selfHealPerTickAtFullPsyfocus>   <!-- per second at full psyfocus; was 0.06 (her call 2026-11-07: much stronger) -->
+        <allyHealFraction>0.35</allyHealFraction>
+        <allyRadius>3.9</allyRadius>
+        <psyfocusPerTick>0.00012</psyfocusPerTick>
+        <entropyPerTick>0.05</entropyPerTick>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ===================================================================
+       L3 · Black Flash — PASSIVE, also maintained by the vessel comp.
+       =================================================================== -->
+  <HediffDef>
+    <defName>Sukuna_BlackFlash</defName>
+    <label>black flash</label>
+    <description>Cursed energy arriving within a millionth of a second of the blow itself. Nobody does it on purpose. It happens, and when it happens the space around the impact goes black.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <initialSeverity>1</initialSeverity>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="SukunaPsycasts.HediffCompProperties_BlackFlash">
+        <baseChance>0.03</baseChance>
+        <damageMultiplier>2.5</damageMultiplier>
+        <armorPenetrationBonus>0.50</armorPenetrationBonus>
+        <armorPenetrationBonusMax>1.00</armorPenetrationBonusMax>
+        <armorPenetrationCeiling>1.90</armorPenetrationCeiling>
+        <lifestealFraction>0.30</lifestealFraction>
+        <psyfocusRestored>0.05</psyfocusRestored>
+        <entropyPurged>12</entropyPurged>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ===================================================================
+       L3 · Domain Expansion: Malevolent Shrine — the caster-borne aura.
+       armorPenetration matches Dismantle exactly; the Domain is Dismantle
+       thrown many times, not a different technique.
+       =================================================================== -->
+  <HediffDef>
+    <defName>Sukuna_MalevolentShrine</defName>
+    <label>malevolent shrine</label>
+    <description>An open domain. There is no barrier and no shell — the binding vow traded those away for reach, and the reach is enormous.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <initialSeverity>1</initialSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="SukunaPsycasts.HediffCompProperties_MalevolentShrine">
+        <damageAmount>12</damageAmount>
+        <ticksBetween>30</ticksBetween>
+        <radius>24.9</radius>
+      </li>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>900</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+
+  <!-- Black Flash (her call 2026-11-07): a black star with a red rim and red cracks bursting out
+       of the hit, growing (tools/art_blackflash.py). -->
+  <FleckDef ParentName="FleckBase">
+    <defName>Sukuna_Fleck_BlackFlashBurst</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.12</solidTime>
+    <fadeOutTime>0.4</fadeOutTime>
+    <growthRate>4</growthRate>
+    <graphicData>
+      <texPath>Things/Sukuna/BlackFlashBurst</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <!-- After a Black Flash the sorcerer is "in the zone" for a few seconds: sharper in melee, and
+       the next Black Flash comes easier (x1.5 chance, in the code), as when Yuji chains them. -->
+  <HediffDef>
+    <defName>Sukuna_BlackFlashZone</defName>
+    <label>in the zone</label>
+    <description>Right after a Black Flash, cursed energy flows perfectly for a few seconds. They hits more surely in melee, and another Black Flash comes easier.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.86, 0.15, 0.18)</defaultLabelColor>
+    <isBad>false</isBad>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600~600</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statOffsets>
+          <MeleeHitChance>0.15</MeleeHitChance>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

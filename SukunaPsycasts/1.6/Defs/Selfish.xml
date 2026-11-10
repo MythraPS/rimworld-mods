@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Selfish (her call 2026-11-01), given to whoever Sukuna takes. Never rolled at random.
+       Numbers measured against vanilla: a shared room costs what the worst barracks does (-7,
+       SleptInBarracks); the opinion hit is half of "physically unsightly" (Ugly, -20). -->
+  <TraitDef>
+    <defName>Sukuna_Selfish</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>selfish</label>
+        <description>{PAWN_nameDef} looks after {PAWN_objective}self and no one else. {PAWN_pronoun} won't tend, rescue or feed anyone, hates sharing a room, takes no joy in other people's happy days, and people can tell.</description>
+      </li>
+    </degreeDatas>
+    <disabledWorkTags>Caring</disabledWorkTags>
+  </TraitDef>
+
+  <ThoughtDef>
+    <defName>Sukuna_SelfishSharedRoom</defName>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <workerClass>SukunaPsycasts.ThoughtWorker_SelfishSharedRoom</workerClass>
+    <requiredTraits><li>Sukuna_Selfish</li></requiredTraits>
+    <stages>
+      <li>
+        <label>has to share a room</label>
+        <description>Someone else sleeps in my room. It should be mine.</description>
+        <baseMoodEffect>-7</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Sukuna_SelfishCold</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>SukunaPsycasts.ThoughtWorker_SelfishCold</workerClass>
+    <stages>
+      <li>
+        <label>selfish</label>
+        <baseOpinionOffset>-10</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Twenty exist, world-capped by SukunaPsycasts.FingerCensus.
+       Indestructible: useHitPoints false plus destroyOnDrop/burn guards in C#. -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>Sukuna_Finger</defName>
+    <label>cursed finger</label>
+    <description>A severed finger, wrapped and bound, that has not decayed in a very long time. It is warm. Nothing that has been tried on it has marked it, and every attempt has been recorded somewhere by someone who then stopped writing.\n\nEating it grants a level in Shrine and raises psychic sensitivity — and moves the thing inside it further along toward wearing the eater instead.</description>
+    <graphicData>
+      <texPath>Things/Sukuna/Finger</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.7</drawSize>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <stackLimit>20</stackLimit>
+    <destroyOnDrop>false</destroyOnDrop>
+    <alwaysHaulable>true</alwaysHaulable>
+    <isTechHediff>false</isTechHediff>
+    <!-- No trade tags: traders never roll a finger into their stock. The rare
+         trader who has one is the finger rumour's doing (2026-10-15). -->
+    <tradeability>Sellable</tradeability>
+    <thingCategories>
+      <li>Items</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>9999</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Mass>0.05</Mass>
+      <DeteriorationRate>0</DeteriorationRate>
+      <MarketValue>1200</MarketValue>
+      <Nutrition>0.05</Nutrition>
+    </statBases>
+    <socialPropernessMatters>false</socialPropernessMatters>
+    <ingestible>
+      <foodType>Corpse</foodType>
+      <preferability>NeverForNutrition</preferability>
+      <maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+      <baseIngestTicks>120</baseIngestTicks>
+      <chairSearchRadius>0</chairSearchRadius>
+      <ingestSound>Meal_Eat</ingestSound>
+      <ingestCommandString>Swallow {0}</ingestCommandString>
+      <ingestReportString>Swallowing {0}.</ingestReportString>
+      
+    </ingestible>
+    <!-- An indestructible anomaly, like the golden cube (her call 2026-11-07): with Anomaly it can be
+         studied for advanced anomaly knowledge and has an entry in the entity codex. -->
+    <inspectorTabs>
+      <li MayRequire="Ludeon.RimWorld.Anomaly">ITab_StudyNotes</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="SukunaPsycasts.CompProperties_CursedFinger" />
+      <li Class="CompProperties_Studiable" MayRequire="Ludeon.RimWorld.Anomaly">
+        <frequencyTicks>120000</frequencyTicks>
+        <knowledgeCategory>Advanced</knowledgeCategory>
+        <anomalyKnowledge>2</anomalyKnowledge>
+        <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+        <showToggleGizmo>true</showToggleGizmo>
+      </li>
+      <li Class="CompProperties_StudyUnlocks" MayRequire="Ludeon.RimWorld.Anomaly">
+        <studyNotes>
+          <li>
+            <threshold>4</threshold>
+            <label>Cursed finger study progress</label>
+            <text>{PAWN_nameDef} has studied the cursed finger. Nothing marks it: not fire, not blades, not acid. It is not alive, yet it is warm, and something inside it is aware of being watched.</text>
+          </li>
+          <li>
+            <thresholdRange>24~40</thresholdRange>
+            <label>Cursed finger study complete</label>
+            <text>{PAWN_nameDef} has learned all {PAWN_pronoun} can from the cursed finger. It is one of twenty, each holding a share of a single, enormous will. It cannot be destroyed. Whoever swallows one takes that will in with it.</text>
+          </li>
+        </studyNotes>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

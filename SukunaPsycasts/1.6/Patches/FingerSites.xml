@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+  <!-- Who guards a finger quest site. Ruins: the things that guard any old stash
+       (an ambush, mechanoids, turrets, manhunters). Held/convoy: a faction outpost. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/SitePartDef[defName="AmbushHidden" or defName="AmbushEdge" or defName="SleepingMechanoids" or defName="Turrets" or defName="Manhunters"]/tags</xpath>
+    <value>
+      <li>Sukuna_RuinThreat</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/SitePartDef[defName="Outpost"]/tags</xpath>
+    <value>
+      <li>Sukuna_HeldThreat</li>
+    </value>
+  </Operation>
+</Patch>

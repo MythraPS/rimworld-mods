@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- ============================ LEVEL 1 ============================ -->
+
+  <!-- L1 order 1 · Cleave. Percent-of-max-HP single-target strike.
+       autocastPlayerDefault deliberately FALSE: an auto-firing percent-max-HP
+       hit would delete thrumbos and centipedes with no player input. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Sukuna_Cleave</defName>
+    <label>cleave</label>
+    <description>While held open, every melee attack this pawn lands also cuts with Cleave — a share of the target's own maximum health at high armour penetration, paid for in psyfocus and neural heat per strike.\n\nThe cut adjusts itself to whatever it lands on — thicker hide, heavier plate, more cursed energy, none of it matters. It arrives already the right size for the thing in front of it.</description>
+    <iconPath>Abilities/Sukuna/Cleave</iconPath>
+    <abilityClass>SukunaPsycasts.Ability_Cleave</abilityClass>
+    <targetMode>Self</targetMode>
+    <targetingParameters>
+      <canTargetSelf>true</canTargetSelf>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+    </targetingParameters>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <chance>0</chance>
+    <autocastPlayerDefault>false</autocastPlayerDefault>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Sukuna_Path</path>
+        <level>1</level>
+        <order>1</order>
+        <spaceAfter>true</spaceAfter>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L1 order 2 · Dismantle. The spammable workhorse; invisible projectile.
+       x1.5 against anything with no psychic sensitivity — mechs, buildings,
+       animals — which is the canon Dismantle/Cleave split, and which is also
+       what makes the Shrine behave correctly without a second aura. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Sukuna_Dismantle</defName>
+    <castSound>Sukuna_Snd_Dismantle</castSound>
+    <label>dismantle</label>
+    <description>The default cut. It does not care what it is pointed at and it is not visible on the way. Against anything holding no cursed energy of its own — machinery, walls, beasts — it goes through considerably more easily.\n\nDeals half again as much damage to targets with no psychic sensitivity.</description>
+    <iconPath>Abilities/Sukuna/Dismantle</iconPath>
+    <abilityClass>SukunaPsycasts.Ability_Dismantle</abilityClass>
+    <targetMode>Thing</targetMode>
+    <castTime>12</castTime>
+    <range>18.9</range>
+    <power>0</power>   <!-- VEF adds a second hit of this size that ignores armour; the real damage comes from the Impact patch -->
+    <autocastPlayerDefault>true</autocastPlayerDefault>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetHumans>true</canTargetHumans>
+      <canTargetAnimals>true</canTargetAnimals>
+      <canTargetMechs>true</canTargetMechs>
+      <canTargetBuildings>true</canTargetBuildings>
+      <canTargetItems>true</canTargetItems>
+      <canTargetPlants>true</canTargetPlants>
+      <canTargetCorpses>true</canTargetCorpses>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Sukuna_Path</path>
+        <level>1</level>
+        <order>2</order>
+        <psyfocusCost>0.02</psyfocusCost>
+        <entropyGain>10</entropyGain>
+      </li>
+      <li Class="VEF.Abilities.AbilityExtension_Projectile">
+        <projectile>Sukuna_DismantleSlash</projectile>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- ============================ LEVEL 2 ============================ -->
+
+  <!-- L2 order 1 · Slash Defense: Thorns. Priced identically to VPE_FireShield
+       because it is mechanically the same thing with Cut instead of Flame. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Sukuna_SlashDefenseThorns</defName>
+    <label>thorns</label>
+    <description>A standing lattice of cuts held just off the skin. Whoever hits the caster in melee is cut in return, every time a blow lands. It does nothing against ranged attacks.\n\nHeld open continuously; costs psyfocus for as long as it is up. It lapses if the pool empties and comes back on its own.</description>
+    <iconPath>Abilities/Sukuna/Thorns</iconPath>
+    <abilityClass>SukunaPsycasts.Ability_ToggleThorns</abilityClass>
+    <targetMode>Self</targetMode>
+    <targetingParameters>
+      <canTargetSelf>true</canTargetSelf>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+    </targetingParameters>
+    <showUndrafted>true</showUndrafted>
+    <chance>0</chance>
+    <castTime>1</castTime>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Sukuna_Path</path>
+        <level>2</level>
+        <order>1</order>
+        <spaceAfter>true</spaceAfter>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>Sukuna_Cleave</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L2 order 2 · Cursed Energy Reinforcement (renamed from Pseudo-Infinity
+       2026-10-23; defName kept for saves). Passive (VesselPassives adds the hediff);
+       the toggle raises output. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Sukuna_SlashDefensePseudoInfinity</defName>
+    <label>cursed energy reinforcement</label>
+    <description>Passive, with a toggle. Cursed energy coated over the whole body, always. The skin hardens, blows land heavier and the feet move faster. Sukuna leans on it for nearly all of his strength and durability.\n\nOnce learned it is always on: raised sharp and blunt armour, melee damage and move speed, all scaling with fingers eaten and psychic sensitivity. Switch on Raise Cursed Energy Output to pour more in and double all of it, at a steady psyfocus cost. While raised, the Shrine's activated techniques are stronger too: 50% more damage, a wider Fire Arrow blast, larger domains a World Cutting Slash five cells wide instead of three, and a longer Air Step. Psycasts from other paths gain 50% more power and range and a third off their cooldowns, but cost 50% more psyfocus. It also hardens the body against fire: heat armour, and far less chance to catch alight. Once Furnace is known, it tempers the body against heat as well.</description>
+    <iconPath>Abilities/Sukuna/PseudoInfinity</iconPath>
+    <abilityClass>SukunaPsycasts.Ability_TogglePseudoInfinity</abilityClass>
+    <targetMode>Self</targetMode>
+    <targetingParameters>
+      <canTargetSelf>true</canTargetSelf>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+    </targetingParameters>
+    <showUndrafted>true</showUndrafted>
+    <chance>0</chance>
+    <castTime>1</castTime>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Sukuna_Path</path>
+        <level>2</level>
+        <order>2</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>Sukuna_Dismantle</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- ============================ LEVEL 3 ============================ -->
+
+  <!-- L3 order 1 · Reverse Cursed Technique. PASSIVE — Ability_Passive never
+       renders a castable gizmo; unlocking the node is what grants the hediff,
+       maintained by HediffComp_VesselPassives. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Sukuna_ReverseCursedTechnique</defName>
+    <label>reverse cursed technique</label>
+    <description>Negative cursed energy multiplied against itself produces a positive output, and the body repairs itself continuously without being told to.\n\nSpeed scales with how much psyfocus is in the pool — a full bar closes wounds nearly as fast as they open, a low one is a slow mend. Nearby allies are healed more slowly from the same pool. Stops completely at zero psyfocus or at maximum neural heat, and resumes on its own. Poison makes healing cost double, up to triple as toxic buildup nears deadly.\n\nPositive energy is what destroys curses: deals double damage to anomalies (entities and mutants).</description>
+    <iconPath>Abilities/Sukuna/ReverseCursedTechnique</iconPath>
+    <abilityClass>SukunaPsycasts.Ability_ToggleReverseCursedTechnique</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Sukuna_Path</path>
+        <level>3</level>
+        <order>1</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>Sukuna_SlashDefenseThorns</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L3 order 2 · Domain Expansion: Malevolent Shrine. The ultimate.
+       Requires BOTH level-2 nodes. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Sukuna_MalevolentShrine</defName>
+    <castSound>Sukuna_Snd_ShrineOpen</castSound>
+    <warmupStartSound>Sukuna_Snd_ShrineStart</warmupStartSound>
+    <label>domain expansion: malevolent shrine</label>
+    <description>An open domain — the binding vow gave up the enclosing barrier in exchange for reach, and the reach is enormous. A shrine of bone rises, and everything inside the radius is cut, repeatedly, until it ends.\n\nThere is no barrier, so anything that survives long enough can walk out. It does not distinguish friend from enemy. Corpses left inside long enough are reduced to meat.\n\nOpening a domain is a huge strain: it adds half of the caster's neural heat limit at once.</description>
+    <iconPath>Abilities/Sukuna/MalevolentShrine</iconPath>
+    <abilityClass>SukunaPsycasts.Ability_MalevolentShrine</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>240</castTime>
+    <radius>19.9</radius>
+    <radiusStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </radiusStatFactors>
+    <durationTime>2400</durationTime>
+    <durationTimeStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </durationTimeStatFactors>
+    <cooldownTime>3600</cooldownTime>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Sukuna_Path</path>
+        <level>3</level>
+        <order>2</order>
+        <psyfocusCost>0.60</psyfocusCost>
+        <entropyGain>60</entropyGain>
+        <prerequisites>
+          <li>Sukuna_SlashDefenseThorns</li>
+          <li>Sukuna_SlashDefensePseudoInfinity</li>
+        </prerequisites>
+      </li>
+      <li Class="VEF.Abilities.AbilityExtension_Hediff">
+        <hediff>Sukuna_MalevolentShrine</hediff>
+        <applyToCaster>true</applyToCaster>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L3 order 3 · Black Flash. PASSIVE. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Sukuna_BlackFlash</defName>
+    <label>black flash</label>
+    <description>Passive. Cursed energy landing within a millionth of a second of the blow itself. No sorcerer can do it on purpose — it simply happens, and the space around the impact goes black.\n\nAny damaging hit, melee or psycast, may crit for 2.5x with sharply raised armour penetration, healing the caster, returning psyfocus and purging neural heat. Chance and every one of those numbers scale with psychic sensitivity.</description>
+    <iconPath>Abilities/Sukuna/BlackFlash</iconPath>
+    <abilityClass>SukunaPsycasts.Ability_Passive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Sukuna_Path</path>
+        <level>3</level>
+        <order>3</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>Sukuna_SlashDefensePseudoInfinity</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- ============================ LEVEL 4 ============================ -->
+
+  <!-- L4 order 1 · Furnace: Fire Arrow. spaceAfter puts the invisible Blank in
+       the middle slot of the 3-wide row, which is what produces the canvas gap. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Sukuna_FireArrow</defName>
+    <castSound>Sukuna_Snd_FireArrowLoose</castSound>
+    <warmupStartSound>Sukuna_Snd_FireArrowDraw</warmupStartSound>
+    <label>furnace: fire arrow</label>
+    <description>Open. Gathers for a long moment, then releases a slow arrow of cursed flame that is plainly visible on its way in. Where it lands it opens outward.</description>
+    <iconPath>Abilities/Sukuna/FireArrow</iconPath>
+    <abilityClass>SukunaPsycasts.Ability_FireArrow</abilityClass>
+    <warmupMote>Sukuna_Mote_FireBow</warmupMote>
+    <!-- VEF spawns warmupMote at a hard-coded rotation of 0, so the bow always drew
+         pointing north. Ability_FireArrow re-aims it every tick instead. -->
+    <targetMode>Thing</targetMode>
+    <castTime>300</castTime>
+    <range>32.9</range>
+    <radius>4.4</radius>
+    <radiusStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </radiusStatFactors>
+    <cooldownTime>1800</cooldownTime>
+    <targetingParameters>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>true</canTargetBuildings>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <rangeStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </rangeStatFactors>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Sukuna_Path</path>
+        <level>4</level>
+        <order>1</order>
+        <spaceAfter>true</spaceAfter>
+        <psyfocusCost>0.35</psyfocusCost>
+        <entropyGain>40</entropyGain>
+        <prerequisites>
+          <li>Sukuna_ReverseCursedTechnique</li>
+        </prerequisites>
+      </li>
+      <li Class="VEF.Abilities.AbilityExtension_Projectile">
+        <projectile>Sukuna_FireArrow</projectile>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L4 order 2 · World Cutting Slash. Direction-targeted line, complete AP. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Sukuna_WorldCuttingSlash</defName>
+    <castSound>Sukuna_Snd_WorldSlash</castSound>
+    <warmupStartSound>Sukuna_Snd_WorldSlashStart</warmupStartSound>
+    <label>world cutting slash</label>
+    <description>Dismantle widened until the thing it is aimed at includes space itself.\n\nCharges for a long time, then carves a line outward in the chosen direction. It is aimed at a direction and not at a target: anything standing in the line is cut, anything that has walked out of it during the charge is not. Armour, cover and shields are all irrelevant, and it goes through walls.</description>
+    <iconPath>Abilities/Sukuna/WorldCuttingSlash</iconPath>
+    <abilityClass>SukunaPsycasts.Ability_WorldCuttingSlash</abilityClass>
+    <targetMode>Location</targetMode>
+    <castTime>210</castTime>
+    <range>250</range>
+    <cooldownTime>3600</cooldownTime>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>false</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetItems>false</canTargetItems>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <requireLineOfSight>false</requireLineOfSight>
+    <rangeStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </rangeStatFactors>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Sukuna_Path</path>
+        <level>4</level>
+        <order>2</order>
+        <psyfocusCost>0.45</psyfocusCost>
+        <entropyGain>50</entropyGain>
+        <prerequisites>
+          <li>Sukuna_BlackFlash</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- Air Step (her call 2026-11-04): not a tree node. Every vessel of Sukuna and Yuji get it (AirStepKeeper). -->
+  <VEF.Abilities.AbilityDef>
+    <defName>Sukuna_AirStep</defName>
+    <castSound>Sukuna_Snd_AirStep</castSound>
+    <label>air step</label>
+    <description>Cursed energy pushed out through the soles, hard enough to stand on the air for a step, then another. A long leap to wherever he chooses, over walls, water and anyone in the way, but not over a mountain, and never landing inside a building.\n\nCosts 2% psyfocus and 6 neural heat. One second between steps.</description>
+    <iconPath>Abilities/Sukuna/AirStep</iconPath>
+    <abilityClass>SukunaPsycasts.Ability_AirStep</abilityClass>
+    <targetMode>Location</targetMode>
+    <range>44.9</range>
+    <castTime>10</castTime>
+    <cooldownTime>60</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>false</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+  </VEF.Abilities.AbilityDef>
+
+</Defs>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- ===================================================================
+       Never rolled by the storyteller (baseChance 0). QuestlineTracker fires
+       them on its own clock; they are defs so dev mode can fire them too
+       (Debug actions > Incidents > Execute incident).
+       =================================================================== -->
+  <IncidentDef>
+    <defName>Sukuna_YujiEncounter</defName>
+    <label>Yuji Itadori</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>SukunaPsycasts.IncidentWorker_YujiEncounter</workerClass>
+    <baseChance>0</baseChance>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>Sukuna_FingerRumour</defName>
+    <label>cursed finger rumour</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>SukunaPsycasts.IncidentWorker_FingerRumour</workerClass>
+    <baseChance>0</baseChance>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>Sukuna_VesselRaid</defName>
+    <label>vessel raid</label>
+    <category>ThreatBig</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>SukunaPsycasts.IncidentWorker_VesselRaid</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>ThreatBig</letterDef>
+    <letterLabel>Raid</letterLabel>
+    <tale>Raid</tale>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>Sukuna_KingRaid</defName>
+    <label>the King of Curses</label>
+    <category>ThreatBig</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>SukunaPsycasts.IncidentWorker_KingRaid</workerClass>
+    <baseChance>0</baseChance>
+  </IncidentDef>
+
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>Sukuna_YujiLetter</defName>
+    <letterClass>SukunaPsycasts.ChoiceLetter_Yuji</letterClass>
+    <color>(0.95, 0.55, 0.65)</color>
+    <flashColor>(0.95, 0.55, 0.65)</flashColor>
+  </LetterDef>
+
+  <!-- ===================================================================
+       Finger quests. All three are item stashes holding exactly one finger
+       (the C# side puts itemStashSingleThing in the slate). They differ in
+       who is guarding it and how long it stays. rootSelectionWeight 0: only
+       IncidentWorker_FingerRumour starts them.
+       =================================================================== -->
+  <QuestScriptDef Abstract="True" Name="Sukuna_FingerQuestBase">
+    <rootSelectionWeight>0</rootSelectionWeight>
+    <autoAccept>true</autoAccept>
+  </QuestScriptDef>
+
+  <QuestScriptDef ParentName="Sukuna_FingerQuestBase">
+    <defName>Sukuna_Finger_Ruin</defName>
+    <questNameRules>
+      <rulesStrings>
+        <li>questName->The [sealed] Finger</li>
+        <li>sealed->Sealed</li>
+        <li>sealed->Buried</li>
+        <li>sealed->Forgotten</li>
+        <li>sealed->Warded</li>
+      </rulesStrings>
+    </questNameRules>
+    <questDescriptionRules>
+      <rulesStrings>
+        <li>questDescription->Something old has started to wake up not far from [map_definite]. Animals avoid the place, and anyone who camps there wakes up from the same dream of a shrine full of skulls.\n\nThe seal on one of the cursed fingers has failed. It is lying where it was hidden a very long time ago, and it will not stay unclaimed: someone else will find it if you don't.\n\nIt seems that [allSitePartsDescriptionsExceptFirst]</li>
+      </rulesStrings>
+    </questDescriptionRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+        <li Class="QuestNode_SubScript"><def>Util_RandomizePointsChallengeRating</def></li>
+        <li Class="QuestNode_SubScript"><def>Util_AdjustPointsForDistantFight</def></li>
+        <li Class="QuestNode_GetMap" />
+        <li Class="QuestNode_GetSiteTile">
+          <storeAs>siteTile</storeAs>
+          <preferCloserTiles>true</preferCloserTiles>
+        </li>
+        <li Class="QuestNode_GetSitePartDefsByTagsAndFaction">
+          <storeAs>sitePartDefs</storeAs>
+          <storeFactionAs>siteFaction</storeFactionAs>
+          <sitePartsTags>
+            <li><tag>ItemStash</tag></li>
+            <li><tag>Sukuna_RuinThreat</tag></li>
+          </sitePartsTags>
+        </li>
+        <li Class="QuestNode_GetDefaultSitePartsParams">
+          <tile>$siteTile</tile>
+          <faction>$siteFaction</faction>
+          <sitePartDefs>$sitePartDefs</sitePartDefs>
+          <storeSitePartsParamsAs>sitePartsParams</storeSitePartsParamsAs>
+        </li>
+        <li Class="QuestNode_SubScript">
+          <def>Util_GenerateSite</def>
+          <parms><hiddenSitePartsPossible>true</hiddenSitePartsPossible></parms>
+        </li>
+        <li Class="QuestNode_SpawnWorldObjects"><worldObjects>$site</worldObjects></li>
+        <li Class="QuestNode_WorldObjectTimeout">
+          <worldObject>$site</worldObject>
+          <isQuestTimeout>true</isQuestTimeout>
+          <delayTicks>$(randInt(15,25)*60000)</delayTicks>
+          <inSignalDisable>site.MapGenerated</inSignalDisable>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label>Finger lost: [resolvedQuestName]</label>
+                <text>Someone else reached the finger first. It is out in the world again, and it will turn up somewhere else.</text>
+              </li>
+              <li Class="QuestNode_End"><outcome>Fail</outcome></li>
+            </nodes>
+          </node>
+        </li>
+        <li Class="QuestNode_NoWorldObject">
+          <worldObject>$site</worldObject>
+          <node Class="QuestNode_End" />
+        </li>
+      </nodes>
+    </root>
+  </QuestScriptDef>
+
+  <QuestScriptDef ParentName="Sukuna_FingerQuestBase">
+    <defName>Sukuna_Finger_Held</defName>
+    <questNameRules>
+      <rulesStrings>
+        <li>questName->The Finger in [siteFaction_name]'s Keeping</li>
+        <li>questName->[siteFaction_name]'s Trophy</li>
+      </rulesStrings>
+    </questNameRules>
+    <questDescriptionRules>
+      <rulesStrings>
+        <li>questDescription->[siteFaction_name] have one of the cursed fingers. They are keeping it in a fortified outpost not far from [map_definite], and have no idea what it is beyond "valuable".\n\nThey will not hand it over. Take it.\n\nIt seems that [allSitePartsDescriptionsExceptFirst]</li>
+      </rulesStrings>
+    </questDescriptionRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+        <li Class="QuestNode_SubScript"><def>Util_RandomizePointsChallengeRating</def></li>
+        <li Class="QuestNode_SubScript"><def>Util_AdjustPointsForDistantFight</def></li>
+        <li Class="QuestNode_GetMap" />
+        <li Class="QuestNode_GetSiteTile">
+          <storeAs>siteTile</storeAs>
+          <preferCloserTiles>true</preferCloserTiles>
+        </li>
+        <li Class="QuestNode_GetSitePartDefsByTagsAndFaction">
+          <storeAs>sitePartDefs</storeAs>
+          <storeFactionAs>siteFaction</storeFactionAs>
+          <sitePartsTags>
+            <li><tag>ItemStash</tag></li>
+            <li><tag>Sukuna_HeldThreat</tag></li>
+          </sitePartsTags>
+        </li>
+        <li Class="QuestNode_GetDefaultSitePartsParams">
+          <tile>$siteTile</tile>
+          <faction>$siteFaction</faction>
+          <sitePartDefs>$sitePartDefs</sitePartDefs>
+          <storeSitePartsParamsAs>sitePartsParams</storeSitePartsParamsAs>
+        </li>
+        <li Class="QuestNode_SubScript">
+          <def>Util_GenerateSite</def>
+        </li>
+        <li Class="QuestNode_SpawnWorldObjects"><worldObjects>$site</worldObjects></li>
+        <li Class="QuestNode_WorldObjectTimeout">
+          <worldObject>$site</worldObject>
+          <isQuestTimeout>true</isQuestTimeout>
+          <delayTicks>$(randInt(20,30)*60000)</delayTicks>
+          <inSignalDisable>site.MapGenerated</inSignalDisable>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label>Finger lost: [resolvedQuestName]</label>
+                <text>[siteFaction_name] have moved the finger somewhere else, or sold it. It will turn up again.</text>
+              </li>
+              <li Class="QuestNode_End"><outcome>Fail</outcome></li>
+            </nodes>
+          </node>
+        </li>
+        <li Class="QuestNode_NoWorldObject">
+          <worldObject>$site</worldObject>
+          <node Class="QuestNode_End" />
+        </li>
+      </nodes>
+    </root>
+  </QuestScriptDef>
+
+  <QuestScriptDef ParentName="Sukuna_FingerQuestBase">
+    <defName>Sukuna_Finger_Convoy</defName>
+    <questNameRules>
+      <rulesStrings>
+        <li>questName->The Finger on the Road</li>
+        <li>questName->[siteFaction_name]'s Cargo</li>
+      </rulesStrings>
+    </questNameRules>
+    <questDescriptionRules>
+      <rulesStrings>
+        <li>questDescription->A caravan from [siteFaction_name] is carrying one of the cursed fingers, sealed in a lacquered box, to a buyer somewhere far away. It has stopped for the night not far from [map_definite].\n\nIt will not stay long. If you want the finger, catch them before they move on.\n\nIt seems that [allSitePartsDescriptionsExceptFirst]</li>
+      </rulesStrings>
+    </questDescriptionRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+        <li Class="QuestNode_SubScript"><def>Util_RandomizePointsChallengeRating</def></li>
+        <li Class="QuestNode_SubScript"><def>Util_AdjustPointsForDistantFight</def></li>
+        <li Class="QuestNode_GetMap" />
+        <li Class="QuestNode_GetSiteTile">
+          <storeAs>siteTile</storeAs>
+          <preferCloserTiles>true</preferCloserTiles>
+        </li>
+        <li Class="QuestNode_GetSitePartDefsByTagsAndFaction">
+          <storeAs>sitePartDefs</storeAs>
+          <storeFactionAs>siteFaction</storeFactionAs>
+          <sitePartsTags>
+            <li><tag>ItemStash</tag></li>
+            <li><tag>Sukuna_HeldThreat</tag></li>
+          </sitePartsTags>
+        </li>
+        <li Class="QuestNode_GetDefaultSitePartsParams">
+          <tile>$siteTile</tile>
+          <faction>$siteFaction</faction>
+          <sitePartDefs>$sitePartDefs</sitePartDefs>
+          <storeSitePartsParamsAs>sitePartsParams</storeSitePartsParamsAs>
+        </li>
+        <li Class="QuestNode_SubScript">
+          <def>Util_GenerateSite</def>
+        </li>
+        <li Class="QuestNode_SpawnWorldObjects"><worldObjects>$site</worldObjects></li>
+        <li Class="QuestNode_WorldObjectTimeout">
+          <worldObject>$site</worldObject>
+          <isQuestTimeout>true</isQuestTimeout>
+          <delayTicks>$(randInt(3,5)*60000)</delayTicks>
+          <inSignalDisable>site.MapGenerated</inSignalDisable>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label>Finger lost: [resolvedQuestName]</label>
+                <text>The caravan from [siteFaction_name] has broken camp and moved on with the finger.</text>
+              </li>
+              <li Class="QuestNode_End"><outcome>Fail</outcome></li>
+            </nodes>
+          </node>
+        </li>
+        <li Class="QuestNode_NoWorldObject">
+          <worldObject>$site</worldObject>
+          <node Class="QuestNode_End" />
+        </li>
+      </nodes>
+    </root>
+  </QuestScriptDef>
+
+</Defs>

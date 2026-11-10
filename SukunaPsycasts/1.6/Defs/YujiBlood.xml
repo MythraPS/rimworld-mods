@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Poisonous blood (her call 2026-11-06): Yuji's trait. Harmless to whoever has it; poisons anyone
+       else it gets into, through his blood abilities or by drinking it. Code: Source/YujiBlood.cs -->
+  <TraitDef>
+    <defName>Sukuna_PoisonBlood</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>poisonous blood</label>
+        <description>{PAWN_nameDef}'s blood is poison to anyone else. It can't hurt {PAWN_objective}, but whoever it splashes into, or whoever drinks it, falls sick for most of a day. It never kills.</description>
+      </li>
+    </degreeDatas>
+  </TraitDef>
+
+  <HediffDef>
+    <defName>Sukuna_YujiBlood</defName>
+    <label>poisoned blood</label>
+    <description>Someone else's poisonous blood got into this body. It brings pain, nausea and weakness that build with every dose, then fade within a day. It is never lethal.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.75, 0.15, 0.2)</defaultLabelColor>
+    <isBad>true</isBad>
+    <makesSickThought>true</makesSickThought>
+    <initialSeverity>0.3</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1.2</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>minor</label>
+        <painOffset>0.1</painOffset>
+        <capMods><li><capacity>Consciousness</capacity><offset>-0.05</offset></li></capMods>
+      </li>
+      <li>
+        <minSeverity>0.3</minSeverity>
+        <label>moderate</label>
+        <painOffset>0.2</painOffset>
+        <vomitMtbDays>0.5</vomitMtbDays>
+        <capMods>
+          <li><capacity>Consciousness</capacity><offset>-0.15</offset></li>
+          <li><capacity>Moving</capacity><offset>-0.15</offset></li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.6</minSeverity>
+        <label>severe</label>
+        <painOffset>0.3</painOffset>
+        <vomitMtbDays>0.2</vomitMtbDays>
+        <capMods>
+          <li><capacity>Consciousness</capacity><offset>-0.3</offset></li>
+          <li><capacity>Moving</capacity><offset>-0.3</offset></li>
+          <li><capacity>Manipulation</capacity><offset>-0.2</offset></li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.85</minSeverity>
+        <label>extreme</label>
+        <painOffset>0.4</painOffset>
+        <vomitMtbDays>0.1</vomitMtbDays>
+        <capMods>
+          <li><capacity>Consciousness</capacity><offset>-0.45</offset></li>
+          <li><capacity>Moving</capacity><offset>-0.45</offset></li>
+          <li><capacity>Manipulation</capacity><offset>-0.3</offset></li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+</Defs>

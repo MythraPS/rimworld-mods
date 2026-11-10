@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Ryomen Sukuna &amp; Yuji Itadori</name>
+  <author>MythraPS</author>
+  <packageId>mythraps.ryomensukuna</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <modVersion>1.0.0</modVersion>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
+    </li>
+    <li>
+      <packageId>Ludeon.RimWorld.Royalty</packageId>
+      <displayName>Royalty</displayName>
+    </li>
+    <li>
+      <packageId>OskarPotocki.VanillaFactionsExpanded.Core</packageId>
+      <displayName>Vanilla Expanded Framework</displayName>
+      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2023507013</steamWorkshopUrl>
+    </li>
+    <li>
+      <packageId>VanillaExpanded.VPsycastsE</packageId>
+      <displayName>Vanilla Psycasts Expanded</displayName>
+      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2842502659</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>Ludeon.RimWorld</li>
+    <li>Ludeon.RimWorld.Royalty</li>
+    <li>brrainz.harmony</li>
+    <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
+    <li>VanillaExpanded.VPsycastsE</li>
+  </loadAfter>
+  <description>Ryomen Sukuna and Yuji Itadori for Vanilla Psycasts Expanded.
+
+Sukuna's Shrine path: nine techniques over four tiers, unlocked by consuming the twenty fingers and growing stronger with every one. The fingers are found through a questline: sealed in ruins, held by factions, carried by caravans, swallowed by enemy psycasters, or inside the King of Curses himself.
+
+Yuji Itadori, the one vessel Sukuna cannot take over, joins colonies that earn his trust through how they treat people. His blood is poison to anyone else. If Sukuna breaks free, Yuji has to bring him down.
+
+Requires Royalty, Vanilla Psycasts Expanded, Vanilla Expanded Framework and Harmony.
+Recommended: Vanilla Psycasts Expanded - Hemosage (Yuji's blood techniques) and Biotech.
+
+Current version: v1.0.0
+
+Please remember to rate my mod! Thank you!
+
+Please support: https://www.patreon.com/mythraps
+
+Source: https://github.com/MythraPS/rimworld-mods</description>
+</ModMetaData>
