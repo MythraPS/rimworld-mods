@@ -49,6 +49,7 @@ namespace SukunaPsycasts
             p.story.hairDef = SukunaQuestDefOf.Sukuna_YujiHair;   // Itadori spikes, white (her call 2026-11-07: the combed hair was ugly)
             p.story.HairColor = WhiteHair;
             p.story.skinColorOverride = Yuji.Skin;
+            p.story.bodyType = BodyTypeDefOf.Thin;   // the same frame as teen Yuji (her call 2026-11-12); it used to be random
             Yuji.Slim(p);
             if (p.style != null)
             {

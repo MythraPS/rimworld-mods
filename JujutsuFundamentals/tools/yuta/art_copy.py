@@ -75,7 +75,7 @@ def capsule(d, a, b, w, fill):
 
 
 # the hand on a 950x1515 frame: left hand, back of the hand towards us, so the thumb is on the right
-FINGERS = [((330, 800), (292, 520), 68), ((408, 780), (388, 380), 76), ((492, 772), (497, 322), 80), ((576, 784), (612, 392), 76)]
+FINGERS = [((330, 800), (292, 520), 68), ((408, 780), (388, 380), 76), ((492, 772), (497, 322), 80), ((598, 790), (622, 392), 76)]
 THUMB = [((626, 1090), (722, 962), 94), ((722, 962), (800, 852), 78)]   # two joints
 RING_FINGER = 1
 
@@ -85,7 +85,8 @@ def hand_layer(scale, col, line, silver, stone, dark, ring=1.0):
     Wd, Hd = int(W * scale), int(H * scale)
     L = Image.new("RGBA", (Wd, Hd), (0, 0, 0, 0)); d = ImageDraw.Draw(L)
     S_ = lambda p: (p[0] * scale, p[1] * scale)
-    palm = [(322, 790), (400, 770), (490, 764), (580, 776), (648, 800), (670, 930), (660, 1060), (625, 1180),
+    # the palm's top runs up between the finger bases (no gaps there), and meets the pointing finger's outer edge
+    palm = [(318, 772), (400, 742), (490, 736), (596, 748), (636, 790), (664, 930), (660, 1060), (625, 1180),
             (590, 1330), (392, 1330), (345, 1180), (312, 1040), (300, 900)]
     d.polygon([S_(p) for p in palm], fill=col)
     for a, b, w in FINGERS:

@@ -236,25 +236,49 @@ def curse_head(c, cx, cy, rx, ry, mouth=True, turn=0.0):
     mx = cx + turn * rx * 0.55
     top, bot = cy + ry * 0.2, cy + ry * 0.97
     hw = rx * (0.97 if turn == 0 else 0.62)   # as wide as her face (her call 2026-11-11)
-    tri = [(mx - hw, top), (mx + hw, top), (mx + hw * 0.18, bot), (mx - hw * 0.18, bot)]
-    d.polygon([c.P(*q) for q in [(mx - hw * 1.15, top - ry * 0.06), (mx + hw * 1.15, top - ry * 0.06), (mx + hw * 0.3, bot + ry * 0.06), (mx - hw * 0.3, bot + ry * 0.06)]], fill=CURSE["gum"])
-    d.polygon([c.P(*q) for q in tri], fill=CURSE["mouth"])
-    d.polygon([c.P(*q) for q in [(mx - hw * 0.35, bot - (bot - top) * 0.35), (mx + hw * 0.35, bot - (bot - top) * 0.35), (mx, bot)]], fill=CURSE["tongue"])
-    # fangs: a row down from the top edge, and rows in from both slanted sides
-    n = 6
-    for i in range(n):
-        x = mx - hw * 0.85 + hw * 1.7 * i / (n - 1)
-        L = (bot - top) * (0.32 if i % 2 else 0.22)
-        w = hw * 0.1
-        d.polygon([c.P(x - w, top), c.P(x + w, top), c.P(x, top + L)], fill=CURSE["fang"])
-    for side in (-1, 1):
-        for i in range(1, 4):
-            t = i / 4
-            x = mx + side * (hw - (hw - hw * 0.18) * t)
-            y = top + (bot - top) * t
-            L = hw * (0.32 if i % 2 else 0.24)
-            d.polygon([c.P(x, y - 0.012), c.P(x, y + 0.012), c.P(x - side * L, y + 0.004)], fill=CURSE["fang"])
-
+    # shaped after her reference picture (2026-11-12): wide under the dome, the sides drawing in to a rounded chin,
+    # thick pink gums along the top and down the sides, long thin fangs hanging from the top and shorter ones rising
+    # from the bottom, dark inside, no tongue
+    def half(t):                       # half-width down the mouth, t 0 = top, 1 = chin
+        return 1.0 - 0.42 * t ** 1.4
+    def outline(scale=1.0, inset=0.0):
+        pts = []
+        for k in range(15):
+            t = k / 14
+            pts.append((mx - hw * (half(t) * scale - inset), top + (bot - top) * t * scale))
+        for k in range(1, 12):         # the rounded chin
+            a = math.pi * k / 12
+            r = hw * (half(1.0) * scale - inset)
+            pts.append((mx - r * math.cos(a), top + (bot - top) * scale + r * 0.55 * math.sin(a)))
+        for k in range(14, -1, -1):
+            t = k / 14
+            pts.append((mx + hw * (half(t) * scale - inset), top + (bot - top) * t * scale))
+        return pts
+    S_ = 0.86                          # the shape's height before the chin's curve
+    d.polygon([c.P(*q) for q in outline(S_)], fill=CURSE["gum"])
+    inner = [(x, y + (bot - top) * 0.25 if y <= top + 1e-9 else y) for x, y in outline(S_, 0.21)]
+    gum_top = top + (bot - top) * 0.25
+    inner = [(x, max(y, gum_top)) for x, y in inner]
+    d.polygon([c.P(*q) for q in inner], fill=CURSE["mouth"])
+    # top fangs: long and thin, the middle ones longest
+    n = 8
+    span = hw * (half(0.0) - 0.21) * 0.95
+    for k in range(n):
+        x = mx - span + 2 * span * (k + 0.5) / n
+        mid = 1.0 - abs((k + 0.5) / n - 0.5) * 1.3
+        L = (bot - top) * (0.30 + 0.22 * mid)
+        w = span / n * 0.62
+        d.polygon([c.P(x - w, gum_top - 0.004), c.P(x + w, gum_top - 0.004), c.P(x, gum_top + L)], fill=CURSE["fang"])
+    # bottom fangs: shorter, rising from the chin's gum
+    chin = top + (bot - top) * S_ + hw * half(1.0) * 0.55 * 0.62
+    m = 6
+    bspan = hw * (half(1.0) * S_ - 0.21) * 0.9
+    for k in range(m):
+        x = mx - bspan + 2 * bspan * (k + 0.5) / m
+        L = (bot - top) * 0.22 * (1.0 - abs((k + 0.5) / m - 0.5) * 0.8)
+        w = bspan / m * 0.6
+        yb = chin - (abs(x - mx) / max(bspan, 1e-6)) ** 2 * hw * 0.2
+        d.polygon([c.P(x - w, yb), c.P(x + w, yb), c.P(x, yb - L)], fill=CURSE["fang"])
 
 def curse_tail(c, cx, top, w, lean=0.0):
     """Below the waist, no legs: dark tendrils, thick ribbons that sweep out to the sides and trail off (her call
@@ -366,8 +390,18 @@ def shiki_head(c, cx, cy, rx, ry, tilt=0.0, face=True):
         line(d, c, bez(top, mid, bot, 10), SHIKI["shade"], 0.006)
     if face:
         mx, my = cx + math.sin(-tilt) * ry * 0.95, cy + ry * 0.95
-        ell(d, c, mx, my, rx * 0.42, ry * 0.12, SHIKI["skin"])
-        line(d, c, [(mx - rx * 0.32, my), (mx + rx * 0.32, my)], SHIKI["lip"], 0.007)
+        # a grin (her calls 2026-11-12: open with the teeth showing, then closed into a grin): clenched teeth between
+        # red lips, the corners turned up
+        w, h = rx * 0.66, ry * 0.32   # taller (her call 2026-11-12; was ry * 0.2)
+        xs = [k / 12 * 2 - 1 for k in range(13)]
+        up = lambda u: my - h * 0.45 - h * 0.35 * u * u
+        lo = lambda u: my + h * 0.6 - h * 1.4 * u * u
+        shape = [(mx + u * w, up(u)) for u in xs] + [(mx + u * w, lo(u)) for u in reversed(xs)]
+        d.polygon([c.P(*q) for q in shape], fill=(246, 242, 232), outline=SHIKI["lip"], width=max(2, int(c.size * 0.012)))
+        line(d, c, [(mx + u * w * 0.96, (up(u) + lo(u)) / 2) for u in xs], (120, 110, 110), 0.004)   # where the teeth meet
+        for k in range(1, 8):                                                                       # gaps between teeth
+            u = k / 8 * 2 - 1
+            line(d, c, [(mx + u * w, up(u) + h * 0.1), (mx + u * w, lo(u) - h * 0.1)], (150, 140, 140), 0.003)
 
 
 def shiki_arm(c, shoulder, elbow, wrist, ang, col=None):

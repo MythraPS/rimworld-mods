@@ -104,7 +104,8 @@ namespace JujutsuFundamentals
                 foreach (var g in p.genes.GenesListForReading.Where(g => g.def.hairColorOverride != null || g.def.skinColorOverride != null).ToList())
                     p.genes.RemoveGene(g);
             p.story.bodyType = BodyTypeDefOf.Male;
-            p.story.hairDef = DefDatabase<HairDef>.GetNamedSilentFail("Fringe") ?? p.story.hairDef;
+            p.story.hairDef = DefDatabase<HairDef>.GetNamedSilentFail("JJK_InumakiHair") ?? p.story.hairDef;   // near bowl cut (her call 2026-11-12)
+            p.story.headType = DefDatabase<HeadTypeDef>.GetNamedSilentFail("Male_AverageNormal") ?? p.story.headType;   // the head his hair and collar are drawn for
             p.story.HairColor = Inumaki.Hair;
             p.story.skinColorOverride = Looks.Skin;
             // her call 2026-11-11: jujutsu student as a child (his own copy, with Social disabled), sorcerer as an adult
@@ -120,7 +121,10 @@ namespace JujutsuFundamentals
             if (p.apparel == null) return;
             p.apparel.DestroyAll();
             Wear(p, "Apparel_CollarShirt", new Color(0.92f, 0.92f, 0.9f));
-            Wear(p, "Apparel_Jacket", new Color(0.12f, 0.13f, 0.18f));
+            Wear(p, DefDatabase<ThingDef>.GetNamedSilentFail("JJK_InumakiUniform") != null ? "JJK_InumakiUniform" : "Apparel_Jacket", new Color(0.12f, 0.13f, 0.18f));
+            // the high collar over his mouth, shown while he wears that uniform (her calls 2026-11-12)
+            var collar = DefDatabase<HediffDef>.GetNamedSilentFail("JJK_InumakiCollar");
+            if (collar != null && !p.health.hediffSet.HasHediff(collar)) p.health.AddHediff(collar);
             Wear(p, "Apparel_Pants", new Color(0.12f, 0.13f, 0.18f));
         }
 
@@ -183,6 +187,20 @@ namespace JujutsuFundamentals
             var tr = YutaTracker.Instance;
             foreach (var s in new[] { tr?.inumaki, tr?.yuta })
                 if (s != null) Say($"{s.LabelShort} vs {p.LabelShort}: speaker {CursedSpeech.SpeakerStrength(s):0.00}, target {CursedSpeech.TargetStrength(p):0.00}, ratio {CursedSpeech.Ratio(s, p):0.00}");
+        }
+    }
+
+    /// <summary>Inumaki's high collar is part of his uniform: drawn only while he wears it (her call 2026-11-12).</summary>
+    public class PawnRenderNodeWorker_InumakiCollar : PawnRenderNodeWorker
+    {
+        public override bool CanDrawNow(PawnRenderNode node, PawnDrawParms parms)
+        {
+            if (!base.CanDrawNow(node, parms)) return false;
+            var worn = parms.pawn?.apparel?.WornApparel;
+            if (worn == null) return false;
+            for (int i = 0; i < worn.Count; i++)
+                if (worn[i].def.defName == "JJK_InumakiUniform") return true;
+            return false;
         }
     }
 }

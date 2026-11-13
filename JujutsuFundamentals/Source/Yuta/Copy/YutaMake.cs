@@ -162,7 +162,7 @@ namespace JujutsuFundamentals
             }
             if (p.apparel == null) return;
             p.apparel.DestroyAll();
-            Wear(p, "Apparel_CollarShirt", White);
+            Wear(p, DefDatabase<ThingDef>.GetNamedSilentFail("JJK_YutaShirt") != null ? "JJK_YutaShirt" : "Apparel_CollarShirt", Color.white);   // his dark trousers are drawn on it (2026-11-12)
             Wear(p, "Apparel_Jacket", White);
             Wear(p, "Apparel_Pants", Looks.Black);
             var ring = JJKToolDefOf2.JJK_YutaRing;

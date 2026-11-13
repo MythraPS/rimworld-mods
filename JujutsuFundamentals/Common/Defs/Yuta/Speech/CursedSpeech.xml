@@ -370,4 +370,74 @@
     <workDisables>Social</workDisables>
   </BackstoryDef>
 
+
+  <!-- Inumaki's uniform (her calls 2026-11-12): the navy Jujutsu High jacket with its high collar zipped up over his
+       mouth. The collar is a head layer (JJK_InumakiCollar) drawn only while he wears this jacket, so his Cursed
+       Speech crest shows only when he's dressed in something else. Collar art: tools/art_inumaki_collar.py. -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>JJK_InumakiUniform</defName>
+    <label>high-collared Jujutsu High uniform</label>
+    <description>A navy Jujutsu High jacket with a tall collar zipped up over the mouth. Toge Inumaki wears it to keep his words, and the crest that carries them, out of sight.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(0.12, 0.13, 0.18)</color>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <tradeability>None</tradeability>
+    <smeltable>false</smeltable>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Mass>1.6</Mass>
+      <MarketValue>240</MarketValue>
+      <ArmorRating_Sharp>0.14</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.08</ArmorRating_Blunt>
+      <Insulation_Cold>14</Insulation_Cold>
+      <Insulation_Heat>2</Insulation_Heat>
+      <Flammability>0.6</Flammability>
+      <EquipDelay>2</EquipDelay>
+    </statBases>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</wornGraphicPath>
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+    </apparel>
+    <generateCommonality>0</generateCommonality>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>JJK_InumakiCollar</defName>
+    <label>high collar</label>
+    <description>His uniform's collar, zipped up over his mouth.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <keepOnBodyPartRestoration>true</keepOnBodyPartRestoration>
+    <forceRenderTreeRecache>true</forceRenderTreeRecache>
+    <renderNodeProperties>
+      <li>
+        <debugLabel>Inumaki collar</debugLabel>
+        <workerClass>JujutsuFundamentals.PawnRenderNodeWorker_InumakiCollar</workerClass>
+        <parentTagDef>Head</parentTagDef>
+        <texPath>Things/Jujutsu/Inumaki/Collar</texPath>
+        <shaderTypeDef>Cutout</shaderTypeDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <pawnType>HumanlikeOnly</pawnType>
+        <baseLayer>72</baseLayer>
+      </li>
+    </renderNodeProperties>
+  </HediffDef>
+
 </Defs>

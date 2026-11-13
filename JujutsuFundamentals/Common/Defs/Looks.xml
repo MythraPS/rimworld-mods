@@ -5,11 +5,25 @@
   <!-- Uraume's white bob with the red streak (her ask 2026-11-11; tools/art_uraume_hair.py). -->
   <HairDef>
     <defName>JJK_UraumeHair</defName>
-    <label>white bob with red streak</label>
+    <label>white bowl cut with red streak</label>
     <styleGender>Any</styleGender>
     <texPath>Things/Pawn/Humanlike/Hairs/JJK_UraumeHair</texPath>
   </HairDef>
 
+  <!-- Hana Kurusu (her ask 2026-11-12, canon): a blonde bob, blunt bangs, the ends curled inward. tools/art_angel.py -->
+  <HairDef>
+    <defName>JJK_HanaHair</defName>
+    <label>bob with curled ends</label>
+    <styleGender>Female</styleGender>
+    <texPath>Things/Pawn/Humanlike/Hairs/JJK_HanaHair</texPath>
+  </HairDef>
+  <!-- Inumaki (her call 2026-11-12): close to a bowl cut. tools/art_inumaki_hair.py -->
+  <HairDef>
+    <defName>JJK_InumakiHair</defName>
+    <label>tousled bowl cut</label>
+    <styleGender>Any</styleGender>
+    <texPath>Things/Pawn/Humanlike/Hairs/JJK_InumakiHair</texPath>
+  </HairDef>
   <HairDef>
     <defName>JJK_TodoHair</defName>
     <label>spiky ponytail</label>

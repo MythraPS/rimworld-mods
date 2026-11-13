@@ -79,6 +79,7 @@ namespace JujutsuFundamentals
         public static void Maki(Pawn p)
         {
             Base(p, BodyTypeDefOf.Female, "Bob", Black);
+            MakiHead(p);
             Backstory(p, "JJK_ZeninOutcast", "JJK_Sorcerer");   // sorcerer as an adult (her call 2026-11-11)
             Traits(p, ("JJK_HeavenlyRestriction", 0), ("Tough", 0), ("Brawler", 0), ("SpeedOffset", 2));   // her calls 2026-11-11: tough, brawler, jogger
             // awakened Maki's burn scars (her ask 2026-11-11; Jogo's fire in Shibuya), up both arms and both sides of her face
@@ -98,6 +99,7 @@ namespace JujutsuFundamentals
         public static void MakiYoung(Pawn p)
         {
             Base(p, BodyTypeDefOf.Female, DefDatabase<HairDef>.GetNamedSilentFail("BriefPonytail") != null ? "BriefPonytail" : "Ponytails", Black);
+            MakiHead(p);
             Backstory(p, "JJK_ZeninOutcast", "JJK_Sorcerer");
             Traits(p, ("JJK_HeavenlyRestrictionPartial", 0), ("Tough", 0), ("Brawler", 0), ("SpeedOffset", 2),
                    ("PsychicSensitivity", -1));   // psychically dull (her call 2026-11-12)
@@ -126,11 +128,20 @@ namespace JujutsuFundamentals
         /// polite and devoted) is a proposal. Her childhood is left as rolled: she's a modern girl, not a student.</summary>
         public static void Angel(Pawn p)
         {
-            Base(p, BodyTypeDefOf.Thin, "Bob", new Color(0.93f, 0.8f, 0.48f));
+            Base(p, BodyTypeDefOf.Thin, "JJK_HanaHair", new Color(0.93f, 0.8f, 0.48f));   // curled ends (her call 2026-11-12)
+            MakiHead(p);   // the head her hair is drawn for
             Backstory(p, "JJK_HomelessChild", "");   // her call 2026-11-12
+            AngelChar.Wings(p);
             Traits(p, ("Kind", 0));
             Dress(p, ("Apparel_BasicShirt", "Cloth", new Color(0.78f, 0.66f, 0.5f)),
                      ("Apparel_Pants", "Cloth", new Color(0.1f, 0.1f, 0.11f)));
+        }
+
+        /// <summary>Maki's glasses and scars and Hana's hair are drawn for this head (2026-11-12), so they always have it.</summary>
+        private static void MakiHead(Pawn p)
+        {
+            var h = DefDatabase<HeadTypeDef>.GetNamedSilentFail("Female_AverageNormal");
+            if (h != null && p.story != null) p.story.headType = h;
         }
 
         private static void Base(Pawn p, BodyTypeDef body, string hair, Color hairColor)

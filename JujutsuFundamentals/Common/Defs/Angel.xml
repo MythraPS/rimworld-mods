@@ -103,4 +103,46 @@
     <showFactionInInspectString>false</showFactionInInspectString>
     <gravShipsCanLandOn>true</gravShipsCanLandOn>
   </SitePartDef>
+
+  <!-- The Angel's wings and halo (her ask 2026-11-12; canon: bluish-white feathered wings from her upper back, a yellow
+       halo floating above her head). Looks only. Art: tools/art_angel.py. -->
+  <HediffDef>
+    <defName>JJK_AngelWings</defName>
+    <label>the Angel's wings and halo</label>
+    <description>Feathered wings from her upper back and a halo above her head: the Angel who shares her body, showing.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(1.0, 0.86, 0.4)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <keepOnBodyPartRestoration>true</keepOnBodyPartRestoration>
+    <forceRenderTreeRecache>true</forceRenderTreeRecache>
+    <renderNodeProperties>
+      <li>
+        <debugLabel>Angel wings</debugLabel>
+        <parentTagDef>Body</parentTagDef>
+        <texPath>Things/Jujutsu/Angel/Wings</texPath>
+        <overrideMeshSize>(3, 3)</overrideMeshSize>
+        <shaderTypeDef>Cutout</shaderTypeDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <pawnType>HumanlikeOnly</pawnType>
+        <baseLayer>-5</baseLayer>
+        <drawData>
+          <dataSouth><layer>-5</layer></dataSouth>
+          <dataEast><layer>-5</layer></dataEast>
+          <dataWest><layer>-5</layer></dataWest>
+          <dataNorth><layer>35</layer></dataNorth>
+        </drawData>
+      </li>
+      <li>
+        <debugLabel>Angel halo</debugLabel>
+        <parentTagDef>Head</parentTagDef>
+        <texPath>Things/Jujutsu/Angel/Halo</texPath>
+        <shaderTypeDef>Cutout</shaderTypeDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <pawnType>HumanlikeOnly</pawnType>
+        <baseLayer>85</baseLayer>
+      </li>
+    </renderNodeProperties>
+  </HediffDef>
+
 </Defs>

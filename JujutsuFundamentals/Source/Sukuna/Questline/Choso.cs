@@ -62,6 +62,12 @@ namespace SukunaPsycasts
         public override void LoadedGame()
         {
             base.LoadedGame();
+            // an older Choso made with a random body (2026-11-12): slim like Yuji
+            if (choso?.story != null && choso.story.bodyType != BodyTypeDefOf.Thin)
+            {
+                choso.story.bodyType = BodyTypeDefOf.Thin;
+                choso.Drawer?.renderer?.SetAllGraphicsDirty();
+            }
             var old = new Color(0.86f, 0.83f, 0.76f);
             var worn = choso?.apparel?.WornApparel;
             if (worn == null) return;
@@ -143,6 +149,7 @@ namespace SukunaPsycasts
         {
             var p = JujutsuFundamentals.Characters.Make("Choso", "Choso", "", Gender.Male, 28f);
             p.Name = new NameSingle("Choso");
+            if (p.story != null) p.story.bodyType = BodyTypeDefOf.Thin;   // slim like Yuji: random bodies under his baggy robes looked far too big (her note 2026-11-12)
             p.ageTracker.BirthAbsTicks = GenTicks.TicksAbs - 150L * GenDate.TicksPerYear;   // a Death Painting from ~150 years ago
             JujutsuFundamentals.Characters.Skill(p, SkillDefOf.Melee, 14, Passion.Major);
             if (p.story != null)

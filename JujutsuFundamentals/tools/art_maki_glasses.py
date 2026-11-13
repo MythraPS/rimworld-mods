@@ -55,12 +55,29 @@ def draw(d):
     return img.resize((128, 128), Image.LANCZOS)
 
 
+# Maki's own head and body (her look fixes 2026-11-12): Looks sets her head to Female_AverageNormal, and the art is
+# clipped to that head's (and the female body's) outline, a little inside it, so nothing pokes out past her face.
+# Vanilla textures decoded from Assets.zip into ~/.local/share/rimworld-tools/heads (not shipped).
+PARTS = Path.home() / ".local/share/rimworld-tools/heads"
+
+
+def clip(img, part, shrink):
+    from PIL import ImageChops, ImageFilter
+    m = Image.open(PARTS / f"{part}.png").getchannel("A").point(lambda v: 255 if v > 100 else 0)
+    if m.size != img.size:
+        m = m.resize(img.size, Image.NEAREST)
+    if shrink:
+        m = m.filter(ImageFilter.MinFilter(2 * shrink * (img.width // 128) + 1))
+    img.putalpha(ImageChops.multiply(img.getchannel("A"), m))
+    return img
+
+
 def main():
     out = MOD / "Textures/Things/Pawn/Humanlike/Apparel/JJK_MakiGlasses"
     out.mkdir(parents=True, exist_ok=True)
     made = {}
     for d in ("south", "east", "north"):
-        made[d] = draw(d)
+        made[d] = clip(draw(d), f"Female_Average_Normal_{d}", 2)
         made[d].save(out / f"JJK_MakiGlasses_{d}.png")
     item = MOD / "Textures/Things/Item/Apparel/JJK_MakiGlasses"
     item.mkdir(parents=True, exist_ok=True)

@@ -270,11 +270,7 @@ def king_marks(heads, d):
         face_extras(dr, d, skip_right=True)
         forehead(dr, d)
         eye2(dr, 72.0 + 1.2, 1)
-        mouth = qbez((54.5, 79.6), (64, 89.5), (73.5, 79.6), 24)
-        dr.polygon(S(mouth), fill=INK)
-        dr.polygon(S(qbez((56.6, 80.6), (64, 85.6), (71.4, 80.6), 24)), fill=(248, 246, 240, 255))
-        for x in (60.0, 64.0, 68.0):
-            dr.line(S([(x, 81.2), (x, 82.9)]), fill=INK, width=int(0.7 * K))
+        grin(dr, d)
     return draw4(f)
 
 
@@ -323,19 +319,13 @@ def sukuna_marks(d):
         forehead(dr, d)
         for cx, s in eyes:
             eye2(dr, cx + 1.2 * s, s)
-        if d == "south":
-            mouth = qbez((54.5, 79.6), (64, 89.5), (73.5, 79.6), 24)
-            dr.polygon(S(mouth), fill=INK)
-            dr.polygon(S(qbez((56.6, 80.6), (64, 85.6), (71.4, 80.6), 24)), fill=(248, 246, 240, 255))
-            for x in (60.0, 64.0, 68.0):   # gaps between the teeth
-                dr.line(S([(x, 81.2), (x, 82.9)]), fill=INK, width=int(0.7 * K))
-        else:
-            mouth = qbez((73.5, 80.0), (81.0, 88.5), (86.5, 79.0), 24)
-            dr.polygon(S(mouth), fill=INK)
-            dr.polygon(S(qbez((75.6, 80.9), (81.0, 85.2), (85.3, 80.0), 24)), fill=(248, 246, 240, 255))
-            for x in (79.0, 82.5):
-                dr.line(S([(x, 81.4), (x, 82.9)]), fill=INK, width=int(0.7 * K))
+        grin(dr, d)
     return draw4(f)
+
+
+def grin(dr, d):
+    """No mouth (her call 2026-11-12: first no teeth, since no other character shows them, then no grin at all)."""
+    return
 
 
 

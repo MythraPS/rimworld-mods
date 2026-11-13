@@ -246,4 +246,47 @@
     <letterDef>JJK_YutaAsks</letterDef>
   </IncidentDef>
 
+
+  <!-- Yuta's shirt, white with his dark trousers baked in below the jacket's hem (her note 2026-11-12: RimWorld draws
+       no trousers, and the white shirt made his legs white). tools/yuta/art_yuta_shirt.py; drawn untinted. -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>JJK_YutaShirt</defName>
+    <label>white shirt and dark trousers</label>
+    <description>A white button-down shirt worn with dark trousers, under Yuta's white Jujutsu High uniform.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <tradeability>None</tradeability>
+    <smeltable>false</smeltable>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>0.5</Mass>
+      <MarketValue>40</MarketValue>
+      <Insulation_Cold>6</Insulation_Cold>
+      <Insulation_Heat>2</Insulation_Heat>
+      <Flammability>1</Flammability>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/JJK_YutaShirt/JJK_YutaShirt</wornGraphicPath>
+      <layers>
+        <li>OnSkin</li>
+      </layers>
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+    </apparel>
+    <generateCommonality>0</generateCommonality>
+  </ThingDef>
+
 </Defs>

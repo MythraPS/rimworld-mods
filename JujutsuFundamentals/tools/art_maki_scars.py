@@ -37,10 +37,29 @@ def streaks(d, x0, x1, y0, y1, n, seed):
         d.line(S, fill=SCAR, width=int(w * K), joint="curve")
 
 
+# Maki's own head and body (her look fixes 2026-11-12): Looks sets her head to Female_AverageNormal, and the art is
+# clipped to that head's (and the female body's) outline, a little inside it, so nothing pokes out past her face.
+# Vanilla textures decoded from Assets.zip into ~/.local/share/rimworld-tools/heads (not shipped).
+PARTS = Path.home() / ".local/share/rimworld-tools/heads"
+
+
+def clip(img, part, shrink):
+    from PIL import ImageChops, ImageFilter
+    m = Image.open(PARTS / f"{part}.png").getchannel("A").point(lambda v: 255 if v > 100 else 0)
+    if m.size != img.size:
+        m = m.resize(img.size, Image.NEAREST)
+    if shrink:
+        m = m.filter(ImageFilter.MinFilter(2 * shrink * (img.width // 128) + 1))
+    img.putalpha(ImageChops.multiply(img.getchannel("A"), m))
+    return img
+
+
 def save(im, name, facing):
     out = T / name
     out.mkdir(parents=True, exist_ok=True)
-    im.resize((128, 128), Image.LANCZOS).save(out / f"{name}_{facing}.png")
+    im = im.resize((128, 128), Image.LANCZOS)
+    part = f"Female_Average_Normal_{facing}" if "Face" in name else f"Naked_Female_{facing}"
+    clip(im, part, 4 if "Face" in name else 2).save(out / f"{name}_{facing}.png")
 
 
 def blotch(d, cx, cy, rx, ry, seed):

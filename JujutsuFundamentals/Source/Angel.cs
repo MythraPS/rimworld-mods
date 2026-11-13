@@ -39,8 +39,16 @@ namespace JujutsuFundamentals
             var q = PrisonRealmQuest.Instance;
             if (q == null) return null;
             if (q.angel == null) q.angel = Make();
-            else WithoutFundamentals(q.angel);
+            else { WithoutFundamentals(q.angel); Wings(q.angel); }
             return q.angel;
+        }
+
+        /// <summary>Her wings and halo (her ask 2026-11-12); older Angels get them too.</summary>
+        public static void Wings(Pawn p)
+        {
+            var def = DefDatabase<HediffDef>.GetNamedSilentFail("JJK_AngelWings");
+            if (def == null || p?.health == null || p.health.hediffSet.HasHediff(def)) return;
+            p.health.AddHediff(def);
         }
 
         private static Pawn Make()
