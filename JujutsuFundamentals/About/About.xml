@@ -48,6 +48,10 @@
     <li>VanillaExpanded.VPsycastsE</li>
     <li>VanillaExpanded.VPE.Hemosage</li>
   </loadAfter>
+  <!-- the old Sukuna mod: everything in it is in this one now, so both at once would clash -->
+  <incompatibleWith>
+    <li>mythraps.ryomensukuna</li>
+  </incompatibleWith>
   <description>Jujutsu Kaisen for Vanilla Psycasts Expanded: the sorcerers' techniques, the characters, cursed tools and questlines, in one mod. This mod used to be "Satoru Gojo"; he is part of it now, and so is "Ryomen Sukuna &amp; Yuji Itadori". An add-on for Vanilla Psycasts Expanded, not made by the Vanilla Expanded team.
 
 TECHNIQUES ANYONE CAN LEARN
