@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- ============================ damage ============================ -->
+
+  <DamageDef ParentName="BluntBase">
+    <defName>Gojo_Force</defName>
+    <label>cursed force</label>
+    <deathMessage>{0} has been crushed by cursed energy.</deathMessage>
+    <harmsHealth>true</harmsHealth>
+    <externalViolence>true</externalViolence>
+    <isRanged>false</isRanged>
+    <makesAnimalsFlee>true</makesAnimalsFlee>
+  </DamageDef>
+
+  <!-- Purple. Not cut, burned or crushed: there is simply less of the thing. -->
+  <DamageDef>
+    <defName>Gojo_Erase</defName>
+    <label>erasure</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <deathMessage>{0} has been erased.</deathMessage>
+    <hediff>Gojo_Erased</hediff>
+    <harmsHealth>true</harmsHealth>
+    <externalViolence>true</externalViolence>
+    <makesBlood>false</makesBlood>
+    <armorCategory>Sharp</armorCategory>
+    <defaultDamage>60</defaultDamage>
+    <defaultArmorPenetration>2</defaultArmorPenetration>
+    <buildingDamageFactor>8</buildingDamageFactor>
+    <plantDamageFactor>8</plantDamageFactor>
+  </DamageDef>
+
+  <HediffDef ParentName="InjuryBase">
+    <defName>Gojo_Erased</defName>
+    <label>erased</label>
+    <labelNoun>an erased part</labelNoun>
+    <description>Part of the body is simply gone.</description>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>scar</permanentLabel>
+      </li>
+    </comps>
+    <injuryProps>
+      <painPerSeverity>0.0125</painPerSeverity>
+      <averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
+      <bleedRate>0.03</bleedRate>
+      <canMerge>false</canMerge>
+      <destroyedLabel>Erased</destroyedLabel>
+      <destroyedOutLabel>Erased</destroyedOutLabel>
+    </injuryProps>
+  </HediffDef>
+
+  <!-- ============================ orbs ============================ -->
+
+  <ThingDef Name="Gojo_OrbBase" ParentName="BaseBullet" Abstract="True">
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <projectile>
+      <damageDef>Gojo_Force</damageDef>
+      <damageAmountBase>0</damageAmountBase>
+      <flyOverhead>true</flyOverhead>
+      <shadowSize>0</shadowSize>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="Gojo_OrbBase" Name="Gojo_BlueOrb">
+    <defName>Gojo_BlueOrb</defName>
+    <label>blue</label>
+    <thingClass>GojoPsycasts.Projectile_Blue</thingClass>
+    <graphicData>
+      <texPath>Things/Gojo/BlueOrb</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <!-- heat-haze ripple around the orb (vanilla shader; idea from the "Jujutsu Kaisen" mod, her call 2026-11-07) -->
+      <shaderType>MoteGlowDistorted</shaderType>
+      <shaderParameters>
+        <_DistortionTex>/Other/Ripples</_DistortionTex>
+        <_distortionIntensity>0.12</_distortionIntensity>
+        <_DistortionScale>0.4</_DistortionScale>
+        <_distortionScrollSpeed>(0.12, 0.12, 0)</_distortionScrollSpeed>
+      </shaderParameters>
+      <drawSize>1.3</drawSize>
+    </graphicData>
+    <projectile>
+      <speed>40</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="Gojo_BlueOrb">
+    <defName>Gojo_BlueOrbSlow</defName>
+    <projectile>
+      <speed>5</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="Gojo_OrbBase" Name="Gojo_RedOrb">
+    <defName>Gojo_RedOrb</defName>
+    <label>red</label>
+    <thingClass>GojoPsycasts.Projectile_Red</thingClass>
+    <graphicData>
+      <texPath>Things/Gojo/RedOrb</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <!-- heat-haze ripple around the orb (vanilla shader; idea from the "Jujutsu Kaisen" mod, her call 2026-11-07) -->
+      <shaderType>MoteGlowDistorted</shaderType>
+      <shaderParameters>
+        <_DistortionTex>/Other/Ripples</_DistortionTex>
+        <_distortionIntensity>0.12</_distortionIntensity>
+        <_DistortionScale>0.4</_DistortionScale>
+        <_distortionScrollSpeed>(-0.12, -0.12, 0)</_distortionScrollSpeed>
+      </shaderParameters>
+      <drawSize>1.3</drawSize>
+    </graphicData>
+    <projectile>
+      <speed>45</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="Gojo_RedOrb">
+    <defName>Gojo_RedOrbSlow</defName>
+    <projectile>
+      <speed>5</speed>
+    </projectile>
+  </ThingDef>
+
+  <!-- A Red waiting where it landed, until something pops it or a Blue reaches it. -->
+  <ThingDef>
+    <defName>Gojo_RedOrbHeld</defName>
+    <label>red</label>
+    <description>A point of repulsion, held still. It bursts if anything touches it or flies through it; one of Gojo's Blues reaching it makes Hollow Purple.</description>
+    <thingClass>GojoPsycasts.HeldRed</thingClass>
+    <category>Ethereal</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <useHitPoints>false</useHitPoints>
+    <selectable>true</selectable>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>Things/Gojo/RedOrb</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <!-- heat-haze ripple around the orb (vanilla shader; idea from the "Jujutsu Kaisen" mod, her call 2026-11-07) -->
+      <shaderType>MoteGlowDistorted</shaderType>
+      <shaderParameters>
+        <_DistortionTex>/Other/Ripples</_DistortionTex>
+        <_distortionIntensity>0.12</_distortionIntensity>
+        <_DistortionScale>0.4</_DistortionScale>
+        <_distortionScrollSpeed>(-0.12, -0.12, 0)</_distortionScrollSpeed>
+      </shaderParameters>
+      <drawSize>1.3</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <!-- Where a Blue tore up the ground. Drawn by BlueCrater, scaled to the pull. -->
+  <ThingDef>
+    <defName>Gojo_BlueCrater</defName>
+    <label>crater</label>
+    <thingClass>GojoPsycasts.BlueCrater</thingClass>
+    <category>Ethereal</category>
+    <tickerType>Rare</tickerType>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>Things/Gojo/Crater</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(2, 2)</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="Gojo_OrbBase">
+    <defName>Gojo_PurpleOrb</defName>
+    <label>hollow purple</label>
+    <thingClass>GojoPsycasts.Projectile_Purple</thingClass>
+    <graphicData>
+      <texPath>Things/Gojo/PurpleOrb</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <!-- heat-haze ripple around the orb (vanilla shader; idea from the "Jujutsu Kaisen" mod, her call 2026-11-07) -->
+      <shaderType>MoteGlowDistorted</shaderType>
+      <shaderParameters>
+        <_DistortionTex>/Other/Ripples</_DistortionTex>
+        <_distortionIntensity>0.2</_distortionIntensity>
+        <_DistortionScale>0.6</_DistortionScale>
+        <_distortionScrollSpeed>(0.2, 0.2, 0)</_distortionScrollSpeed>
+      </shaderParameters>
+      <drawSize>3.2</drawSize>
+    </graphicData>
+    <projectile>
+      <speed>30</speed>
+    </projectile>
+  </ThingDef>
+
+  <!-- ============================ the domain ============================ -->
+
+  <!-- The barrier: one per edge cell. It keeps people in and out until broken. -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>Gojo_DomainBarrier</defName>
+    <label>domain barrier</label>
+    <description>The shell of a closed domain. Nobody but its owner walks through it; anyone else has to break it.</description>
+    <!-- A door only Gojo can open (her call 2026-10-31: he walks out, and the domain ends). -->
+    <thingClass>GojoPsycasts.Building_DomainBarrier</thingClass>
+    <tickerType>Normal</tickerType>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Gojo/Barrier</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(1.1, 1.1)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <coversFloor>false</coversFloor>
+    <neverMultiSelect>true</neverMultiSelect>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <isInert>true</isInert>
+      <claimable>false</claimable>
+      <deconstructible>false</deconstructible>
+      <repairable>false</repairable>
+      <isTargetable>true</isTargetable>
+      <ai_chillDestination>false</ai_chillDestination>
+      <soundDoorOpenPowered>Door_OpenPowered</soundDoorOpenPowered>
+      <soundDoorClosePowered>Door_ClosePowered</soundDoorClosePowered>
+      <soundDoorOpenManual>Door_OpenPowered</soundDoorOpenManual>
+      <soundDoorCloseManual>Door_ClosePowered</soundDoorCloseManual>
+    </building>
+    <drawerType>RealtimeOnly</drawerType>
+    <holdsRoof>false</holdsRoof>
+    <destroyable>true</destroyable>
+  </ThingDef>
+
+  <!-- The inside: open space with white paint thrown across nothing. Drawn by
+       DomainOverlay, scaled to the radius; this def only carries the texture. -->
+  <ThingDef>
+    <defName>Gojo_VoidOverlay</defName>
+    <label>infinite void</label>
+    <thingClass>GojoPsycasts.DomainOverlay</thingClass>
+    <category>Ethereal</category>
+    <tickerType>Never</tickerType>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>Things/Gojo/InfiniteVoid</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(2, 2)</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <!-- ============================ flecks ============================ -->
+
+  <!-- Black Flash, in both mods: jagged black sparks with a red edge, thrown out
+       of the impact. -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Gojo_Fleck_BlackSpark</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.2</solidTime>
+    <fadeOutTime>0.45</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Gojo/BlackSpark</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(1.6, 1.6)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Gojo_Fleck_RedBeam</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.03</fadeInTime>
+    <solidTime>0.25</solidTime>
+    <fadeOutTime>0.35</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Gojo/RedBeam</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(1.2, 1.2)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Gojo_Fleck_PurpleTrail</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.03</fadeInTime>
+    <solidTime>0.2</solidTime>
+    <fadeOutTime>0.8</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Gojo/PurpleOrb</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(2.6, 2.6)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Gojo_Fleck_BlueSwirl</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>0.15</solidTime>
+    <fadeOutTime>0.4</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Gojo/BlueOrb</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>MoteGlowDistorted</shaderType>
+      <shaderParameters>
+        <_DistortionTex>/Other/Ripples</_DistortionTex>
+        <_distortionIntensity>0.1</_distortionIntensity>
+        <_DistortionScale>0.4</_DistortionScale>
+        <_distortionScrollSpeed>(0.15, 0.15, 0)</_distortionScrollSpeed>
+      </shaderParameters>
+      <drawSize>(1.0, 1.0)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <!-- Red's burst (2026-11-04): a red ring growing outward (static fleck, so growthRate
+       applies; the code holds it until it reaches the burst's edge) and thrown red sparks. -->
+  <FleckDef ParentName="FleckBase">
+    <defName>Gojo_Fleck_RedBurst</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.03</fadeInTime>
+    <solidTime>0.2</solidTime>
+    <fadeOutTime>0.25</fadeOutTime>
+    <growthRate>36</growthRate>
+    <graphicData>
+      <texPath>Things/Gojo/RedBurst</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Gojo_Fleck_RedSpark</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.12</solidTime>
+    <fadeOutTime>0.25</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Gojo/RedOrb</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(0.7, 0.7)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+
+  <!-- Ground Hollow Purple passed over (her call 2026-11-07): erased smooth, a dark scar that stays.
+       Built on vanilla packed dirt's picture, tinted; you can build on it, nothing grows. -->
+  <TerrainDef ParentName="TerrainRoadBase">
+    <defName>Gojo_ErasedGround</defName>
+    <label>erased ground</label>
+    <description>Ground Hollow Purple passed over. Everything above it was erased, and what is left is a smooth, dead scar.</description>
+    <texturePath>Terrain/Surfaces/PackedDirt</texturePath>
+    <color>(92, 82, 104)</color>
+    <edgeType>FadeRough</edgeType>
+    <renderPrecedence>365</renderPrecedence>
+    <pathCost>0</pathCost>
+    <resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+    <statBases>
+      <Beauty>-1</Beauty>
+      <Cleanliness>0</Cleanliness>
+    </statBases>
+    <affordances>
+      <li>Light</li>
+      <li>Medium</li>
+      <li>Heavy</li>
+      <li>Diggable</li>
+    </affordances>
+    <fertility>0.0</fertility>
+  </TerrainDef>
+
+</Defs>

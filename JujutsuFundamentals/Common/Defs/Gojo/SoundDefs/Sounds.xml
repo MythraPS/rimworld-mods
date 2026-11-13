@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- made by tools/sounds.py - edit there -->
+<Defs>
+
+  <SoundDef>
+    <defName>Gojo_Snd_BlueCast</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Misc/Psycasts/Skip/Entry</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>30~30</volumeRange>
+        <pitchRange>0.57~0.63</pitchRange>
+      </li>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Misc/Artifacts/Psychic_Animal_Pulser</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>22~22</volumeRange>
+        <pitchRange>0.475~0.525</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  <SoundDef>
+    <defName>Gojo_Snd_BlueLand</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Explosion/Vaporize</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>30~30</volumeRange>
+        <pitchRange>0.475~0.525</pitchRange>
+      </li>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Misc/Artifacts/Psychic_Animal_Pulser</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>25~25</volumeRange>
+        <pitchRange>0.38~0.42</pitchRange>
+      </li>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Misc/Psycasts/Skip/Pulse</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>25~25</volumeRange>
+        <pitchRange>0.427~0.473</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  <SoundDef>
+    <defName>Gojo_Snd_RedCast</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Impact/ThumpCannon</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>35~35</volumeRange>
+        <pitchRange>1.045~1.155</pitchRange>
+      </li>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Misc/Psycasts/Psycast_Psychic_Pulse</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>20~20</volumeRange>
+        <pitchRange>1.33~1.47</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  <SoundDef>
+    <defName>Gojo_Snd_RedBurst</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Explosion/GiantExplosion</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>30~30</volumeRange>
+        <pitchRange>1.235~1.365</pitchRange>
+      </li>
+      <li MayRequire="Ludeon.RimWorld.Biotech">
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Explosion/Mechband_Shockwave_Explosion_01a</clipPath>
+          </li>
+        </grains>
+        <volumeRange>30~30</volumeRange>
+        <pitchRange>1.14~1.26</pitchRange>
+      </li>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Impact/ThumpCannon</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>25~25</volumeRange>
+        <pitchRange>0.76~0.84</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  <SoundDef>
+    <defName>Gojo_Snd_PurpleCharge</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Misc/Psycasts/Neuroquake/Psycast_Neuroquake_Cast_Start_01a</clipPath>
+          </li>
+        </grains>
+        <volumeRange>30~30</volumeRange>
+        <pitchRange>0.76~0.84</pitchRange>
+      </li>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Misc/Artifacts/Psychic_Animal_Pulser</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>15~15</volumeRange>
+        <pitchRange>0.332~0.367</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  <SoundDef>
+    <defName>Gojo_Snd_PurpleFire</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Misc/Psycasts/Neuroquake/Psycast_Neuroquake_Apply_01f</clipPath>
+          </li>
+        </grains>
+        <volumeRange>35~35</volumeRange>
+        <pitchRange>0.665~0.735</pitchRange>
+      </li>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Explosion/GiantExplosion</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>30~30</volumeRange>
+        <pitchRange>0.57~0.63</pitchRange>
+      </li>
+      <li MayRequire="Ludeon.RimWorld.Anomaly">
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Building/VoidMonolith/Activation/L2L3/VM_Act_L2L3_Boom_A</clipPath>
+          </li>
+        </grains>
+        <volumeRange>30~30</volumeRange>
+        <pitchRange>0.76~0.84</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  <SoundDef>
+    <defName>Gojo_Snd_VoidOpen</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li MayRequire="Ludeon.RimWorld.Anomaly">
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Building/VoidMonolith/Activation/L2L3/VM_Act_L2L3_Boom_A</clipPath>
+          </li>
+        </grains>
+        <volumeRange>40~40</volumeRange>
+        <pitchRange>0.665~0.735</pitchRange>
+      </li>
+      <li MayRequire="Ludeon.RimWorld.Anomaly">
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Pawn/Abilities/VoidTerror/Void_Terror_Cast_A</clipPath>
+          </li>
+        </grains>
+        <volumeRange>30~30</volumeRange>
+        <pitchRange>0.76~0.84</pitchRange>
+      </li>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Misc/Psycasts/Neuroquake/Psycast_Neuroquake_Apply_01f</clipPath>
+          </li>
+        </grains>
+        <volumeRange>30~30</volumeRange>
+        <pitchRange>0.475~0.525</pitchRange>
+      </li>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Misc/Artifacts/Psychic_Animal_Pulser</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>20~20</volumeRange>
+        <pitchRange>0.285~0.315</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  <SoundDef>
+    <defName>Gojo_Snd_VoidStart</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Misc/Psycasts/Neuroquake/Psycast_Neuroquake_Cast_Start_01a</clipPath>
+          </li>
+        </grains>
+        <volumeRange>25~25</volumeRange>
+        <pitchRange>0.57~0.63</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  <SoundDef>
+    <defName>Gojo_Snd_Teleport</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Misc/Psycasts/Skip/Exit</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>30~30</volumeRange>
+        <pitchRange>1.14~1.26</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  <SoundDef>
+    <defName>Gojo_Snd_Pull</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Misc/Psycasts/Skip/Pulse</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>30~30</volumeRange>
+        <pitchRange>0.76~0.84</pitchRange>
+      </li>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Misc/Artifacts/Psychic_Animal_Pulser</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>15~15</volumeRange>
+        <pitchRange>0.665~0.735</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  <SoundDef>
+    <defName>Gojo_Snd_Push</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Impact/ThumpCannon</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>30~30</volumeRange>
+        <pitchRange>1.33~1.47</pitchRange>
+      </li>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Misc/Psycasts/Psycast_Psychic_Pulse</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>18~18</volumeRange>
+        <pitchRange>1.14~1.26</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  <SoundDef>
+    <defName>Gojo_Snd_BlackFlash</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Impact/BladelinkZeusHammer</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>40~40</volumeRange>
+        <pitchRange>0.665~0.735</pitchRange>
+      </li>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Impact/PunchHitPawn</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>35~35</volumeRange>
+        <pitchRange>0.57~0.63</pitchRange>
+      </li>
+      <li MayRequire="Ludeon.RimWorld.Anomaly">
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Building/VoidMonolith/Activation/Zap</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>30~30</volumeRange>
+        <pitchRange>0.57~0.63</pitchRange>
+      </li>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Misc/Psycasts/Psycast_Psychic_Pulse</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>18~18</volumeRange>
+        <pitchRange>1.71~1.89</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+</Defs>

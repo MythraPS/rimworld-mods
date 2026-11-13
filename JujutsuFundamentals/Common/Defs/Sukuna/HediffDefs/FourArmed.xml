@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Sukuna's four-armed form (her call 2026-11-01): taken for good once he holds at least 19
+       fingers and is brought down to a quarter of his health without dying (FourArmed.cs).
+       The form itself is this whole-body hediff; the second pair of arms and the mouth on his
+       abdomen are their own hediffs on the torso, so they show in the health tab (her call
+       2026-11-02), and each draws itself (tools/art_fourarms.py). -->
+  <HediffDef>
+    <defName>Sukuna_FourArmed</defName>
+    <label>true form</label>
+    <description>Brought to the edge of death with enough of himself inside, the King of Curses stops pretending to be the body he is wearing. A second pair of arms has torn its way out of his sides, a mouth has opened across his stomach, and the pink hair is his own.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.95, 0.55, 0.65)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <keepOnBodyPartRestoration>true</keepOnBodyPartRestoration>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>Sukuna_ExtraArms</defName>
+    <label>second pair of arms</label>
+    <description>Two more arms, torn out of his sides below the first pair, on a second pair of shoulders. Each is as strong as the originals.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.95, 0.55, 0.65)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <keepOnBodyPartRestoration>true</keepOnBodyPartRestoration>
+    <stages>
+      <li>
+        <capMods>
+          <li><capacity>Manipulation</capacity><offset>0.25</offset></li>
+        </capMods>
+      </li>
+    </stages>
+    <!-- No picture on the body (her call 2026-11-06: the shoulder bulge read as four shoulders).
+         The arms are here in the health tab and give their bonus. -->
+  </HediffDef>
+
+  <HediffDef>
+    <defName>Sukuna_BellyMouth</defName>
+    <label>abdominal mouth</label>
+    <description>A second mouth across his stomach, full of teeth. It grins on its own.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.95, 0.55, 0.65)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <keepOnBodyPartRestoration>true</keepOnBodyPartRestoration>
+    <forceRenderTreeRecache>true</forceRenderTreeRecache>
+    <renderNodeProperties>
+      <li>
+        <debugLabel>Sukuna belly mouth</debugLabel>
+        <parentTagDef>Body</parentTagDef>
+        <texPath>Things/Pawn/Humanlike/Sukuna_BellyMouth/Sukuna_BellyMouth_Male</texPath>
+        <bodyTypeGraphicPaths>
+          <Male>Things/Pawn/Humanlike/Sukuna_BellyMouth/Sukuna_BellyMouth_Male</Male>
+          <Female>Things/Pawn/Humanlike/Sukuna_BellyMouth/Sukuna_BellyMouth_Female</Female>
+          <Thin>Things/Pawn/Humanlike/Sukuna_BellyMouth/Sukuna_BellyMouth_Thin</Thin>
+          <Fat>Things/Pawn/Humanlike/Sukuna_BellyMouth/Sukuna_BellyMouth_Fat</Fat>
+          <Hulk>Things/Pawn/Humanlike/Sukuna_BellyMouth/Sukuna_BellyMouth_Hulk</Hulk>
+        </bodyTypeGraphicPaths>
+        <shaderTypeDef>Cutout</shaderTypeDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <pawnType>HumanlikeOnly</pawnType>
+        <baseLayer>2</baseLayer>
+        <drawData>
+          <dataSouth><layer>2</layer></dataSouth>
+          <dataNorth><layer>2</layer></dataNorth>
+          <dataEast><layer>2</layer></dataEast>
+          <dataWest><layer>2</layer></dataWest>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </HediffDef>
+
+</Defs>

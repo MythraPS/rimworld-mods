@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- The Angel and Jacob's Ladder (her design 2026-11-11; Source/Angel.cs, Source/PrisonRealmQuest.cs).
+       Jacob's Ladder sits in Yuta's tree (level 5, beside his domain); the Angel has it from the start and can learn
+       nothing else in that tree. Numbers are proposals. -->
+  <VEF.Abilities.AbilityDef>
+    <defName>JJK_JacobsLadder</defName>
+    <label>Jacob's Ladder</label>
+    <description>Maximum Output: the Angel's technique. A four-winged trumpet of light sounds, a circle opens in the sky, and a pillar of light falls on the target area. It undoes cursed techniques: everyone inside who isn't an ally loses their psycast shields and buffs and has every active technique switched off, as Domain Amplification does at a touch. Anomaly entities take heavy damage. A Prison Realm caught in it opens, even one sealed shut. It also cuts the soul, as Yuji's slashes do: on Sukuna, each hit separates a fifth of him from his host, and enough of it tears him out.</description>
+    <iconPath>Abilities/Yuta/Copy/JacobsLadder</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_JacobsLadder</abilityClass>
+    <targetMode>Location</targetMode>
+    <range>24.9</range>
+    <radius>4.9</radius>
+    <castTime>60</castTime>
+    <cooldownTime>1800</cooldownTime>
+    <power>60</power>
+    <requireLineOfSight>false</requireLineOfSight>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>true</canTargetBuildings>
+      <canTargetItems>true</canTargetItems>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_YutaPath</path>
+        <level>5</level>
+        <order>3</order>
+        <psyfocusCost>0.06</psyfocusCost>
+        <entropyGain>20</entropyGain>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- The Angel flies (her call 2026-11-11): her own toggle, given directly (not a tree node), on the same flight as
+       Uro's Sky Manipulation (GojoFlight via the JJK_SkyFlight hediff). -->
+  <VEF.Abilities.AbilityDef>
+    <defName>JJK_AngelFlight</defName>
+    <label>Flight</label>
+    <description>Toggle. The Angel's wings carry her wherever she's sent, over walls, water and everything else on the ground, around mountains, never under a roof. Costs psyfocus every second while up; with none left, she walks.</description>
+    <iconPath>Abilities/Angel/Flight</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Toggle</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="JujutsuFundamentals.ToggleExtension">
+        <key>angelflight</key>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <FleckDef ParentName="FleckBase">
+    <defName>JJK_Fleck_JacobsLadder</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.1</fadeInTime>
+    <solidTime>0.5</solidTime>
+    <fadeOutTime>0.9</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Angel/JacobsLadderBeam</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <!-- Gojo's captors (her call 2026-11-11: hunt the captors): one strong group at each of three sites. -->
+  <SitePartDef>
+    <defName>JJK_CaptorSite</defName>
+    <label>Gojo's captors</label>
+    <description>A group of those who sealed Satoru Gojo in the Prison Realm, holding out here. Beat every group in time and the Prison Realm is yours again.</description>
+    <workerClass>JujutsuFundamentals.SitePartWorker_CaptorSite</workerClass>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Outpost</expandingIconTexture>
+    <requiresFaction>true</requiresFaction>
+    <showFactionInInspectString>true</showFactionInInspectString>
+    <gravShipsCanLandOn>true</gravShipsCanLandOn>
+  </SitePartDef>
+
+  <!-- Hana Kurusu's childhood (her call 2026-11-12: "Homeless Child"). No skill gains or limits (none given). -->
+  <BackstoryDef>
+    <defName>JJK_HomelessChild</defName>
+    <title>homeless child</title>
+    <titleShort>homeless</titleShort>
+    <description>[PAWN_nameDef] grew up with no home to go back to.</description>
+    <slot>Childhood</slot>
+    <spawnCategories>
+      <li>JJKUnique</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <!-- Where the Angel is, once time ran out on freeing Gojo. -->
+  <SitePartDef>
+    <defName>JJK_AngelSite</defName>
+    <label>the Angel</label>
+    <description>Hana Kurusu, who carries the Angel, and a rear guard of those who sealed Gojo.</description>
+    <workerClass>JujutsuFundamentals.SitePartWorker_AngelSite</workerClass>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/DownedRefugee</expandingIconTexture>
+    <requiresFaction>false</requiresFaction>
+    <showFactionInInspectString>false</showFactionInInspectString>
+    <gravShipsCanLandOn>true</gravShipsCanLandOn>
+  </SitePartDef>
+</Defs>

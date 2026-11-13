@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- A bow of fire in the caster's hands while Furnace is being drawn.
+       Attached to the pawn and maintained for the whole warmup. -->
+  <ThingDef ParentName="MoteBase">
+    <defName>Sukuna_Mote_FireBow</defName>
+    <thingClass>MoteThrownAttached</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.4</fadeInTime>
+      <fadeOutTime>0.25</fadeOutTime>
+      <solidTime>9999</solidTime>
+      <needsMaintenance>true</needsMaintenance>
+    </mote>
+    <graphicData>
+      <texPath>Things/Mote/SukunaFireBow</texPath>
+      <!-- Graphic_Mote, not Graphic_Single: only Graphic_Mote draws with the mote's
+           exactRotation (WarmupMoteAim writes it each tick). Graphic_Single drew it
+           at rotation 0 whatever the aim. -->
+      <graphicClass>Graphic_Mote</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(1.9, 1.9)</drawSize>
+    </graphicData>
+  </ThingDef>
+
+</Defs>

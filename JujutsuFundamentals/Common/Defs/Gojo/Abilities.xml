@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Prerequisites follow the user's design (2026-10-16):
+         Infinity (start) -> Blue -> Blue Fist -> Black Flash
+         Infinity -> Reverse Cursed Technique -> Red
+         Blue -> Speed;  Blue + Red -> Teleport;  Blue + Red -> Purple
+         Infinity -> Domain Expansion: Infinite Void
+       Six Eyes halves psyfocus cost and neural heat through stats, so the costs
+       below are what anyone else would pay. -->
+
+  <!-- ============================ the centre ============================ -->
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Gojo_Infinity</defName>
+    <label>Infinity</label>
+    <description>Passive. An infinite series of halves stands between Gojo and everything else. Bullets, blades and fists slow as they approach and never quite arrive: shots hang in the air a step away from him, then drop. If Infinity fails, whatever is hanging carries on and hits.\n\nAlways on. Each attack stopped costs a little neural heat; Infinity drops, and attacks get through, once heat hits its limit (until heat cools to half) or psyfocus runs out (until 5% has come back).\n\nWhile Infinity is up, poison never reaches him: no tox gas, rot stink, toxic fallout, venom or food poisoning. He never catches fire, and a stopped attack does not stagger him.</description>
+    <iconPath>Abilities/Gojo/Infinity</iconPath>
+    <abilityClass>GojoPsycasts.Ability_Passive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Gojo_Path</path>
+        <level>1</level>
+        <order>1</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- ============================ the blue ring ============================ -->
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Gojo_Blue</defName>
+    <castSound>Gojo_Snd_BlueCast</castSound>
+    <label>Cursed Technique Lapse: Blue</label>
+    <description>A point of negative infinity. Gojo sets it where he looks, and everything nearby falls into it hard enough to be hurt: people, items, walls, trees, the ground itself. It leaves a crater.\n\nThe orb flies to the target and holds there for a few seconds. The more psyfocus Gojo has when it lands, the wider it pulls: up to twice as wide on a full bar. Its pull also reaches further the more psychically sensitive he is, and only half as far unless he has raised his cursed energy output. If it reaches one of Gojo's Reds, the two become Hollow Purple.</description>
+    <iconPath>Abilities/Gojo/Blue</iconPath>
+    <abilityClass>GojoPsycasts.Ability_Blue</abilityClass>
+    <targetMode>Location</targetMode>
+    <range>24.9</range>
+    <radius>3.9</radius>   <!-- 4.9 until her call 2026-11-11: a slight cut to its area (range restored) -->
+    <castTime>15</castTime>
+    <cooldownTime>300</cooldownTime>
+    <rangeStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </rangeStatFactors>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>true</canTargetBuildings>
+      <canTargetItems>true</canTargetItems>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Gojo_Path</path>
+        <level>2</level>
+        <order>1</order>
+        <psyfocusCost>0.04</psyfocusCost>
+        <entropyGain>12</entropyGain>
+        <prerequisites>
+          <li>Gojo_Infinity</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Gojo_BlueFist</defName>
+    <label>Blue Fist</label>
+    <description>Passive. A small Blue sits in Gojo's fist, so whatever he punches is already falling toward it. His unarmed hits land harder and more surely, and the target is staggered.</description>
+    <iconPath>Abilities/Gojo/BlueFist</iconPath>
+    <abilityClass>GojoPsycasts.Ability_Passive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Gojo_Path</path>
+        <level>3</level>
+        <order>1</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>Gojo_Blue</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Gojo_BlackFlash</defName>
+    <!-- 2026-11-10: moved to the shared Cursed Energy Fundamentals path; kept only so old saves load (converted on load). -->
+    <label>Black Flash</label>
+    <description>Passive. Cursed energy landing within a millionth of a second of the blow, and the space around the impact flashes black. Nobody does it on purpose, but Gojo does it more often than anyone.\n\nAny damaging hit may crit for 2.5x with sharply raised armour penetration, healing Gojo, returning psyfocus and purging neural heat. Chance and every number scale with psychic sensitivity.</description>
+    <iconPath>Abilities/Gojo/BlackFlash</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Passive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Gojo_Speed</defName>
+    <label>Blue: Acceleration</label>
+    <description>Gojo pulls himself along with small Blues, toward wherever he is going next. He moves and strikes far faster than anyone should.\n\nHeld on; costs psyfocus for as long as it is up.</description>
+    <iconPath>Abilities/Gojo/Speed</iconPath>
+    <abilityClass>GojoPsycasts.Ability_ToggleSpeed</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <chance>0</chance>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Gojo_Path</path>
+        <level>3</level>
+        <order>2</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>Gojo_Blue</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- ============================ the red ring ============================ -->
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Gojo_ReverseCursedTechnique</defName>
+    <!-- 2026-11-10: moved to the shared Cursed Energy Fundamentals path; kept only so old saves load (converted on load). -->
+    <label>Reverse Cursed Technique</label>
+    <description>Negative energy multiplied against itself produces positive energy, and the body repairs itself without being told to. With the Six Eyes running the numbers, Gojo's is faster and cheaper than anyone's.\n\nSpeed scales with how much psyfocus is in the pool. Nearby allies are healed more slowly. Switched on and off with this button. Costs psyfocus every second while on (Six Eyes halves it), and stops at zero psyfocus or maximum neural heat. Poison makes healing cost double, up to triple as toxic buildup nears deadly.\n\nPositive energy is what destroys curses: deals double damage to anomalies (entities and mutants).</description>
+    <iconPath>Abilities/Gojo/ReverseCursedTechnique</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Passive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- Cursed Energy Reinforcement, as Sukuna has it (her call 2026-10-31). -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Gojo_Reinforcement</defName>
+    <!-- 2026-11-10: moved to the shared Cursed Energy Fundamentals path; kept only so old saves load (converted on load). -->
+    <label>Cursed Energy Reinforcement</label>
+    <description>Cursed energy coats Gojo's body: harder skin, heavier blows, faster feet.\n\nAlways on at half strength once learned. The button raises his cursed energy output to full, costing psyfocus every second while on (Six Eyes halves it). Scales with psychic sensitivity.</description>
+    <iconPath>Abilities/Gojo/Reinforcement</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Passive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Gojo_Red</defName>
+    <castSound>Gojo_Snd_RedCast</castSound>
+    <label>Cursed Technique Reversal: Red</label>
+    <description>Infinity reversed with positive energy: repulsion. Gojo makes an orb of red force and lets it go, so it flies to the target and waits there until something touches it or flies through it, then bursts and flings everything outward, wider the more psyfocus he had when it landed (up to twice as wide), and wider still the more psychically sensitive he is, but only half as wide unless he has raised his cursed energy output (a Blue reaching it makes Hollow Purple instead).\n\nThe beam is its own button, Red: Beam.</description>
+    <iconPath>Abilities/Gojo/Red</iconPath>
+    <abilityClass>GojoPsycasts.Ability_Red</abilityClass>
+    <targetMode>Location</targetMode>
+    <range>29.9</range>
+    <radius>3.9</radius>
+    <castTime>20</castTime>
+    <cooldownTime>600</cooldownTime>
+    <rangeStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </rangeStatFactors>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>true</canTargetBuildings>
+      <canTargetItems>true</canTargetItems>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Gojo_Path</path>
+        <level>3</level>
+        <order>3</order>
+        <psyfocusCost>0.08</psyfocusCost>
+        <entropyGain>24</entropyGain>
+        <prerequisites>
+          <li>Gojo_Infinity</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Gojo_Teleport</defName>
+    <castSound>Gojo_Snd_Teleport</castSound>
+    <label>Teleportation</label>
+    <description>Blue pulling him toward the destination, Red pushing him off the start. Gojo crosses the distance in no time at all.\n\nThis button moves him anywhere on the map, through walls. The Teleport: far button beside it sends him to any tile on the planet.</description>
+    <iconPath>Abilities/Gojo/Teleport</iconPath>
+    <abilityClass>GojoPsycasts.Ability_Teleport</abilityClass>
+    <targetMode>Location</targetMode>
+    <range>49.9</range>
+    <castTime>10</castTime>
+    <cooldownTime>120</cooldownTime>
+    <requireLineOfSight>false</requireLineOfSight>
+    <rangeStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </rangeStatFactors>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>false</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetItems>false</canTargetItems>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Gojo_Path</path>
+        <level>4</level>
+        <order>2</order>
+        <psyfocusCost>0.05</psyfocusCost>
+        <entropyGain>10</entropyGain>
+        <prerequisites>
+          <li>Gojo_Blue</li>
+          <li>Gojo_Red</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- ============================ the top ============================ -->
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Gojo_Purple</defName>
+    <castSound>Gojo_Snd_PurpleFire</castSound>
+    <warmupStartSound>Gojo_Snd_PurpleCharge</warmupStartSound>
+    <label>Hollow Technique: Purple</label>
+    <description>Blue and Red, brought together. The collision makes imaginary mass that erases whatever it passes through: not breaks, erases.\n\nCast, it is one fast orb of purple that tears a line across the map.\n\nIt also comes from his other two techniques: any Blue of Gojo's that reaches one of his waiting Reds bursts into Purple where they meet, erasing everything as far as Blue's pull. That costs nothing more and works even while this psycast is cooling down.\n\nWith "Purple: chant" on, he says the full incantation first, as in the manga: about five seconds of chanting, and it comes out at 200%, twice as wide and half again as far. Switch it off for the quick Purple.</description>
+    <iconPath>Abilities/Gojo/Purple</iconPath>
+    <abilityClass>GojoPsycasts.Ability_Purple</abilityClass>
+    <targetMode>Location</targetMode>
+    <range>44.9</range>
+    <castTime>90</castTime>
+    <cooldownTime>2400</cooldownTime>
+    <rangeStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </rangeStatFactors>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>true</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Gojo_Path</path>
+        <level>5</level>
+        <order>1</order>
+        <psyfocusCost>0.35</psyfocusCost>
+        <entropyGain>45</entropyGain>
+        <prerequisites>
+          <li>Gojo_Blue</li>
+          <li>Gojo_Red</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Gojo_InfiniteVoid</defName>
+    <castSound>Gojo_Snd_VoidOpen</castSound>
+    <warmupStartSound>Gojo_Snd_VoidStart</warmupStartSound>
+    <label>Domain Expansion: Infinite Void</label>
+    <description>Gojo's innate domain, closed behind a barrier. Inside is infinite information, and everything inside has to take all of it in at once: anyone who is not his ally is paralysed for as long as the domain lasts, and for a while after.\n\nThe barrier keeps people in and out until it is broken. Gojo's touch shares only what he chooses, so whoever he is fighting hand to hand is spared, until they separate.\n\nOpening a domain is a huge strain: it adds half of Gojo's neural heat limit at once.</description>
+    <iconPath>Abilities/Gojo/InfiniteVoid</iconPath>
+    <abilityClass>GojoPsycasts.Ability_InfiniteVoid</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>120</castTime>
+    <durationTime>3600</durationTime>   <!-- always 1 minute (her call 2026-11-12) -->
+    <cooldownTime>3600</cooldownTime>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>Gojo_Path</path>
+        <level>5</level>
+        <order>2</order>
+        <psyfocusCost>0.5</psyfocusCost>
+        <entropyGain>50</entropyGain>
+        <prerequisites>
+          <li>Gojo_Infinity</li>
+        </prerequisites>
+      </li>
+      <li Class="VEF.Abilities.AbilityExtension_Hediff">
+        <hediff>Gojo_InfiniteVoid</hediff>
+        <applyToCaster>true</applyToCaster>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- Pull and Push (her call 2026-11-04): not tree nodes. Learning Blue gives Pull and
+       learning Red gives Push (HediffComp_Limitless). The cost is paid in PullPush.cs. -->
+  <VEF.Abilities.AbilityDef>
+    <defName>Gojo_Pull</defName>
+    <castSound>Gojo_Snd_Pull</castSound>
+    <label>Blue: Pull</label>
+    <description>A flick of Blue. One person or loose item is dragged straight to Gojo's side.\n\nComes with Blue. Costs 1% psyfocus and 3 neural heat (Six Eyes halves the psyfocus).</description>
+    <iconPath>Abilities/Gojo/Pull</iconPath>
+    <abilityClass>GojoPsycasts.Ability_Pull</abilityClass>
+    <targetMode>Location</targetMode>
+    <range>24.9</range>
+    <castTime>5</castTime>
+    <cooldownTime>60</cooldownTime>
+    <rangeStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </rangeStatFactors>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetItems>true</canTargetItems>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- Red: Beam (her call 2026-11-11): its own button instead of a switch on Red. Comes with Red, like Push. -->
+  <VEF.Abilities.AbilityDef>
+    <defName>Gojo_RedBeam</defName>
+    <castSound>Gojo_Snd_RedCast</castSound>
+    <label>Red: Beam</label>
+    <description>Red held and fired as a beam: everything along the line is hit and hammered backward, and buildings in its path are damaged. A wall that survives stops it. Reaches farther and hits harder with psychic sensitivity.\n\nComes with Red. Costs what Red does: 8% psyfocus and 24 neural heat (Six Eyes halves the psyfocus).</description>
+    <iconPath>Abilities/Gojo/RedBeam</iconPath>
+    <abilityClass>GojoPsycasts.Ability_RedBeam</abilityClass>
+    <targetMode>Location</targetMode>
+    <range>29.9</range>
+    <castTime>20</castTime>
+    <cooldownTime>600</cooldownTime>
+    <rangeStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </rangeStatFactors>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>true</canTargetBuildings>
+      <canTargetItems>true</canTargetItems>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef>
+    <defName>Gojo_Push</defName>
+    <castSound>Gojo_Snd_Push</castSound>
+    <label>Red: Push</label>
+    <description>A flick of Red. One person or loose item is thrown away from Gojo, about eight cells, farther with psychic sensitivity. Someone thrown into a wall before then is hurt by it.\n\nComes with Red. Costs 2% psyfocus and 6 neural heat (Six Eyes halves the psyfocus).</description>
+    <iconPath>Abilities/Gojo/Push</iconPath>
+    <abilityClass>GojoPsycasts.Ability_Push</abilityClass>
+    <targetMode>Location</targetMode>
+    <range>24.9</range>
+    <castTime>5</castTime>
+    <cooldownTime>60</cooldownTime>
+    <rangeStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </rangeStatFactors>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetItems>true</canTargetItems>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- Flight (her call 2026-11-04): every Six Eyes user has it, not a tree node. -->
+  <VEF.Abilities.AbilityDef>
+    <defName>Gojo_Fly</defName>
+    <label>Fly</label>
+    <description>Gojo stands on nothing. While on, he travels through the air wherever he is sent, over walls, water, people and everything else on the ground, half again as fast as he walks, as long as no roof is in the way. Mountains he flies around, not over. Where the only way is under a roof, he walks.\n\nCosts a little psyfocus every second while on (Six Eyes halves it), and he comes down when psyfocus runs out.</description>
+    <iconPath>Abilities/Gojo/Fly</iconPath>
+    <abilityClass>GojoPsycasts.Ability_ToggleFly</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+  </VEF.Abilities.AbilityDef>
+
+</Defs>

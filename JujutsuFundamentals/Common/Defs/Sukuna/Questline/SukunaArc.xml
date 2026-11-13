@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- ===================================================================
+       Sukuna's escape and Yuji's road to the pinnacle (her call 2026-11-01).
+       Driven by SukunaArc.cs from the QuestlineTracker.
+       =================================================================== -->
+
+  <!-- One minute of Sukuna at the wheel. Nothing in the think tree handles it: the state
+       itself keeps Yuji on the one job he has. -->
+  <MentalStateDef>
+    <defName>Sukuna_Possessed</defName>
+    <label>taken over by Sukuna</label>
+    <stateClass>SukunaPsycasts.MentalState_Possessed</stateClass>
+    <category>Malicious</category>
+    <nameColor>(0.9, 0.25, 0.3)</nameColor>
+    <baseInspectLine>Taken over by Sukuna</baseInspectLine>
+    <minTicksBeforeRecovery>999999</minTicksBeforeRecovery>
+    <recoveryMtbDays>9999</recoveryMtbDays>
+    <blockNormalThoughts>true</blockNormalThoughts>
+    <recoverFromSleep>false</recoverFromSleep>
+    <recoverFromDowned>false</recoverFromDowned>
+  </MentalStateDef>
+
+  <JobDef>
+    <defName>Sukuna_ForceFinger</defName>
+    <driverClass>SukunaPsycasts.JobDriver_ForceFinger</driverClass>
+    <reportString>forcing a finger down TargetA's throat.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+    <playerInterruptible>false</playerInterruptible>
+  </JobDef>
+
+  <!-- Knocked out: Yuji when Sukuna lets go, and a host when Sukuna is cut out of them. -->
+  <HediffDef>
+    <defName>Sukuna_Collapse</defName>
+    <label>collapsed</label>
+    <description>Something that was holding this body up has just let go of it.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.8, 0.6, 0.6)</defaultLabelColor>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <capMods>
+          <li><capacity>Consciousness</capacity><setMax>0.1</setMax></li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>60000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- Anyone who has swallowed a finger. Shrine can only be learned with it, and it stays
+       after the fingers are gone (Yuji keeps the technique Sukuna carved into him). -->
+  <HediffDef>
+    <defName>Sukuna_ShrineImprint</defName>
+    <label>shrine imprint</label>
+    <description>The King of Curses' technique has been carved into this body. Even with every finger gone, Shrine can still be learned.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <comps>
+      <li><compClass>SukunaPsycasts.HediffComp_AimBow</compClass></li>
+    </comps>
+    <defaultLabelColor>(0.95, 0.55, 0.65)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <!-- How much of Sukuna's soul has been cut loose from his host. At 100% he is gone. -->
+  <HediffDef>
+    <defName>Sukuna_SoulSevered</defName>
+    <label>soul severed</label>
+    <description>Yuji has learned to see the line between a body and the soul wearing it, and to cut along it. When the cut goes all the way through, the King of Curses is torn out of his host, and the fingers holding him there with him.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.95, 0.85, 0.6)</defaultLabelColor>
+    <initialSeverity>0.01</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li><label>frayed</label></li>
+      <li><minSeverity>0.5</minSeverity><label>torn</label></li>
+      <li><minSeverity>0.85</minSeverity><label>nearly cut free</label></li>
+    </stages>
+  </HediffDef>
+
+  <!-- Benevolent Shrine's soul cuts on anyone who is not the King (her call 2026-11-02): it never kills.
+       At full the pawn collapses; it fades over about a day. -->
+  <HediffDef>
+    <defName>Sukuna_SoulWound</defName>
+    <label>soul wound</label>
+    <description>Cuts made on the soul, not the body. Nothing bleeds, but past a point the body stops answering. It never kills, and it closes on its own.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0.8, 1)</defaultLabelColor>
+    <initialSeverity>0.01</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay"><severityPerDay>-1</severityPerDay></li>
+    </comps>
+    <stages>
+      <li><label>minor</label><capMods><li><capacity>Consciousness</capacity><offset>-0.1</offset></li></capMods></li>
+      <li><minSeverity>0.4</minSeverity><label>deep</label><capMods><li><capacity>Consciousness</capacity><offset>-0.3</offset></li></capMods></li>
+      <li><minSeverity>0.99</minSeverity><label>severed from the body</label><capMods><li><capacity>Consciousness</capacity><setMax>0.1</setMax></li></capMods></li>
+    </stages>
+  </HediffDef>
+
+  <!-- The pinnacle of jujutsu: marks Yuji's Modulo form. -->
+  <HediffDef>
+    <defName>Sukuna_JujutsuPinnacle</defName>
+    <label>pinnacle of jujutsu</label>
+    <description>Yuji Itadori beat the King of Curses with his own technique turned inside out. He has not aged since.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.95, 0.95, 1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <!-- Piercing Blood's poison: three days out cold. -->
+  <HediffDef>
+    <defName>Sukuna_BloodPoison</defName>
+    <label>blood poison</label>
+    <description>Yuji's blood, poisonous to anyone but him and his brothers. It puts the body to sleep and keeps it there.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.75, 0.15, 0.2)</defaultLabelColor>
+    <isBad>true</isBad>
+    <stages>
+      <li>
+        <capMods>
+          <li><capacity>Consciousness</capacity><setMax>0.1</setMax></li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>180000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ===================================================================
+       Domain Expansion: Benevolent Shrine. Yuji's own, replaces Malevolent Shrine.
+       Not part of the Shrine tree, so nobody can learn it with points.
+       =================================================================== -->
+  <DamageDef>
+    <defName>Sukuna_SoulSlash</defName>
+    <label>soul slash</label>
+    <workerClass>DamageWorker_Cut</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0}'s soul has been cut apart.</deathMessage>
+    <hediff>Cut</hediff>
+    <hediffSkin>Cut</hediffSkin>
+    <hediffSolid>Crack</hediffSolid>
+    <impactSoundType>Slice</impactSoundType>
+    <overkillPctToDestroyPart>0~0.1</overkillPctToDestroyPart>
+  </DamageDef>
+
+  <HediffDef>
+    <defName>Sukuna_BenevolentShrine</defName>
+    <label>benevolent shrine</label>
+    <description>Yuji's domain. It cuts nothing made of matter: only the souls of those who mean him or his friends harm.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <initialSeverity>1</initialSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="SukunaPsycasts.HediffCompProperties_BenevolentShrine">
+        <damageAmount>12</damageAmount>
+        <ticksBetween>30</ticksBetween>
+        <radius>24.9</radius>
+        <soulPerHit>0.06</soulPerHit>
+      </li>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>7200</disappearsAfterTicks>   <!-- 2 minutes (her call 2026-11-12) -->
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <VEF.Abilities.AbilityDef>
+    <defName>Sukuna_BenevolentShrine</defName>
+    <castSound>Sukuna_Snd_Benevolent</castSound>
+    <label>Domain Expansion: Benevolent Shrine</label>
+    <description>Yuji's own domain, born from Shrine and his brother's blood. Unlike Malevolent Shrine it is closed behind a barrier, which only Yuji can walk through and anyone else has to break. It cuts no stone, no wood and no flesh: it cuts the souls of everyone inside who isn't his ally, and leaves his allies untouched.\n\nThe King of Curses is not cut at all. He is cut loose: every slash parts his soul a little further from the body he took, until the fingers holding him there are torn out with him.</description>
+    <iconPath>Abilities/Sukuna/BenevolentShrine</iconPath>
+    <abilityClass>SukunaPsycasts.Ability_BenevolentShrine</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>240</castTime>
+    <cooldownTime>3600</cooldownTime>
+    <durationTime>7200</durationTime>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <modExtensions>
+      <li Class="VEF.Abilities.AbilityExtension_Hediff">
+        <hediff>Sukuna_BenevolentShrine</hediff>
+        <applyToCaster>true</applyToCaster>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- ===================================================================
+       Piercing Blood, scattered: Modulo Yuji's own.
+       =================================================================== -->
+  <DamageDef>
+    <defName>Sukuna_BloodPierce</defName>
+    <label>piercing blood</label>
+    <workerClass>DamageWorker_Stab</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been pierced by blood.</deathMessage>
+    <hediff>Stab</hediff>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+    <defaultDamage>14</defaultDamage>
+    <defaultArmorPenetration>0.6</defaultArmorPenetration>
+    <isRanged>true</isRanged>
+    <makesBlood>true</makesBlood>
+  </DamageDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Sukuna_BloodBullet</defName>
+    <label>piercing blood</label>
+    <thingClass>SukunaPsycasts.Projectile_HomingBlood</thingClass>
+    <graphicData>
+      <!-- her note 2026-11-06: like a red laser but not glowing, arrow-shaped head, boiling as it goes -->
+      <texPath>Things/Sukuna/BloodBeam</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(0.45, 3.4)</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Sukuna_BloodPierce</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.6</armorPenetrationBase>
+      <speed>38</speed>
+    </projectile>
+  </ThingDef>
+
+  <VEF.Abilities.AbilityDef>
+    <defName>Sukuna_PiercingBloodScatter</defName>
+    <castSound>Sukuna_Snd_PiercingBlood</castSound>
+    <label>Piercing Blood: Scatter</label>
+    <description>Yuji compresses his blood into a single boiling beam and fires it at what he aims at. If there are more enemies in range, the beam splits and splits again, one branch for each of them, up to eight. The poison in his blood puts anyone it pierces to sleep for three days.</description>
+    <iconPath>Abilities/Sukuna/PiercingBloodScatter</iconPath>
+    <abilityClass>SukunaPsycasts.Ability_PiercingBloodScatter</abilityClass>
+    <targetMode>Location</targetMode>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <castTime>30</castTime>
+    <cooldownTime>2500</cooldownTime>
+    <range>69.9</range>
+    <requireLineOfSight>false</requireLineOfSight>
+    <castFleck>PsycastAreaEffect</castFleck>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- ===================================================================
+       Death Paintings. Six exist (PaintingCensus; her call 2026-11-10, was ten); each one Yuji eats teaches him
+       the next Hemosage technique. Poison to anyone else.
+       =================================================================== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>Sukuna_DeathPainting</defName>
+    <label>Death Painting</label>
+    <description>A cursed womb, sealed in a jar of black glass: one of the Death Paintings, half alive for a hundred and fifty years.\n\nFor Yuji Itadori, swallowing one teaches the next Hemosage technique and wakes his blood. Choso, their brother, can swallow one unharmed. For anyone else it is a mouthful of poison.</description>
+    <graphicData>
+      <texPath>Things/Sukuna/DeathPainting</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.8</drawSize>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <stackLimit>10</stackLimit>
+    <destroyOnDrop>false</destroyOnDrop>
+    <alwaysHaulable>true</alwaysHaulable>
+    <tradeability>Sellable</tradeability>
+    <thingCategories>
+      <li>Items</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>9999</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Mass>0.4</Mass>
+      <DeteriorationRate>0</DeteriorationRate>
+      <MarketValue>900</MarketValue>
+      <Nutrition>0.05</Nutrition>
+    </statBases>
+    <socialPropernessMatters>false</socialPropernessMatters>
+    <ingestible>
+      <foodType>Corpse</foodType>
+      <preferability>NeverForNutrition</preferability>
+      <maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+      <baseIngestTicks>200</baseIngestTicks>
+      <chairSearchRadius>0</chairSearchRadius>
+      <ingestSound>Meal_Eat</ingestSound>
+      <ingestCommandString>Swallow {0}</ingestCommandString>
+      <ingestReportString>Swallowing {0}.</ingestReportString>
+    </ingestible>
+    <comps>
+      <li Class="SukunaPsycasts.CompProperties_DeathPainting" />
+    </comps>
+  </ThingDef>
+
+  <IncidentDef>
+    <defName>Sukuna_PaintingRumour</defName>
+    <label>death painting rumour</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>SukunaPsycasts.IncidentWorker_PaintingRumour</workerClass>
+    <baseChance>0</baseChance>
+  </IncidentDef>
+
+  <!-- Where Sukuna waits: an abandoned city (her call 2026-11-12), opened two months after Gojo is out of the Prison
+       Realm. The city is the game's own ruins, packed close (JJK_SukunaCityRuins), with no one living there. -->
+  <SitePartDef>
+    <defName>Sukuna_Lair</defName>
+    <label>abandoned city</label>
+    <description>An abandoned city, empty but for the King of Curses waiting in it.</description>
+    <workerClass>SukunaPsycasts.SitePartWorker_SukunaLair</workerClass>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/Sukuna/ShrineIcon</expandingIconTexture>
+    <requiresFaction>false</requiresFaction>
+    <showFactionInInspectString>false</showFactionInInspectString>
+    <gravShipsCanLandOn>true</gravShipsCanLandOn>
+  </SitePartDef>
+
+  <GenStepDef>
+    <defName>JJK_SukunaCityRuins</defName>
+    <linkWithSite>Sukuna_Lair</linkWithSite>
+    <order>400</order>
+    <genStep Class="GenStep_ScatterRuinsSimple">
+      <allowInWaterBiome>false</allowInWaterBiome>
+      <countPer10kCellsRange>9~13</countPer10kCellsRange>
+      <canBeOnEdge>true</canBeOnEdge>
+      <ignoreUsedRects>true</ignoreUsedRects>
+    </genStep>
+  </GenStepDef>
+
+  <IncidentDef>
+    <defName>Sukuna_TakeoverYuji</defName>
+    <label>sukuna takes over yuji</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>SukunaPsycasts.IncidentWorker_TakeoverYuji</workerClass>
+    <baseChance>0</baseChance>
+  </IncidentDef>
+
+
+  <!-- Benevolent Shrine's barrier (her call 2026-11-07: a barrier like Gojo's; Sukuna's domain is the
+       one without). One block per edge cell, a door only Yuji can open. -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>Sukuna_YujiBarrier</defName>
+    <label>domain barrier</label>
+    <description>The shell of Yuji's domain. Nobody but Yuji walks through it; anyone else has to break it.</description>
+    <thingClass>SukunaPsycasts.Building_YujiBarrier</thingClass>
+    <tickerType>Normal</tickerType>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Sukuna/YujiBarrier</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(1.1, 1.1)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <coversFloor>false</coversFloor>
+    <neverMultiSelect>true</neverMultiSelect>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <isInert>true</isInert>
+      <claimable>false</claimable>
+      <deconstructible>false</deconstructible>
+      <repairable>false</repairable>
+      <isTargetable>true</isTargetable>
+      <ai_chillDestination>false</ai_chillDestination>
+      <soundDoorOpenPowered>Door_OpenPowered</soundDoorOpenPowered>
+      <soundDoorClosePowered>Door_ClosePowered</soundDoorClosePowered>
+      <soundDoorOpenManual>Door_OpenPowered</soundDoorOpenManual>
+      <soundDoorCloseManual>Door_ClosePowered</soundDoorCloseManual>
+    </building>
+    <drawerType>RealtimeOnly</drawerType>
+    <holdsRoof>false</holdsRoof>
+    <destroyable>true</destroyable>
+  </ThingDef>
+</Defs>

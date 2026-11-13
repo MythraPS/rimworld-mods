@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Leap (her call 2026-11-11): Toji's and Maki's jump, no cursed energy. Not a psycast: no path, no psyfocus.
+       Icon: Air Step's for now (placeholder). Numbers are proposals. -->
+  <VEF.Abilities.AbilityDef>
+    <defName>JJK_Leap</defName>
+    <label>Leap</label>
+    <description>A leap on the strength of the legs alone: to a chosen spot, over walls, water and anyone in the way, but not over a mountain, and never landing inside a building. No cursed energy, so no psyfocus.\n\nColonists only leap when ordered.</description>
+    <iconPath>Abilities/Jujutsu/AirStep</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Leap</abilityClass>
+    <targetMode>Location</targetMode>
+    <range>19.9</range>
+    <castTime>10</castTime>
+    <cooldownTime>300</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>false</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+  </VEF.Abilities.AbilityDef>
+
+</Defs>

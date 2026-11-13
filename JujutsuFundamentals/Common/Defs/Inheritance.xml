@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Inherited cursed techniques (her calls 2026-11-12): JujutsuFundamentals.Innate. -->
+  <HediffDef>
+    <defName>JJK_InnateTechnique</defName>
+    <label>innate technique</label>
+    <description>A cursed technique this person was born with, passed down from a parent. Its path is open to them, and its first ability comes to them on its own once they have a psylink.</description>
+    <hediffClass>JujutsuFundamentals.Hediff_InnateTechnique</hediffClass>
+    <defaultLabelColor>(0.75, 0.6, 1.0)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <keepOnBodyPartRestoration>true</keepOnBodyPartRestoration>
+  </HediffDef>
+
+  <!-- Todo's and Ryu's techniques as paths, so someone born with them can learn them (her call 2026-11-12).
+       Todo and Ryu have theirs opened for them. Background: Cursed Energy Fundamentals' (no new art). -->
+  <VanillaPsycastsExpanded.PsycasterPathDef>
+    <defName>JJK_BoogieWoogiePath</defName>
+    <label>Boogie Woogie</label>
+    <description>Aoi Todo's cursed technique: a clap, and two things swap places.</description>
+    <background>UI/Backgrounds/JujutsuFundamentals</background>
+    <altBackground>UI/AlternativeBackgrounds/PathBG_JujutsuFundamentals</altBackground>
+    <tab>Psycasts</tab>
+    <lockedReason>Aoi Todo, or born with Boogie Woogie</lockedReason>
+    <ensureLockRequirement>True</ensureLockRequirement>
+    <tooltip>Aoi Todo's cursed technique. Only he and those born with it can learn it.</tooltip>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+
+  <VanillaPsycastsExpanded.PsycasterPathDef>
+    <defName>JJK_GraniteBlastPath</defName>
+    <label>Granite Blast</label>
+    <description>Ryu Ishigori's cursed technique: his enormous output, fired as beams.</description>
+    <background>UI/Backgrounds/JujutsuFundamentals</background>
+    <altBackground>UI/AlternativeBackgrounds/PathBG_JujutsuFundamentals</altBackground>
+    <tab>Psycasts</tab>
+    <lockedReason>Ryu Ishigori, or born with Granite Blast</lockedReason>
+    <ensureLockRequirement>True</ensureLockRequirement>
+    <tooltip>Ryu Ishigori's cursed technique. Only he and those born with it can learn it.</tooltip>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+</Defs>

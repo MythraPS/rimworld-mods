@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Rika (her design 2026-11-11, design doc 3d). Two forms, both real pawns of Yuta's faction, never draftable
+       (not humanlike, not a mech): Cursed Spirit Rika (an Anomaly entity: her flesh type is set to EntityFlesh at
+       startup when Anomaly is active, which is what RaceProperties.IsAnomalyEntity reads) and Shikigami Rika.
+       Both share one body; the curse form's extra power is the JJK_RikaCursePower hediff, so "as strong as her curse
+       form" (ring, adult Yuta) is exactly the same numbers. All numbers are proposals.
+       Art: tools/yuta/art_rika.py, from the references in ~/.local/share/rimworld-refs/yuta-images. -->
+
+  <ThingDef Name="JJK_RikaBase" ParentName="BasePawn" Abstract="True">
+    <tradeability>None</tradeability>
+    <statBases>
+      <MoveSpeed>5.2</MoveSpeed>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>200</ComfyTemperatureMax>
+      <!-- tankier and much more fire resistant, both forms (her call 2026-11-11; were 0.4 / 0.3 / 0.3, no flammability set) -->
+      <ArmorRating_Sharp>0.7</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.6</ArmorRating_Blunt>
+      <ArmorRating_Heat>1.4</ArmorRating_Heat>
+      <Flammability>0.1</Flammability>
+      <PsychicSensitivity>1</PsychicSensitivity>
+      <ToxicResistance>1</ToxicResistance>
+      <MarketValue>0</MarketValue>
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">1</VacuumResistance>
+    </statBases>
+    <race>
+      <thinkTreeMain>JJK_Rika</thinkTreeMain>
+      <thinkTreeConstant>JJK_RikaConstant</thinkTreeConstant>
+      <body>Human</body>
+      <baseHealthScale>7</baseHealthScale>   <!-- was 4 (her call 2026-11-11: tankier) -->
+      <intelligence>ToolUser</intelligence>
+      <needsRest>false</needsRest>
+      <foodType>None</foodType>
+      <hasGenders>false</hasGenders>
+      <hasCorpse>false</hasCorpse>
+      <hasMeat>false</hasMeat>
+      <isImmuneToInfections>true</isImmuneToInfections>
+      <lifeExpectancy>1000</lifeExpectancy>
+      <trainability>None</trainability>
+      <disableIgniteVerb>true</disableIgniteVerb>
+      <soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+      <lifeStageAges>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>0</minAge>
+        </li>
+      </lifeStageAges>
+    </race>
+    <tools>
+      <li>
+        <label>left hand</label>
+        <labelNoLocation>hand</labelNoLocation>
+        <capacities>
+          <li>Scratch</li>
+          <li>Blunt</li>
+        </capacities>
+        <power>18</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+      </li>
+      <li>
+        <label>right hand</label>
+        <labelNoLocation>hand</labelNoLocation>
+        <capacities>
+          <li>Scratch</li>
+          <li>Blunt</li>
+        </capacities>
+        <power>18</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+      </li>
+      <li>
+        <label>teeth</label>
+        <capacities>
+          <li>Bite</li>
+        </capacities>
+        <power>24</power>
+        <cooldownTime>2.4</cooldownTime>
+        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+        <chanceFactor>0.6</chanceFactor>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef ParentName="JJK_RikaBase">
+    <defName>JJK_RikaCurseRace</defName>
+    <label>Cursed Spirit Rika</label>
+    <description>Rika Orimoto's curse, attached to Yuta Okkotsu. She manifests on her own when anyone hurts him, goes after them, and nobody can order her.</description>
+    <race>
+      <baseBodySize>3</baseBodySize>
+    </race>
+  </ThingDef>
+
+  <ThingDef ParentName="JJK_RikaBase">
+    <defName>JJK_RikaShikigamiRace</defName>
+    <label>Shikigami Rika</label>
+    <description>Rika as Yuta Okkotsu's shikigami. She can be drafted and ordered; left alone she follows him and fights whoever threatens him. Weaker than her curse form, except for adult Yuta. With his ring on he calls her in her curse form instead.</description>
+    <race>
+      <baseBodySize>2.5</baseBodySize>
+    </race>
+  </ThingDef>
+
+  <PawnKindDef>
+    <defName>JJK_RikaCurse</defName>
+    <label>Cursed Spirit Rika</label>
+    <race>JJK_RikaCurseRace</race>
+    <combatPower>500</combatPower>
+    <canArriveManhunter>false</canArriveManhunter>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Yuta/Rika/Curse</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>4.2</drawSize>
+          <shadowData>
+            <volume>(0.9, 0.5, 0.7)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+  <PawnKindDef>
+    <defName>JJK_RikaShikigami</defName>
+    <label>Shikigami Rika</label>
+    <race>JJK_RikaShikigamiRace</race>
+    <combatPower>300</combatPower>
+    <canArriveManhunter>false</canArriveManhunter>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Yuta/Rika/Shikigami</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3.8</drawSize>
+          <shadowData>
+            <volume>(0.8, 0.5, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+  <ThinkTreeDef>
+    <defName>JJK_Rika</defName>
+    <thinkRoot Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="ThinkNode_Subtree">
+          <treeDef>Despawned</treeDef>
+        </li>
+        <li Class="ThinkNode_Subtree">
+          <treeDef>Downed</treeDef>
+        </li>
+        <!-- drafted Shikigami Rika: the player's orders (the same nodes as the ghoul tree) -->
+        <li Class="ThinkNode_QueuedJob" />
+        <li Class="ThinkNode_ConditionalOfPlayerFaction">
+          <subNodes>
+            <li Class="ThinkNode_Tagger">
+              <tagToGive>DraftedOrder</tagToGive>
+              <subNodes>
+                <li Class="JobGiver_MoveToStandable" />
+                <li Class="JobGiver_Orders" />
+              </subNodes>
+            </li>
+          </subNodes>
+        </li>
+        <li Class="JujutsuFundamentals.JobGiver_RikaFight" />
+        <li Class="JujutsuFundamentals.JobGiver_RikaFollow" />
+        <li Class="JobGiver_Idle">
+          <ticks>60</ticks>
+        </li>
+      </subNodes>
+    </thinkRoot>
+  </ThinkTreeDef>
+
+  <ThinkTreeDef>
+    <defName>JJK_RikaConstant</defName>
+    <thinkRoot Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="ThinkNode_Subtree">
+          <treeDef>Despawned</treeDef>
+        </li>
+      </subNodes>
+    </thinkRoot>
+  </ThinkTreeDef>
+
+  <!-- The curse form's power: always on Cursed Spirit Rika; on Shikigami Rika while Yuta wears his ring, and
+       always for adult Yuta. -->
+  <HediffDef>
+    <defName>JJK_RikaCursePower</defName>
+    <label>full power</label>
+    <description>Rika at the full power of her curse form.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <statFactors>
+          <MeleeDamageFactor>2</MeleeDamageFactor>
+          <IncomingDamageFactor>0.5</IncomingDamageFactor>
+        </statFactors>
+        <statOffsets>
+          <MoveSpeed>1</MoveSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Canon: a full manifestation lasts five minutes (18000 ticks). Not given to adult Yuta's Rika. -->
+  <HediffDef>
+    <defName>JJK_RikaRingConnection</defName>
+    <label>connected to Rika</label>
+    <description>Yuta has put on his ring and is connected to Rika: she is fully manifested in her curse look at full power, she supplies him cursed energy (extra psyfocus that tops his bar up), and he can Copy. Five minutes; when it ends she goes back.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>18000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="JujutsuFundamentals.HediffCompProperties_RikaRing">
+        <reserve>2</reserve>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>JJK_RikaManifestTimer</defName>
+    <label>manifested</label>
+    <description>Shikigami Rika is fully manifested. When the time runs out she goes back to Yuta.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>18000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>JJK_RikaGrappled</defName>
+    <label>held by Rika</label>
+    <description>Rika's hands are holding this person in place.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>300</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <FleckDef ParentName="FleckBase">
+    <defName>JJK_Fleck_RikaArm</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>0.35</solidTime>
+    <fadeOutTime>0.5</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Yuta/Rika/ArmFleck</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase">
+    <defName>JJK_Fleck_RikaMaw</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>0.25</solidTime>
+    <fadeOutTime>0.4</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Yuta/Rika/MawFleck</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase">
+    <defName>JJK_Fleck_RikaGrapple</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.1</fadeInTime>
+    <solidTime>4.4</solidTime>
+    <fadeOutTime>0.5</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Yuta/Rika/GrappleFleck</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <!-- ===================== Yuta's path: Rika's nodes ===================== -->
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Yuta_ManifestRika</defName>
+    <label>Manifest Rika</label>
+    <description>Rika manifests fully beside Yuta. Until her curse is unravelled (when Yuta learns his domain) she comes as Cursed Spirit Rika at full power; after that, as Shikigami Rika. With his ring on (Put On The Ring) she comes in her curse look at full power. She can be drafted and ordered like a colonist; left alone she follows him and fights anyone who threatens him. She stays for five minutes, then goes back to him; she can also be sent back early.\n\nCursed Speech's Die needs her manifested; Copy needs the ring's connection.</description>
+    <iconPath>Abilities/Yuta/Rika/ManifestRika</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_ManifestRika</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>60</castTime>
+    <cooldownTime>2500</cooldownTime>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_YutaPath</path>
+        <level>1</level>
+        <order>1</order>
+        <psyfocusCost>0.25</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Yuta_RikaArm</defName>
+    <label>Rika's Arm</label>
+    <description>Partial manifestation: one of Rika's arms comes out and smashes the target: a person, an animal, a building or an object. A living target is stunned for a moment. Doesn't need Rika fully manifested. Damage grows with psychic sensitivity.</description>
+    <iconPath>Abilities/Yuta/Rika/RikaArm</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_RikaArm</abilityClass>
+    <targetMode>Thing</targetMode>
+    <targetingParameters>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>true</canTargetBuildings>
+      <canTargetItems>true</canTargetItems>
+      <canTargetSelf>false</canTargetSelf>
+      <canTargetLocations>false</canTargetLocations>
+    </targetingParameters>
+    <castTime>15</castTime>
+    <cooldownTime>600</cooldownTime>
+    <range>14.9</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_YutaPath</path>
+        <level>1</level>
+        <order>2</order>
+        <psyfocusCost>0.03</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Yuta_RikaBite</defName>
+    <label>Rika's Bite</label>
+    <description>Partial manifestation: Rika's mouth comes out and bites the target, leaving a deep, bleeding wound. Doesn't need Rika fully manifested. Damage grows with psychic sensitivity.</description>
+    <iconPath>Abilities/Yuta/Rika/RikaBite</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_RikaBite</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+      <canTargetLocations>false</canTargetLocations>
+    </targetingParameters>
+    <castTime>15</castTime>
+    <cooldownTime>600</cooldownTime>
+    <range>9.9</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_YutaPath</path>
+        <level>2</level>
+        <order>1</order>
+        <psyfocusCost>0.03</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_Yuta_RikaArm</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Yuta_RikaGrapple</defName>
+    <label>Rika's Grapple</label>
+    <description>Partial manifestation: Rika's hands come out and hold the target in place for five seconds. A held target counts as stunned, so Rika can take a technique from them with Copy. Doesn't need Rika fully manifested.</description>
+    <iconPath>Abilities/Yuta/Rika/RikaGrapple</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_RikaGrapple</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+      <canTargetLocations>false</canTargetLocations>
+    </targetingParameters>
+    <castTime>15</castTime>
+    <cooldownTime>1200</cooldownTime>
+    <range>9.9</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_YutaPath</path>
+        <level>2</level>
+        <order>2</order>
+        <psyfocusCost>0.05</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_Yuta_RikaArm</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+</Defs>

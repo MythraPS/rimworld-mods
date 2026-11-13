@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Translucent slash arc. Used by every slashing ability so the cut is visible
+       without ever looking like a solid object. -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Sukuna_Fleck_Slash</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.03</fadeInTime>
+    <solidTime>0.10</solidTime>
+    <fadeOutTime>0.28</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Sukuna/Slash</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(2.6, 1.3)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <!-- Black Flash: jagged black sparks with a red edge thrown out of the impact (same art as the Gojo mod). -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Sukuna_Fleck_BlackSpark</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.2</solidTime>
+    <fadeOutTime>0.45</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Sukuna/BlackSpark</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(1.6, 1.6)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+
+  <!-- World Cutting Slash: far larger and heavier than an ordinary cut. -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Sukuna_Fleck_WorldSlash</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.04</fadeInTime>
+    <solidTime>0.35</solidTime>
+    <fadeOutTime>0.7</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Sukuna/WorldSlash</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(3.0, 1.2)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <!-- The leading edge of a World Cutting Slash. Two cells wider than the cut it
+       is drawn on (5 across against a 3-cell effect) because the blade should
+       overhang what it is actually severing, and short-lived so that only one is on
+       screen at a time. -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Sukuna_Fleck_WorldSlashHead</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.01</fadeInTime>
+    <solidTime>0.04</solidTime>
+    <fadeOutTime>0.09</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Sukuna/WorldSlash</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(5.0, 2.0)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <!-- The ground split open along World Cutting Slash's line, for a few seconds
+       only (her call 2026-10-31: no chunks, no lasting change to the ground). -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Sukuna_Fleck_GroundSplit</defName>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>6</solidTime>
+    <fadeOutTime>3</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Sukuna/GroundSplit</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(0.8, 1.6)</drawSize>   <!-- 1.6 long so diagonal cuts join up -->
+    </graphicData>
+  </FleckDef>
+
+  <!-- World Cutting Slash's one trail (her pick 2026-10-31): a straight streak as
+       wide as the cut (3 cells), laid in 1-cell segments end to end along the exact
+       line so they join without overlapping. Replaces the travelling flash and the
+       ground crack. -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Sukuna_Fleck_WorldSlashTrail</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.03</fadeInTime>
+    <solidTime>2.5</solidTime>
+    <fadeOutTime>1.5</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Sukuna/WorldSlashTrail</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(3.0, 1.0)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <!-- Piercing Blood boiling as it flies (2026-11-06): bubbles that swell and pop along the shot. -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Sukuna_Fleck_BloodBubble</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.12</solidTime>
+    <fadeOutTime>0.22</fadeOutTime>
+    <growthRate>0.9</growthRate>
+    <graphicData>
+      <texPath>Things/Sukuna/BloodBubble</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+  </FleckDef>
+
+  <!-- Piercing Blood: Scatter as one continuous beam that splits (her call 2026-11-07). One segment,
+       stretched between two points by FleckMaker.ConnectingLine (texture lies along x). -->
+  <!-- FleckBase like vanilla LineEMP, the base game's own ConnectingLine fleck (2026-11-08: the beam
+       did not show as a thrown fleck). -->
+  <FleckDef ParentName="FleckBase">
+    <defName>Sukuna_Fleck_BloodBeamLine</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.03</fadeInTime>
+    <solidTime>0.35</solidTime>
+    <fadeOutTime>0.45</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Sukuna/BloodBeamLine</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+  </FleckDef>
+
+</Defs>

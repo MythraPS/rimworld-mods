@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Choso's and Modulo Yuji's Corpse Explosion aims at a spot (BloodBurst.cs, her call 2026-11-11). Everyone else's
+       still needs a corpse: Hemosage's own target check turns spots down for them. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/VEF.Abilities.AbilityDef[defName="VPEH_CorpseExplosion"]/targetingParameters/canTargetLocations</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/VEF.Abilities.AbilityDef[defName="VPEH_CorpseExplosion"]/targetingParameters/canTargetLocations</xpath>
+      <value><canTargetLocations>true</canTargetLocations></value>
+    </match>
+  </Operation>
+</Patch>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Uro's Domain Expansion (her call 2026-11-11): its sure hit is Thin Ice-Breaker. Canon never names it (the clash in
+       ch. 179 breaks it first): named Skyfall by her (2026-11-11). Built like Ryu's Granite Tsunami; numbers are proposals. -->
+  <VEF.Abilities.AbilityDef>
+    <defName>JJK_UroDomainExpansion</defName>
+    <label>Domain Expansion: Skyfall</label>
+    <description>Skyfall, Uro's domain, closed behind a barrier. Every second and a half, Thin Ice-Breaker lands on everyone inside who isn't her ally, a sure hit: their psycast shields and buffs are stripped, shield belts break, armour stops counting for a while, and the shockwave hits through it. It collapses if she leaves it, and a more refined domain overlapping it, or one with no barrier, makes it collapse.\n\nOpening it costs half a psyfocus bar (less with a lower psyfocus cost) and leaves her neural heat at 90% of her limit. When three or more domains meet, all of them collapse and their casters burn out.</description>
+    <iconPath>Abilities/Yuta/Sky/ThinIceBreaker</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_UroDomain</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>120</castTime>
+    <cooldownTime>3600</cooldownTime>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <showUndrafted>false</showUndrafted>
+  </VEF.Abilities.AbilityDef>
+
+  <HediffDef>
+    <defName>JJK_UroDomain</defName>
+    <label>skyfall</label>
+    <description>Uro's domain, Skyfall, is open.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="JujutsuFundamentals.HediffCompProperties_UroDomain">
+        <radius>11.9</radius>
+        <maxRadius>30</maxRadius>
+        <interval>90</interval>
+        <damage>18</damage>
+      </li>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1200</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+</Defs>

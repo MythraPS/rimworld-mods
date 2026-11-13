@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Choso (her ask 2026-11-11): already on Yuji's side; notices when Yuji is hurt and comes. Full Hemosage tree,
+       plus a single-target Piercing Blood. Code: Source/Sukuna/Questline/Choso.cs -->
+
+  <BackstoryDef>
+    <defName>JJK_CurseChildhood</defName>
+    <title>curse</title>
+    <titleShort>curse</titleShort>
+    <description>[PAWN_nameDef] began as a Death Painting: a cursed womb, half curse and half human.</description>
+    <slot>Childhood</slot>
+    <spawnCategories>
+      <li>JJKUnique</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <!-- Choso and Yuji are brothers (her ask: make him loyal to Yuji). Set directly, since vanilla's sibling relation
+       only comes from shared parents. Opinion +50 (proposal; a vanilla brother is +20). -->
+  <PawnRelationDef>
+    <defName>JJK_Brother</defName>
+    <label>brother</label>
+    <importance>185</importance>
+    <diedThought>MyBrotherDied</diedThought>
+    <killedThought>KilledMyBrother</killedThought>
+    <lostThought>MyBrotherLost</lostThought>
+    <soldThoughts>
+      <li>SoldMyLovedOne</li>
+    </soldThoughts>
+    <opinionOffset>50</opinionOffset>
+    <reflexive>true</reflexive>
+    <familyByBloodRelation>true</familyByBloodRelation>
+  </PawnRelationDef>
+
+  <!-- Two short spiky ponytails tied high, a centre part (tools/art_characters.py). No styleTags: never random. -->
+  <HairDef>
+    <defName>Choso_Hair</defName>
+    <label>spiky twin ponytails</label>
+    <styleGender>Male</styleGender>
+    <texPath>Things/Pawn/Humanlike/Hairs/Choso_Hair</texPath>
+  </HairDef>
+
+  <!-- His clothes: light and baggy, with dark purple sashes in an X, round the neck and round the waist
+       (tools/sukuna/art_choso_outfit.py). Takes its colour; Choso's is cream. -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>Choso_Outfit</defName>
+    <label>Sashed Robes</label>
+    <description>White, baggy, long-sleeved clothes bound with dark purple sashes: crossed over the body, round the neck and round the waist.</description>
+    <graphicData>
+      <texPath>Things/Item/Apparel/Choso_Outfit/Choso_Outfit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.90</drawSize>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <tradeability>None</tradeability>
+    <smeltable>false</smeltable>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>140</MaxHitPoints>
+      <Mass>0.8</Mass>
+      <MarketValue>90</MarketValue>
+      <ArmorRating_Sharp>0.04</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.02</ArmorRating_Blunt>
+      <Insulation_Cold>8</Insulation_Cold>
+      <Insulation_Heat>4</Insulation_Heat>
+      <Flammability>1</Flammability>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Choso_Outfit/Choso_Outfit</wornGraphicPath>
+      <layers>
+        <li>Middle</li>
+      </layers>
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+    </apparel>
+    <generateCommonality>0</generateCommonality>
+  </ThingDef>
+
+  <!-- The dark mark across the bridge of his nose. -->
+  <TattooDef>
+    <defName>Choso_NoseMark</defName>
+    <label>nose mark</label>
+    <texPath>Things/Pawn/Humanlike/Tattoos/Choso_NoseMark/Choso_NoseMark</texPath>
+    <tattooType>Face</tattooType>
+    <visibleNorth>false</visibleNorth>
+    <overrideShaderTypeDef>Cutout</overrideShaderTypeDef>
+    <category>Tribal</category>
+  </TattooDef>
+
+  <VEF.Abilities.AbilityDef>
+    <defName>Choso_PiercingBlood</defName>
+    <castSound>Sukuna_Snd_PiercingBlood</castSound>
+    <label>Piercing Blood</label>
+    <description>Choso compresses his blood into a single boiling beam and fires it at one target. The poison in his blood puts whoever it pierces to sleep for three days.</description>
+    <iconPath>Abilities/Sukuna/PiercingBlood</iconPath>
+    <abilityClass>SukunaPsycasts.Ability_PiercingBloodSingle</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+      <canTargetLocations>false</canTargetLocations>
+    </targetingParameters>
+    <castTime>30</castTime>
+    <cooldownTime>1200</cooldownTime>
+    <range>49.9</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <castFleck>PsycastAreaEffect</castFleck>
+  </VEF.Abilities.AbilityDef>
+
+</Defs>

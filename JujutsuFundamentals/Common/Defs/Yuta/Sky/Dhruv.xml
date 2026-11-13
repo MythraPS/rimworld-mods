@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Dhruv's shikigami as real pawns (her call 2026-11-11): small bat-like creatures with a head like Cursed Spirit
+       Rika's. Source/Yuta/Sky/Dhruv.cs flies them round their circle and destroys one on any hit (1 HP).
+       Art: tools/yuta/art_dhruv.py. Numbers are proposals. -->
+
+  <ThingDef ParentName="BasePawn">
+    <defName>JJK_DhruvBatRace</defName>
+    <label>Dhruv's shikigami</label>
+    <description>A small shikigami of Dhruv Lakdawalla's technique, as Yuta Okkotsu copies it: a bat-like creature with a head like Rika's. It flies a circle and the path it traces cuts whoever crosses it. Any hit destroys it.</description>
+    <tradeability>None</tradeability>
+    <statBases>
+      <MoveSpeed>6</MoveSpeed>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>200</ComfyTemperatureMax>
+      <PsychicSensitivity>0</PsychicSensitivity>
+      <ToxicResistance>1</ToxicResistance>
+      <MarketValue>0</MarketValue>
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">1</VacuumResistance>
+    </statBases>
+    <race>
+      <thinkTreeMain>JJK_DhruvBat</thinkTreeMain>
+      <thinkTreeConstant>JJK_RikaConstant</thinkTreeConstant>
+      <body>Bird</body>
+      <baseBodySize>0.25</baseBodySize>
+      <baseHealthScale>0.05</baseHealthScale>
+      <intelligence>Animal</intelligence>
+      <needsRest>false</needsRest>
+      <foodType>None</foodType>
+      <hasGenders>false</hasGenders>
+      <hasCorpse>false</hasCorpse>
+      <hasMeat>false</hasMeat>
+      <isImmuneToInfections>true</isImmuneToInfections>
+      <lifeExpectancy>1000</lifeExpectancy>
+      <trainability>None</trainability>
+      <disableIgniteVerb>true</disableIgniteVerb>
+      <lifeStageAges>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>0</minAge>
+        </li>
+      </lifeStageAges>
+    </race>
+    <tools>
+      <li>
+        <label>teeth</label>
+        <capacities>
+          <li>Bite</li>
+        </capacities>
+        <power>1</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>Beak</linkedBodyPartsGroup>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <PawnKindDef>
+    <defName>JJK_DhruvBat</defName>
+    <label>Dhruv's shikigami</label>
+    <race>JJK_DhruvBatRace</race>
+    <combatPower>1</combatPower>
+    <canArriveManhunter>false</canArriveManhunter>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Yuta/Dhruv/Bat</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>1.5</drawSize>
+          <shadowData>
+            <volume>(0.3, 0.2, 0.2)</volume>
+            <offset>(0, 0, -0.5)</offset>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+  <!-- They only fly their circle (moved by DhruvTrails); this just keeps them idle. -->
+  <ThinkTreeDef>
+    <defName>JJK_DhruvBat</defName>
+    <thinkRoot Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="ThinkNode_Subtree">
+          <treeDef>Despawned</treeDef>
+        </li>
+        <li Class="JobGiver_Idle">
+          <ticks>600</ticks>
+        </li>
+      </subNodes>
+    </thinkRoot>
+  </ThinkTreeDef>
+
+  <HediffDef>
+    <defName>JJK_DhruvBarrierTraced</defName>
+    <label>Dhruv's barrier traced</label>
+    <description>Dhruv's shikigami have closed a circle: the barrier is already drawn. Inside it Yuta can open Authentic Mutual Love for half the psyfocus and half the neural heat, and the domain is that circle, its centre and its size. Opening it uses this up; their next turn, a larger circle, gives it again.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>3600</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="JujutsuFundamentals.HediffCompProperties_DhruvBarrier" />
+    </comps>
+  </HediffDef>
+
+</Defs>

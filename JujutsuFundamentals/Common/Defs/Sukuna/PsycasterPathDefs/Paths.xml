@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <VanillaPsycastsExpanded.PsycasterPathDef>
+    <defName>Sukuna_Path</defName>
+    <label>shrine</label>
+    <description>Shrine — the cursed technique of the King of Curses, recovered by those who consume his remains. Its slashes are precise, invisible and indifferent; they adjust themselves to whatever is put in front of them.</description>
+    <background>UI/Backgrounds/SukunaPath</background>
+    <altBackground>UI/AlternativeBackgrounds/PathBG_Sukuna</altBackground>
+    <tab>Psycasts</tab>
+    <tooltip>Twenty fingers were sealed, and every one of them still holds him. A sorcerer who swallows one inherits a piece of a technique that was never meant to be shared — and gives up a piece of themselves in exchange. The more of him you take, the less of you decides what happens next.</tooltip>
+    <lockedReason>Requires consuming a finger</lockedReason>
+    <ignoreLockRestrictionsForNeurotrainers>False</ignoreLockRestrictionsForNeurotrainers>
+    <ensureLockRequirement>True</ensureLockRequirement>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+
+</Defs>

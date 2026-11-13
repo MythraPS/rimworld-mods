@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<loadFolders>
+  <!-- Common holds the defs and patches both versions share; each version folder holds only its own
+       compiled code (1.7 runs on a new engine and .NET 10, so it needs its own build). -->
+  <v1.6>
+    <li>/</li>
+    <li>Common</li>
+    <li>1.6</li>
+  </v1.6>
+  <v1.7>
+    <li>/</li>
+    <li>Common</li>
+    <li>1.7</li>
+  </v1.7>
+</loadFolders>

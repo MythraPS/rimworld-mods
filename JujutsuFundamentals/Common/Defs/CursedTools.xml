@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== Cursed tools
+       Her calls 2026-11-10: found or bought only (no recipes) - quest rewards, exotic traders, ancient ruins.
+       Numbers are first proposals. Effects live in Source/CursedTools.cs. -->
+
+  <ThingCategoryDef>
+    <defName>JJK_CursedTools</defName>
+    <label>cursed tools</label>
+    <parent>WeaponsMelee</parent>
+  </ThingCategoryDef>
+
+  <ThingDef Name="JJK_CursedToolBase" ParentName="BaseWeapon" Abstract="True">
+    <techLevel>Archotech</techLevel>
+    <thingClass>ThingWithComps</thingClass>
+    <equipmentType>Primary</equipmentType>
+    <smeltable>false</smeltable>
+    <burnableByRecipe>false</burnableByRecipe>
+    <tradeNeverStack>true</tradeNeverStack>
+    <thingCategories>
+      <li>JJK_CursedTools</li>
+    </thingCategories>
+    <weaponClasses>
+      <li>Melee</li>
+    </weaponClasses>
+    <tradeTags>
+      <li>JJK_CursedTool</li>
+    </tradeTags>
+    <thingSetMakerTags>
+      <li>RewardStandardLowFreq</li>
+      <li>JJK_CursedTool</li>
+    </thingSetMakerTags>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+    <relicChance>3</relicChance>
+  </ThingDef>
+
+  <ThingDef ParentName="JJK_CursedToolBase">
+    <defName>JJK_InvertedSpear</defName>
+    <label>Inverted Spear Of Heaven</label>
+    <description>A short cursed blade. Whatever technique it touches is cancelled: a hit strips psycast buffs and shields (Infinity included) and drops raised Cursed Energy Reinforcement.</description>
+    <graphicData>
+      <texPath>Things/Jujutsu/Tools/InvertedSpear</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponClasses>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <statBases>
+      <Mass>0.8</Mass>
+      <MarketValue>3500</MarketValue>
+    </statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities><li>Stab</li></capacities>
+        <power>18</power>
+        <cooldownTime>1.6</cooldownTime>
+        <armorPenetration>0.5</armorPenetration>
+      </li>
+      <li>
+        <label>prong</label>
+        <capacities><li>Cut</li></capacities>
+        <power>14</power>
+        <cooldownTime>1.4</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef ParentName="JJK_CursedToolBase">
+    <defName>JJK_PlayfulCloud</defName>
+    <label>Playful Cloud</label>
+    <description>A three-section staff. It holds no cursed energy of its own: its force comes from the wielder's body, so it hits harder the stronger they are (the wielder's melee damage counts twice).</description>
+    <graphicData>
+      <texPath>Things/Jujutsu/Tools/PlayfulCloud</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponClasses>
+      <li>MeleeBlunt</li>
+    </weaponClasses>
+    <statBases>
+      <Mass>2.5</Mass>
+      <MarketValue>3000</MarketValue>
+    </statBases>
+    <tools>
+      <li>
+        <label>section</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>20</power>
+        <cooldownTime>2.0</cooldownTime>
+        <armorPenetration>0.4</armorPenetration>
+      </li>
+      <li>
+        <label>end</label>
+        <capacities><li>Poke</li></capacities>
+        <power>12</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- Maki's naginata (her call 2026-11-12): a plain cursed-tool polearm, nothing special, carried alongside Playful
+       Cloud. Numbers from the vanilla spear, with a cutting blade; art from the spear (tools/art_naginata.py). -->
+  <ThingDef ParentName="JJK_CursedToolBase">
+    <defName>JJK_Naginata</defName>
+    <label>Naginata</label>
+    <description>A cursed-tool naginata: a long pole with a curved single-edged blade. Maki Zenin carries one.</description>
+    <graphicData>
+      <texPath>Things/Jujutsu/Tools/Naginata</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponClasses>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <equippedAngleOffset>-25</equippedAngleOffset>
+    <statBases>
+      <Mass>2</Mass>
+      <MarketValue>2500</MarketValue>
+    </statBases>
+    <tools>
+      <li>
+        <label>shaft</label>
+        <capacities><li>Blunt</li><li>Poke</li></capacities>
+        <power>13</power>
+        <cooldownTime>2.6</cooldownTime>
+      </li>
+      <li>
+        <label>blade</label>
+        <capacities><li>Cut</li></capacities>
+        <power>23</power>
+        <cooldownTime>2.6</cooldownTime>
+        <armorPenetration>0.5</armorPenetration>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef ParentName="JJK_CursedToolBase">
+    <defName>JJK_SplitSoulKatana</defName>
+    <label>Split Soul Katana</label>
+    <description>A katana that cuts the soul directly. Its cuts ignore armour.</description>
+    <graphicData>
+      <texPath>Things/Jujutsu/Tools/SplitSoulKatana</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponClasses>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <statBases>
+      <Mass>1.5</Mass>
+      <MarketValue>3500</MarketValue>
+    </statBases>
+    <tools>
+      <li>
+        <label>edge</label>
+        <capacities><li>Cut</li></capacities>
+        <power>22</power>
+        <cooldownTime>2.2</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities><li>Stab</li></capacities>
+        <power>20</power>
+        <cooldownTime>2.2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef ParentName="JJK_CursedToolBase">
+    <defName>JJK_ChainThousandMiles</defName>
+    <label>Chain Of A Thousand Miles</label>
+    <description>A cursed chain with no end to its length. A whip in melee, and it can lash a target farther off, in sight.</description>
+    <graphicData>
+      <texPath>Things/Jujutsu/Tools/ChainThousandMiles</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponClasses>
+      <li>MeleeBlunt</li>
+    </weaponClasses>
+    <statBases>
+      <Mass>2</Mass>
+      <MarketValue>2500</MarketValue>
+    </statBases>
+    <tools>
+      <li>
+        <label>chain</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>16</power>
+        <cooldownTime>1.8</cooldownTime>
+      </li>
+    </tools>
+    <comps>
+      <li Class="JujutsuFundamentals.CompProperties_ChainLash" />
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="JJK_CursedToolBase">
+    <defName>JJK_DragonBone</defName>
+    <label>Dragon-Bone</label>
+    <description>A heavy cursed blade that stores the force of the blows its wielder takes and lets it all out on their next hit (half of the damage taken, up to 60).</description>
+    <graphicData>
+      <texPath>Things/Jujutsu/Tools/DragonBone</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponClasses>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <statBases>
+      <Mass>3</Mass>
+      <MarketValue>3000</MarketValue>
+    </statBases>
+    <tools>
+      <li>
+        <label>edge</label>
+        <capacities><li>Cut</li></capacities>
+        <power>24</power>
+        <cooldownTime>2.4</cooldownTime>
+        <armorPenetration>0.4</armorPenetration>
+      </li>
+      <li>
+        <label>flat</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>14</power>
+        <cooldownTime>2.0</cooldownTime>
+      </li>
+    </tools>
+    <comps>
+      <li Class="JujutsuFundamentals.CompProperties_DragonBone" />
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="JJK_CursedToolBase">
+    <defName>JJK_NanamiCleaver</defName>
+    <label>Wrapped Cleaver</label>
+    <description>A blunt blade wrapped in a patterned cloth. It carries Ratio on its own: some hits land on the weak point, dealing extra damage and ignoring armour. A Black Flash can land on top.</description>
+    <graphicData>
+      <texPath>Things/Jujutsu/Tools/NanamiCleaver</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponClasses>
+      <li>MeleeBlunt</li>
+    </weaponClasses>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <statBases>
+      <Mass>1.6</Mass>
+      <MarketValue>2500</MarketValue>
+    </statBases>
+    <tools>
+      <li>
+        <label>blade</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>18</power>
+        <cooldownTime>1.9</cooldownTime>
+        <armorPenetration>0.3</armorPenetration>
+      </li>
+      <li>
+        <label>handle</label>
+        <capacities><li>Poke</li></capacities>
+        <power>9</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- Kamutoke: taken out of the Sukuna mod 2026-11-08 (her call) and back here as a cursed tool. Same defName,
+       so any old copy in a save comes back. The lightning answers anyone at psycast level 10+ (her call 2026-11-10). -->
+  <ThingDef ParentName="JJK_CursedToolBase">
+    <defName>Sukuna_Kamutoke</defName>
+    <label>Kamutoke</label>
+    <description>A cursed tool that holds a storm. In the hand of a sorcerer of psycast level 10 or above, it calls lightning down on nearby enemies, chaining between them and hitting mechanoids hardest. In anyone else's hand it is an ordinary blade.</description>
+    <graphicData>
+      <texPath>Things/Sukuna/Kamutoke</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.1</drawSize>
+    </graphicData>
+    <weaponClasses>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <statBases>
+      <Mass>1.4</Mass>
+      <MarketValue>4000</MarketValue>
+    </statBases>
+    <equippedStatOffsets>
+      <PsychicSensitivity>0.10</PsychicSensitivity>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>edge</label>
+        <capacities><li>Cut</li></capacities>
+        <power>18</power>
+        <cooldownTime>1.1</cooldownTime>
+        <armorPenetration>0.55</armorPenetration>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities><li>Stab</li></capacities>
+        <power>20</power>
+        <cooldownTime>1.4</cooldownTime>
+        <armorPenetration>0.65</armorPenetration>
+      </li>
+    </tools>
+    <comps>
+      <li Class="SukunaPsycasts.CompProperties_Kamutoke">
+        <boltDamage>32</boltDamage>
+        <boltArmorPenetration>0.90</boltArmorPenetration>
+        <chainTargets>3</chainTargets>
+        <chainRadius>6.9</chainRadius>
+        <psyfocusCost>0.08</psyfocusCost>
+        <cooldownTicks>600</cooldownTicks>
+        <mechanoidDamageFactor>2.0</mechanoidDamageFactor>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- The Prison Realm (her calls): works like a psychic lance, or is planted like a mine. Seals one person after
+       a short wind-up and puts them out of play until released. Only one in a game, holding one person. -->
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>JJK_PrisonRealm</defName>
+    <label>Prison Realm</label>
+    <description>A cursed object that seals one person inside it, out of play with all their abilities, until it is opened. Aim it at someone in range, or plant it like a mine: the first enemy to come close is sealed if they are still near when it finishes opening. There is only one, and it holds only one person.</description>
+    <thingClass>JujutsuFundamentals.Apparel_PrisonRealm</thingClass>
+    <graphicData>
+      <texPath>Things/Jujutsu/Tools/PrisonRealm</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Archotech</techLevel>
+    <tradeability>Sellable</tradeability>
+    <tradeTags>
+      <li>JJK_CursedTool</li>
+    </tradeTags>
+    <thingSetMakerTags>
+      <li>RewardStandardLowFreq</li>
+      <li>JJK_CursedTool</li>
+    </thingSetMakerTags>
+    <statBases>
+      <Mass>0.6</Mass>
+      <EquipDelay>1</EquipDelay>
+      <MarketValue>6000</MarketValue>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <thingCategories>
+      <li>ApparelUtility</li>
+    </thingCategories>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <careIfDamaged>false</careIfDamaged>
+      <wearPerDay>0</wearPerDay>
+      <bodyPartGroups>
+        <li>Waist</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Belt</li>
+      </layers>
+    </apparel>
+    <tradeNeverStack>true</tradeNeverStack>
+    <smeltable>false</smeltable>
+    <burnableByRecipe>false</burnableByRecipe>
+    <drawGUIOverlay>false</drawGUIOverlay>
+    <verbs>
+      <li>
+        <verbClass>JujutsuFundamentals.Verb_PrisonRealm</verbClass>
+        <label>Prison Realm</label>
+        <hasStandardCommand>true</hasStandardCommand>
+        <targetable>true</targetable>
+        <onlyManualCast>True</onlyManualCast>
+        <range>15.9</range>
+        <warmupTime>3</warmupTime>
+        <targetParams>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetAnimals>false</canTargetAnimals>
+          <canTargetMechs>false</canTargetMechs>
+        </targetParams>
+        <soundAiming>PsychicArtifactWarmupSustained</soundAiming>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="CompProperties_ApparelVerbOwner">
+        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- The planted Prison Realm. Never built from the menu; made by the Plant gizmo. -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>JJK_PrisonRealmTrap</defName>
+    <label>planted Prison Realm</label>
+    <description>The Prison Realm, set down and waiting. The first enemy to come close is sealed inside if they are still near when it finishes opening.</description>
+    <thingClass>JujutsuFundamentals.PrisonRealmTrap</thingClass>
+    <graphicData>
+      <texPath>Things/Jujutsu/Tools/PrisonRealm</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <passability>Standable</passability>
+    <useHitPoints>false</useHitPoints>
+    <selectable>true</selectable>
+    <destroyable>false</destroyable>
+    <building>
+      <isTrap>false</isTrap>
+      <ai_chillDestination>false</ai_chillDestination>
+      <claimable>false</claimable>
+      <deconstructible>false</deconstructible>
+      <isInert>true</isInert>
+    </building>
+    <statBases>
+      <Flammability>0</Flammability>
+    </statBases>
+  </ThingDef>
+
+  <!-- ===================================================================== Black Rope, Yuta's ring, gauntlets
+       (her calls 2026-11-11). Code: Source/ToolsYuta.cs -->
+
+  <ApparelLayerDef>
+    <defName>JJK_Gauntlets</defName>
+    <label>gauntlets</label>
+    <drawOrder>150</drawOrder>
+  </ApparelLayerDef>
+
+  <ApparelLayerDef>
+    <defName>JJK_Ring</defName>
+    <label>ring</label>
+    <drawOrder>160</drawOrder>
+  </ApparelLayerDef>
+
+  <ThingDef ParentName="JJK_CursedToolBase">
+    <defName>JJK_BlackRope</defName>
+    <label>Black Rope</label>
+    <description>A special-grade cursed tool: a black rope that disrupts and cancels any cursed technique it touches, Infinity included. Every technique it cancels wears it away a little more, until there is nothing left.</description>
+    <graphicData>
+      <texPath>Things/Jujutsu/Tools/BlackRope</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponClasses>
+      <li>MeleeBlunt</li>
+    </weaponClasses>
+    <statBases>
+      <Mass>1.2</Mass>
+      <MarketValue>3500</MarketValue>
+    </statBases>
+    <tools>
+      <li>
+        <label>rope</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>14</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+    </tools>
+    <comps>
+      <li Class="JujutsuFundamentals.CompProperties_BlackRope" />
+    </comps>
+  </ThingDef>
+
+  <!-- Yuta's ring: comes with Yuta, never found or sold. On Yuta, Rika's full power; on anyone else, his cursed
+       energy reserve (proposal numbers). -->
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>JJK_YutaRing</defName>
+    <thingClass>JujutsuFundamentals.Apparel_YutaRing</thingClass>
+    <label>Yuta's Ring</label>
+    <description>The ring Yuta Okkotsu and Rika Orimoto promised each other with. On Yuta it lets Rika use her full power. On anyone else it lends them Yuta's huge reserve of cursed energy.</description>
+    <graphicData>
+      <texPath>Things/Jujutsu/Tools/YutaRing</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.6</drawSize>
+    </graphicData>
+    <techLevel>Archotech</techLevel>
+    <tradeability>None</tradeability>
+    <smeltable>false</smeltable>
+    <burnableByRecipe>false</burnableByRecipe>
+    <tradeNeverStack>true</tradeNeverStack>
+    <thingCategories>
+      <li>ApparelUtility</li>
+    </thingCategories>
+    <statBases>
+      <Mass>0.01</Mass>
+      <EquipDelay>0.5</EquipDelay>
+      <MarketValue>5000</MarketValue>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+    <!-- his reserve comes from the JJK_VastCursedEnergy hediff (Apparel_YutaRing), so it never stacks on Yuta -->
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <careIfDamaged>false</careIfDamaged>
+      <wearPerDay>0</wearPerDay>
+      <bodyPartGroups>
+        <li>LeftHand</li>
+      </bodyPartGroups>
+      <layers>
+        <li>JJK_Ring</li>
+      </layers>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+    </apparel>
+    <generateCommonality>0</generateCommonality>
+  </ThingDef>
+
+  <!-- Yuji's gauntlets (Shinjuku). No canon powers; hers: heavy arm armour, a Guard that takes hits on the arms,
+       and no penalty for missing fingers or hands while worn. Not drawn on the pawn (RimWorld draws no arms). -->
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>JJK_Gauntlets</defName>
+    <label>Gauntlets</label>
+    <description>Heavy armoured gauntlets that cover the hands and forearms. Held up, they take blows meant for the body; worn, they make up for missing fingers and hands, so the wearer works and fights as if the hands were whole.</description>
+    <thingClass>JujutsuFundamentals.Apparel_Gauntlets</thingClass>
+    <graphicData>
+      <texPath>Things/Jujutsu/Tools/Gauntlets</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.8</drawSize>
+    </graphicData>
+    <techLevel>Archotech</techLevel>
+    <tradeTags>
+      <li>JJK_CursedTool</li>
+    </tradeTags>
+    <thingSetMakerTags>
+      <li>RewardStandardLowFreq</li>
+      <li>JJK_CursedTool</li>
+    </thingSetMakerTags>
+    <smeltable>false</smeltable>
+    <tradeNeverStack>true</tradeNeverStack>
+    <thingCategories>
+      <li>ApparelArmor</li>
+    </thingCategories>
+    <statBases>
+      <Mass>3</Mass>
+      <EquipDelay>2</EquipDelay>
+      <MarketValue>3000</MarketValue>
+      <MaxHitPoints>400</MaxHitPoints>
+      <ArmorRating_Sharp>1.3</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.6</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.5</ArmorRating_Heat>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+    <apparel>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <bodyPartGroups>
+        <li>Arms</li>
+        <li>Hands</li>
+      </bodyPartGroups>
+      <layers>
+        <li>JJK_Gauntlets</li>
+      </layers>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+    </apparel>
+    <generateCommonality>0</generateCommonality>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>JJK_GauntletGrip</defName>
+    <label>gauntlet grip</label>
+    <description>The gauntlets make up for missing fingers and hands: the wearer works and fights as if the hands were whole.</description>
+    <hediffClass>JujutsuFundamentals.Hediff_GauntletGrip</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+  </HediffDef>
+
+  <!-- ===================================================================== Heavenly Restriction -->
+
+  <TraitDef>
+    <defName>JJK_HeavenlyRestriction</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>heavenly restriction: zero cursed energy</label>
+        <description>[PAWN_nameDef] was born with no cursed energy at all. In exchange, [PAWN_pronoun] has a superhuman body. [PAWN_pronoun] has no psychic sensitivity, can never use psycasts, and a domain's sure hit can't lock onto [PAWN_objective].</description>
+        <statFactors>
+          <PsychicSensitivity>0</PsychicSensitivity>
+        </statFactors>
+      </li>
+      <!-- Yuji after his first eaten finger (her call 2026-11-10): the restriction is not lifted, it stays, but a
+           loophole bypasses it. -->
+      <li>
+        <degree>1</degree>
+        <label>heavenly restriction: zero cursed energy (bypassed)</label>
+        <description>[PAWN_nameDef] was born with no cursed energy at all, and with a superhuman body in exchange. The restriction is still there, but a loophole bypasses it: [PAWN_pronoun] has cursed energy, psychic sensitivity and psycasts all the same, and a domain's sure hit can reach [PAWN_objective].</description>
+      </li>
+    </degreeDatas>
+  </TraitDef>
+
+  <!-- The superhuman body (her call 2026-11-10: Yuji's abnormal physique and the Heavenly Restriction body are the
+       same thing, with the same effects for Toji, Maki, Yuji and Modulo Yuji). Yuji's physique numbers (already tuned,
+       melee x2.5 her call 11-06) plus the restriction's extras (senses, healing, immunity, toxin resistance). -->
+  <HediffDef>
+    <defName>JJK_ZeroCursedEnergyBody</defName>
+    <label>superhuman body</label>
+    <description>A body far beyond human: stronger, very fast, far tougher and sharper-sensed than anyone trained could be. Blows land at half force, skin turns blades and blunt hits, wounds bleed slowly and heal very fast, and pain barely stops it.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.95, 0.55, 0.65)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <stages>
+      <li>
+        <statOffsets>
+          <MoveSpeed>3</MoveSpeed>   <!-- 1.6 -> 3: very fast (her call 2026-11-11) -->
+          <MeleeHitChance>8</MeleeHitChance>
+          <MeleeDodgeChance>12</MeleeDodgeChance>
+          <PainShockThreshold>0.5</PainShockThreshold>   <!-- 0.25 -> 0.5; much more durable (her call 2026-11-11) -->
+          <ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+          <ArmorRating_Blunt>0.35</ArmorRating_Blunt>
+          <ArmorRating_Heat>0.2</ArmorRating_Heat>
+          <ToxicResistance>0.5</ToxicResistance>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>2.5</MeleeDamageFactor>
+          <CarryingCapacity>2.0</CarryingCapacity>
+          <IncomingDamageFactor>0.5</IncomingDamageFactor>   <!-- was 0.8 -->
+          <MeleeCooldownFactor>0.6</MeleeCooldownFactor>   <!-- was 0.75: quicker blows too -->
+          <InjuryHealingFactor>5</InjuryHealingFactor>   <!-- 2 -> 3 -> 5 (her calls 2026-11-11) -->
+          <ImmunityGainSpeed>2</ImmunityGainSpeed>   <!-- was 1.5 -->
+        </statFactors>
+        <totalBleedFactor>0.5</totalBleedFactor>   <!-- bleeds half as fast -->
+        <capMods>
+          <li><capacity>Moving</capacity><offset>0.4</offset></li>
+          <li><capacity>Manipulation</capacity><offset>0.15</offset></li>
+          <li><capacity>BloodPumping</capacity><offset>0.20</offset></li>
+          <li><capacity>Breathing</capacity><offset>0.20</offset></li>
+          <li><capacity>Sight</capacity><offset>0.5</offset></li>
+          <li><capacity>Hearing</capacity><offset>0.5</offset></li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ===================================================================== Toji and awakened Maki -->
+
+  <BackstoryDef>
+    <defName>JJK_ZeninOutcast</defName>
+    <title>Zenin clan outcast</title>
+    <titleShort>outcast</titleShort>
+    <description>[PAWN_nameDef] was born into the Zenin clan with no cursed energy, and was treated as a failure for it.</description>
+    <slot>Childhood</slot>
+    <spawnCategories>
+      <li>JJKUnique</li>
+    </spawnCategories>
+    <skillGains>
+      <Melee>3</Melee>
+    </skillGains>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>JJK_JujutsuStudentAdult</defName>
+    <title>jujutsu student</title>
+    <titleShort>student</titleShort>
+    <description>[PAWN_nameDef] is a student at a jujutsu high school.</description>
+    <slot>Adulthood</slot>
+    <spawnCategories>
+      <li>JJKUnique</li>
+    </spawnCategories>
+    <skillGains>
+      <Melee>4</Melee>
+    </skillGains>
+  </BackstoryDef>
+
+  <!-- Awakened Maki's burn scars (her ask 2026-11-11): striped scars up both arms and both sides of her face
+       (Jogo's fire in Shibuya). tools/art_maki_scars.py. -->
+  <TattooDef>
+    <defName>JJK_MakiScarsFace</defName>
+    <label>burn scars (face)</label>
+    <texPath>Things/Pawn/Humanlike/Tattoos/JJK_MakiScarsFace/JJK_MakiScarsFace</texPath>
+    <tattooType>Face</tattooType>
+    <visibleNorth>false</visibleNorth>
+    <overrideShaderTypeDef>Cutout</overrideShaderTypeDef>
+    <category>Tribal</category>
+  </TattooDef>
+
+  <TattooDef>
+    <defName>JJK_MakiScarsBody</defName>
+    <label>burn scars (arms)</label>
+    <texPath>Things/Pawn/Humanlike/Tattoos/JJK_MakiScarsBody/JJK_MakiScarsBody</texPath>
+    <tattooType>Body</tattooType>
+    <overrideShaderTypeDef>Cutout</overrideShaderTypeDef>
+    <category>Tribal</category>
+  </TattooDef>
+
+  <TattooDef>
+    <defName>JJK_TojiScar</defName>
+    <label>mouth scar</label>
+    <texPath>Things/Pawn/Humanlike/Tattoos/JJK_TojiScar/JJK_TojiScar</texPath>
+    <tattooType>Face</tattooType>
+    <visibleNorth>false</visibleNorth>
+    <overrideShaderTypeDef>Cutout</overrideShaderTypeDef>
+    <category>Tribal</category>
+  </TattooDef>
+
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>JJK_TojiOffer</defName>
+    <letterClass>JujutsuFundamentals.ChoiceLetter_TojiOffer</letterClass>
+  </LetterDef>
+
+  <IncidentDef>
+    <defName>JJK_TojiOffers</defName>
+    <label>Toji offers his services</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>JujutsuFundamentals.IncidentWorker_TojiOffers</workerClass>
+    <baseChance>0.4</baseChance>
+    <minRefireDays>15</minRefireDays>
+    <letterDef>JJK_TojiOffer</letterDef>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>JJK_MakiJoins</defName>
+    <label>Maki Zenin asks to join</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>JujutsuFundamentals.IncidentWorker_MakiJoins</workerClass>
+    <baseChance>0.4</baseChance>
+    <minRefireDays>15</minRefireDays>
+    <letterDef>JJK_JoinOffer</letterDef>   <!-- a choice now (her call 2026-11-11) -->
+  </IncidentDef>
+
+</Defs>

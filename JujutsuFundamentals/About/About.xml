@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Jujutsu Kaisen - Psycasts, Characters, Items, Quests</name>
+  <author>MythraPS</author>
+  <packageId>mythraps.satorugojo</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+    <li>1.7</li>
+  </supportedVersions>
+  <modVersion>2.0.0</modVersion>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
+    </li>
+    <li>
+      <packageId>Ludeon.RimWorld.Royalty</packageId>
+      <displayName>Royalty</displayName>
+    </li>
+    <li>
+      <packageId>Ludeon.RimWorld.Biotech</packageId>
+      <displayName>Biotech</displayName>
+    </li>
+    <li>
+      <packageId>OskarPotocki.VanillaFactionsExpanded.Core</packageId>
+      <displayName>Vanilla Expanded Framework</displayName>
+      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2023507013</steamWorkshopUrl>
+    </li>
+    <li>
+      <packageId>VanillaExpanded.VPsycastsE</packageId>
+      <displayName>Vanilla Psycasts Expanded</displayName>
+      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2842502659</steamWorkshopUrl>
+    </li>
+    <!-- required since her call 2026-11-11 (Yuji's Hemosage growth, the Death Paintings, Choso); it needs Biotech -->
+    <li>
+      <packageId>VanillaExpanded.VPE.Hemosage</packageId>
+      <displayName>Vanilla Psycasts Expanded - Hemosage</displayName>
+      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2990596478</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>Ludeon.RimWorld</li>
+    <li>Ludeon.RimWorld.Royalty</li>
+    <li>Ludeon.RimWorld.Biotech</li>
+    <li>brrainz.harmony</li>
+    <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
+    <li>VanillaExpanded.VPsycastsE</li>
+    <li>VanillaExpanded.VPE.Hemosage</li>
+  </loadAfter>
+  <description>Jujutsu Kaisen for Vanilla Psycasts Expanded: the sorcerers' techniques, the characters, cursed tools and questlines, in one mod. This mod used to be "Satoru Gojo"; he is part of it now, and so is "Ryomen Sukuna &amp; Yuji Itadori". An add-on for Vanilla Psycasts Expanded, not made by the Vanilla Expanded team.
+
+TECHNIQUES ANYONE CAN LEARN
+- Cursed Energy Fundamentals: Cursed Energy Reinforcement, Cursed Energy Blast, Domain Amplification, Air Step, Black Flash, Reverse Cursed Technique.
+- New Shadow Style: Hollow Wicker Basket, Simple Domain, Hazy Moon, Batto Sword Drawing, Evening Moon Sword Drawing.
+
+CHARACTERS
+Each comes with their own techniques, looks and traits, through their own event or quest.
+- Satoru Gojo, young or adult: the Six Eyes and Limitless (Infinity, Blue, Red, Hollow Purple, Infinite Void, flight, teleport).
+- Yuji Itadori and Ryomen Sukuna: the Shrine path, fed by Sukuna's twenty fingers. Yuji's blood techniques grow from the Death Paintings.
+- Choso and Uraume.
+- Yuta Okkotsu in four stages, with Rika: Copy, Paste and his domain.
+- Toge Inumaki (Cursed Speech), Takako Uro (Sky Manipulation), Aoi Todo (Boogie Woogie), Ryu Ishigori (Granite Blast), Hana Kurusu (Jacob's Ladder).
+- Toji and Maki Zenin (Heavenly Restriction; Maki before or after her awakening), Atsuya Kusakabe and Kasumi Miwa.
+
+DOMAIN EXPANSIONS
+Each domain has its own ground and sure hit, and most close behind a barrier. Overlapping domains clash, and the caster with higher psychic sensitivity wins; Malevolent Shrine, with no barrier, breaks the others. Hollow Wicker Basket, Simple Domain and Domain Amplification stop sure hits. A domain collapses if its caster goes down or leaves it.
+
+CURSED TOOLS
+Inverted Spear Of Heaven, Playful Cloud, Split Soul Katana, Chain Of A Thousand Miles, Dragon-Bone, Maki's Naginata, Wrapped Cleaver, Kamutoke, Black Rope and Gauntlets, from exotic traders, quest rewards and ancient temples. The Prison Realm, Yuta's Ring and the Malice Cloak (crafted, needs Anomaly) have stories of their own. With Anomaly, fingers, Death Paintings and cursed tools can be studied.
+
+INHERITED TECHNIQUES
+A child has a 10% chance for each parent with a cursed technique to be born with one of that parent's techniques (never more than one). Once they have a psylink they can learn it, and start with its first ability. The Six Eyes are a gene and pass on by normal Biotech rules.
+
+SETTINGS
+Ability icons as pictures or kanji; Black Flash chance, and whether psycasts can trigger it; psycast experience from battles; whether domains hit neutrals; whether characters join your ideoligion; which Gojo, Yuta, Maki and Yuji arrive (Yuji from the start of the series to Modulo); when Yuji's fingers start to count; how strong enemy Sukuna is, from Weakened to The Enlightened One; how the Six Eyes are drawn; how fast fingers and paintings turn up.
+
+REQUIREMENTS
+Requires Royalty, Biotech, Harmony, Vanilla Expanded Framework, Vanilla Psycasts Expanded and Vanilla Psycasts Expanded - Hemosage. Ideology and Anomaly are optional. Works with Simple Sidearms and Facial Animation.
+
+Current version: v2.0.0
+
+Please remember to rate my mod! Thank you!
+
+Please support: https://www.patreon.com/mythraps
+
+Source: https://github.com/MythraPS/rimworld-mods</description>
+</ModMetaData>

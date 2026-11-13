@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- "X asks to join" with a real choice (JoinOffer.cs; her call 2026-11-11): Gojo, Maki, Inumaki. -->
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>JJK_JoinOffer</defName>
+    <letterClass>JujutsuFundamentals.ChoiceLetter_JoinOffer</letterClass>
+  </LetterDef>
+
+  <!-- ====================== Kusakabe asks for help (Miwa's rescue) ======================
+       Fires once per game (CharacterTracker), or from the dev menu. -->
+  <IncidentDef>
+    <defName>JJK_KusakabeAsks</defName>
+    <label>Kusakabe asks for help</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>JujutsuFundamentals.IncidentWorker_KusakabeAsks</workerClass>
+    <baseChance>0.4</baseChance>
+    <minRefireDays>9999</minRefireDays>
+    <earliestDay>10</earliestDay>
+  </IncidentDef>
+
+  <!-- The outpost Miwa raids: a random enemy outpost (her call 2026-11-10). The quest only makes the
+       site; CharacterTracker runs the rest (intercept window, Miwa on the map, success and failure). -->
+  <QuestScriptDef>
+    <defName>JJK_MiwaRescue</defName>
+    <rootSelectionWeight>0</rootSelectionWeight>
+    <autoAccept>true</autoAccept>
+    <questNameRules>
+      <rulesStrings>
+        <li>questName->Miwa's Revenge</li>
+      </rulesStrings>
+    </questNameRules>
+    <questDescriptionRules>
+      <rulesStrings>
+        <li>questDescription->Kasumi Miwa has gone alone to raid [siteFaction_name]'s outpost not far from [map_definite], hunting for Kenjaku to avenge Mechamaru. Atsuya Kusakabe asks you to bring her back alive.\n\nReach the outpost within two days and you can catch her before she goes in. After that, she will already be fighting inside: finish the raid with her, or for her. She can't hold out alone forever: if nobody reaches the outpost within ten days, she dies there. If she dies, or you never come, Kusakabe will not join you. Once you've reached her she's with you, and getting her out alive counts.\n\nIt seems that [allSitePartsDescriptionsExceptFirst]</li>
+      </rulesStrings>
+    </questDescriptionRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+        <li Class="QuestNode_SubScript"><def>Util_RandomizePointsChallengeRating</def></li>
+        <li Class="QuestNode_SubScript"><def>Util_AdjustPointsForDistantFight</def></li>
+        <li Class="QuestNode_GetMap" />
+        <li Class="QuestNode_GetSiteTile">
+          <storeAs>siteTile</storeAs>
+          <preferCloserTiles>true</preferCloserTiles>
+        </li>
+        <li Class="QuestNode_GetSitePartDefsByTagsAndFaction">
+          <storeAs>sitePartDefs</storeAs>
+          <storeFactionAs>siteFaction</storeFactionAs>
+          <sitePartsTags>
+            <li><tag>Outpost</tag></li>
+          </sitePartsTags>
+        </li>
+        <li Class="QuestNode_GetDefaultSitePartsParams">
+          <tile>$siteTile</tile>
+          <faction>$siteFaction</faction>
+          <sitePartDefs>$sitePartDefs</sitePartDefs>
+          <storeSitePartsParamsAs>sitePartsParams</storeSitePartsParamsAs>
+        </li>
+        <li Class="QuestNode_SubScript">
+          <def>Util_GenerateSite</def>
+        </li>
+        <li Class="QuestNode_SpawnWorldObjects"><worldObjects>$site</worldObjects></li>
+      </nodes>
+    </root>
+  </QuestScriptDef>
+
+  <!-- ====================== Todo's Boogie Woogie ======================
+       His own abilities, outside the paths (her call 2026-11-10). Given by CharacterTracker. -->
+  <VEF.Abilities.AbilityDef>
+    <defName>JJK_BoogieWoogie</defName>
+    <label>Boogie Woogie</label>
+    <description>A clap, and two targets swap places: pick the first, then the second. Each can be Todo himself, a person, an animal or an item on the ground, a stone chunk included. Any distance, as long as he can see both. Instant, no cooldown. Needs both hands free (no weapon held); with the Vibraslap installed, one hand is enough.</description>
+    <iconPath>Abilities/Jujutsu/BoogieWoogie</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_BoogieWoogie</abilityClass>
+    <!-- two targets (her call 2026-11-11: any two, not necessarily Todo), picked one after the other like VPE's Skip -->
+    <targetCount>2</targetCount>
+    <targetModes>
+      <li>Location</li>
+      <li>Location</li>
+    </targetModes>
+    <castTime>0</castTime>
+    <cooldownTime>0</cooldownTime>
+    <range>999999</range>   <!-- no range limit, only line of sight (her call 2026-11-10) -->
+    <requireLineOfSight>true</requireLineOfSight>
+    <showUndrafted>true</showUndrafted>
+    <targetingParametersList>
+      <li>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetHumans>true</canTargetHumans>
+        <canTargetAnimals>true</canTargetAnimals>
+        <canTargetMechs>true</canTargetMechs>
+        <canTargetItems>true</canTargetItems>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetSelf>true</canTargetSelf>
+      </li>
+      <li>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetHumans>true</canTargetHumans>
+        <canTargetAnimals>true</canTargetAnimals>
+        <canTargetMechs>true</canTargetMechs>
+        <canTargetItems>true</canTargetItems>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetSelf>true</canTargetSelf>
+      </li>
+    </targetingParametersList>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_BoogieWoogiePath</path>
+        <level>1</level>
+        <order>1</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef>
+    <defName>JJK_BoogieWoogieFlurry</defName>
+    <label>Re-Boogie Woogie</label>
+    <description>Vibraslap only. Dozens of swaps in a moment among everyone within 15 cells of Todo, friend and foe. Enemies caught in it lose track of where anyone is and stand dazed for a few seconds.</description>
+    <iconPath>Abilities/Jujutsu/BoogieWoogieFlurry</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_BoogieWoogieFlurry</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>0</castTime>
+    <cooldownTime>600</cooldownTime>
+    <radius>14.9</radius>   <!-- 7.9 -> 14.9 (her call 2026-11-11: wider) -->
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_BoogieWoogiePath</path>
+        <level>2</level>
+        <order>1</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_BoogieWoogie</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef>
+    <defName>JJK_BoogieWoogieDeflect</defName>
+    <label>Boogie Woogie: Return Fire</label>
+    <description>For a few seconds, every enemy shot that reaches Todo is swapped back and sent at whoever fired it. Needs a hand free, as the clap does.</description>
+    <iconPath>Abilities/Jujutsu/BoogieWoogieDeflect</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_BoogieWoogieDeflect</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>0</castTime>
+    <cooldownTime>900</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="VEF.Abilities.AbilityExtension_Hediff">
+        <hediff>JJK_ReturnFire</hediff>
+        <applyToCaster>true</applyToCaster>
+      </li>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_BoogieWoogiePath</path>
+        <level>2</level>
+        <order>2</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_BoogieWoogie</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <HediffDef>
+    <defName>JJK_ReturnFire</defName>
+    <label>return fire</label>
+    <description>Enemy shots that reach him are swapped back at whoever fired them.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>300~300</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ====================== The Vibraslap ======================
+       A prosthetic left hand you craft and install (her call 2026-11-10), copied from vanilla's
+       prosthetic arm. Placeholder graphic: vanilla's health item. Cost is a proposal. -->
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>JJK_Vibraslap</defName>
+    <label>vibraslap</label>
+    <labelNoun>a vibraslap</labelNoun>
+    <description>A vibraslap fitted in place of a hand. Striking it does what a clap does.</description>
+    <descriptionHyperlinks><ThingDef>JJK_Vibraslap</ThingDef></descriptionHyperlinks>
+    <spawnThingOnRemoved>JJK_Vibraslap</spawnThingOnRemoved>
+    <addedPartProps>
+      <solid>true</solid>
+      <partEfficiency>0.50</partEfficiency>
+    </addedPartProps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartProstheticMakeableBase">
+    <defName>JJK_Vibraslap</defName>
+    <label>vibraslap</label>
+    <description>A percussion instrument made to be fitted in place of a hand: a metal rod with a wooden box at one end. For Aoi Todo, striking it works as a clap.</description>
+    <descriptionHyperlinks><RecipeDef>JJK_InstallVibraslap</RecipeDef></descriptionHyperlinks>
+    <costList>
+      <Steel>20</Steel>
+      <WoodLog>15</WoodLog>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <Mass>1</Mass>
+    </statBases>
+    <techHediffsTags>
+      <li>Simple</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+    <defName>JJK_InstallVibraslap</defName>
+    <label>install vibraslap</label>
+    <description>Install a vibraslap in place of a hand.</description>
+    <descriptionHyperlinks>
+      <ThingDef>JJK_Vibraslap</ThingDef>
+      <HediffDef>JJK_Vibraslap</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing vibraslap.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>JJK_Vibraslap</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>JJK_Vibraslap</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Hand</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>JJK_Vibraslap</addsHediff>
+  </RecipeDef>
+
+</Defs>

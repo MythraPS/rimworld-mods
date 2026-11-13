@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- The Six Eyes. Never rolled at random (commonality 0); Gojo is made with it,
+       and anyone given it in a pawn editor gets the path and the hediff too. -->
+  <TraitDef>
+    <defName>Gojo_SixEyes</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>six eyes</label>
+        <description>[PAWN_nameDef] was born with the Six Eyes, the first in four hundred years. [PAWN_pronoun] sees cursed energy down to the particle, sees through walls, and wastes almost nothing on any technique.</description>
+        <statFactors>
+          <VPE_PsyfocusCostFactor>0.5</VPE_PsyfocusCostFactor>
+          <PsychicEntropyGain>0.5</PsychicEntropyGain>
+        </statFactors>
+        <statOffsets>
+          <PsychicEntropyRecoveryRate>0.3</PsychicEntropyRecoveryRate>
+          <MeditationFocusGain>0.3</MeditationFocusGain>
+          <PsychicSensitivity>0.5</PsychicSensitivity>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+  </TraitDef>
+
+  <HairDef>
+    <defName>Gojo_Hair</defName>
+    <label>gojo spikes</label>
+    <styleGender>Male</styleGender>
+    <texPath>Things/Pawn/Humanlike/Hairs/Gojo_Hair</texPath>
+  </HairDef>
+
+  <!-- The old blindfold, drawn as a face tattoo. Kept only so saves from before
+       2026-10-31 load; the Limitless hediff swaps it for the apparel below. -->
+  <TattooDef>
+    <defName>Gojo_Blindfold</defName>
+    <label>blindfold</label>
+    <texPath>Things/Pawn/Humanlike/Tattoos/Gojo_Blindfold/Gojo_Blindfold</texPath>
+    <tattooType>Face</tattooType>
+    <visibleNorth>true</visibleNorth>
+    <category>Urban</category>
+  </TattooDef>
+
+  <!-- The blindfold as clothing (her call 2026-10-31): worn on the eye layer over
+       his blue eyes, taken off and put on like any apparel. Looks only: unlike
+       Ideology's blindfold it doesn't block sight. -->
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>Gojo_BlindfoldApparel</defName>
+    <smeltable>false</smeltable>
+    <label>Gojo's Blindfold</label>
+    <description>A strip of black cloth wrapped over the eyes. Satoru Gojo wears it to rest the Six Eyes, and sees perfectly well through it.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Gojo_Blindfold/Gojo_Blindfold_south</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+      <Mass>0.07</Mass>
+      <EquipDelay>0.8</EquipDelay>
+    </statBases>
+    <thingCategories>
+      <li>Headgear</li>
+    </thingCategories>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <bodyPartGroups>
+        <li>Eyes</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Gojo_Blindfold/Gojo_Blindfold</wornGraphicPath>
+      <layers>
+        <li>EyeCover</li>
+      </layers>
+      <drawData>
+        <defaultData>
+          <layer>61</layer>
+        </defaultData>
+      </drawData>
+      <renderSkipFlags>
+        <li>None</li>
+      </renderSkipFlags>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+    </apparel>
+  </ThingDef>
+
+  <!-- Young Gojo's round sunglasses (her call 2026-11-07: he wears these instead of the blindfold;
+       idea from "Jujutsu Colony Expansion"). Looks only, like the blindfold. tools/art_sunglasses.py -->
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>Gojo_SunglassesApparel</defName>
+    <smeltable>false</smeltable>
+    <label>Round Sunglasses</label>
+    <description>Small, round, nearly black sunglasses. Young Satoru Gojo wears them to dull what the Six Eyes take in.</description>
+    <graphicData>
+      <texPath>Things/Item/Apparel/Gojo_Sunglasses/Gojo_Sunglasses</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <Mass>0.05</Mass>
+      <EquipDelay>0.6</EquipDelay>
+      <SocialImpact>0.05</SocialImpact>
+    </statBases>
+    <thingCategories>
+      <li>Headgear</li>
+    </thingCategories>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <bodyPartGroups>
+        <li>Eyes</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Gojo_Sunglasses/Gojo_Sunglasses</wornGraphicPath>
+      <layers>
+        <li>EyeCover</li>
+      </layers>
+      <drawData>
+        <defaultData>
+          <layer>61</layer>
+        </defaultData>
+      </drawData>
+      <renderSkipFlags>
+        <li>None</li>
+      </renderSkipFlags>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+    </apparel>
+  </ThingDef>
+
+  <!-- Gojo's eyes with Facial Animation (her note 2026-11-07): FA's Wide eyes a touch smaller
+       (tools/art_faeyes.py). probability 0: no other pawn is ever given them. Only loads with FA. -->
+  <FacialAnimation.EyeballTypeDef MayRequireAnyOf="Nals.FacialAnimation,Nals.FacialAnimationExperimentals">
+    <defName>Gojo_EyeWideSmall</defName>
+    <texPath>Things/Pawn/Humanlike/Gojo_FAEyes</texPath>
+    <shader>Map/CutoutComplex</shader>
+    <minColor>RGB(0.25,0.25,0.25)</minColor>
+    <maxColor>RGB(0.85,0.85,0.85)</maxColor>
+    <probability>0</probability>
+  </FacialAnimation.EyeballTypeDef>
+
+  <!-- His face under the blindfold: only his blue eyes show. Looks only. -->
+  <TattooDef>
+    <defName>Gojo_Eyes</defName>
+    <label>six eyes</label>
+    <texPath>Things/Pawn/Humanlike/Tattoos/Gojo_Eyes/Gojo_Eyes</texPath>
+    <tattooType>Face</tattooType>
+    <visibleNorth>false</visibleNorth>
+    <overrideShaderTypeDef>Cutout</overrideShaderTypeDef>
+    <category>Urban</category>
+  </TattooDef>
+
+  <BackstoryDef>
+    <defName>Gojo_Childhood</defName>
+    <title>gojo clan heir</title>
+    <titleShort>heir</titleShort>
+    <description>The moment [PAWN_nameDef] was born with the Six Eyes and Limitless together, the balance of the whole jujutsu world shifted, and the price on [PAWN_possessive] head rose so high that assassins came for [PAWN_objective] in [PAWN_possessive] crib.</description>
+    <slot>Childhood</slot>
+    <spawnCategories>
+      <li>GojoUnique</li>
+    </spawnCategories>
+    <skillGains>
+      <Melee>4</Melee>
+      <Intellectual>3</Intellectual>
+    </skillGains>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Gojo_Adulthood</defName>
+    <title>jujutsu teacher</title>
+    <titleShort>teacher</titleShort>
+    <description>[PAWN_nameDef] is a special-grade sorcerer and a teacher, and fairly sure [PAWN_pronoun] is the strongest there is. [PAWN_pronoun] fights barehanded, because [PAWN_possessive] technique is a better weapon than anything [PAWN_pronoun] could carry, and has never needed a gun.</description>
+    <slot>Adulthood</slot>
+    <spawnCategories>
+      <li>GojoUnique</li>
+    </spawnCategories>
+    <skillGains>
+      <Melee>8</Melee>
+      <Social>3</Social>
+    </skillGains>
+    <workDisables>
+      <li>Shooting</li>
+    </workDisables>
+  </BackstoryDef>
+
+  <PawnKindDef ParentName="BasePlayerPawnKind">
+    <defName>Gojo_Satoru</defName>
+    <initialResistanceRange>13~21</initialResistanceRange>
+    <label>jujutsu sorcerer</label>
+    <race>Human</race>
+    <combatPower>500</combatPower>
+    <apparelMoney>0~0</apparelMoney>
+    <weaponMoney>0~0</weaponMoney>
+    <apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+    <techHediffsMoney>0~0</techHediffsMoney>
+  </PawnKindDef>
+
+  <!-- Young Gojo (her ask 2026-11-06): the high-school Gojo, still to unlock most of Limitless. -->
+  <PawnKindDef ParentName="BasePlayerPawnKind">
+    <defName>Gojo_YoungSatoru</defName>
+    <initialResistanceRange>13~21</initialResistanceRange>
+    <label>jujutsu student</label>
+    <race>Human</race>
+    <combatPower>220</combatPower>
+    <apparelMoney>0~0</apparelMoney>
+    <weaponMoney>0~0</weaponMoney>
+    <apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+    <techHediffsMoney>0~0</techHediffsMoney>
+  </PawnKindDef>
+
+  <!-- He asks to join (a choice letter, her call 2026-11-11). Once he's joined, never again; refused, he may ask
+       again after 15 days. -->
+  <IncidentDef>
+    <defName>Gojo_Arrives</defName>
+    <label>satoru gojo arrives</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>GojoPsycasts.IncidentWorker_GojoArrives</workerClass>
+    <letterDef>JJK_JoinOffer</letterDef>
+    <baseChance>0.4</baseChance>
+    <minRefireDays>15</minRefireDays>
+    <earliestDay>10</earliestDay>
+  </IncidentDef>
+
+</Defs>

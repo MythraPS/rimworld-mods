@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Cursed Speech (her design 2026-11-11). The strength rule, the costs, the throat strain and every number are in
+       Source/Yuta/Speech/CursedSpeech.cs; all numbers are proposals. entropyGain stays 0: the neural heat (her call
+       2026-11-11, this path only) is added in code, weighted by the listeners. -->
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_CS_Stop</defName>
+    <label>Stop</label>
+    <description>One target freezes where they stand for 2 seconds. The stronger the target is next to the speaker, the shorter it lasts (under half a second to 4 seconds). Strains the throat a little.\n\nEvery command strains the speaker's throat, more against stronger targets; at full strain they lose their voice for a day. Yuta Okkotsu takes no strain.\n\nThe listener has to hear it: deaf listeners are immune, and poor hearing weakens it. Stronger and more psychically sensitive listeners cost more psyfocus and neural heat; one the speaker can't pay for can't be commanded. An ordinary person costs the psyfocus shown and 3 neural heat.\n\nNeeds a voice: no command while Talking is under 30%.</description>
+    <iconPath>Abilities/Yuta/Speech/Stop</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_CS_Stop</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <castTime>15</castTime>
+    <cooldownTime>300</cooldownTime>
+    <range>24.9</range>
+    <requireLineOfSight>false</requireLineOfSight>   <!-- a voice carries round cover and through walls (her call 2026-11-11) -->
+    <targetingParameters>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+      <canTargetLocations>false</canTargetLocations>
+    </targetingParameters>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_CursedSpeech</path>
+        <level>1</level>
+        <order>1</order>
+        <psyfocusCost>0.01</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_CS_RunAway</defName>
+    <label>Run Away</label>
+    <description>Every enemy within 10 cells of the speaker drops what they are doing and flees for about 4 seconds (under a second to 8 seconds, shorter for stronger enemies).\n\nEvery command strains the speaker's throat, more against stronger targets; at full strain they lose their voice for a day. Yuta Okkotsu takes no strain.\n\nThe listener has to hear it: deaf listeners are immune, and poor hearing weakens it. Stronger and more psychically sensitive listeners cost more psyfocus and neural heat; one the speaker can't pay for can't be commanded. An ordinary person costs the psyfocus shown and 5 neural heat.\n\nNeeds a voice: no command while Talking is under 30%.</description>
+    <iconPath>Abilities/Yuta/Speech/RunAway</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_CS_RunAway</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>15</castTime>
+    <cooldownTime>900</cooldownTime>
+    <radius>9.9</radius>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_CursedSpeech</path>
+        <level>1</level>
+        <order>2</order>
+        <psyfocusCost>0.02</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_CS_DontMove</defName>
+    <label>Don't Move</label>
+    <description>Every enemy in a circle freezes for about 4 seconds; stronger enemies break free sooner (under a second to 8 seconds).\n\nEvery command strains the speaker's throat, more against stronger targets; at full strain they lose their voice for a day. Yuta Okkotsu takes no strain.\n\nThe listener has to hear it: deaf listeners are immune, and poor hearing weakens it. Stronger and more psychically sensitive listeners cost more psyfocus and neural heat; one the speaker can't pay for can't be commanded. An ordinary person costs the psyfocus shown and 8 neural heat.\n\nNeeds a voice: no command while Talking is under 30%.</description>
+    <iconPath>Abilities/Yuta/Speech/DontMove</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_CS_DontMove</abilityClass>
+    <targetMode>Location</targetMode>
+    <castTime>20</castTime>
+    <cooldownTime>1200</cooldownTime>
+    <range>29.9</range>
+    <radius>5.9</radius>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_CursedSpeech</path>
+        <level>2</level>
+        <order>1</order>
+        <psyfocusCost>0.03</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_CS_Stop</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_CS_BlastAway</defName>
+    <label>Blast Away</label>
+    <description>Every enemy within 5 cells of the speaker is thrown away from them and takes blunt damage: 6 cells and 10 damage against an equal, more against weaker enemies, less against stronger ones.\n\nEvery command strains the speaker's throat, more against stronger targets; at full strain they lose their voice for a day. Yuta Okkotsu takes no strain.\n\nThe listener has to hear it: deaf listeners are immune, and poor hearing weakens it. Stronger and more psychically sensitive listeners cost more psyfocus and neural heat; one the speaker can't pay for can't be commanded. An ordinary person costs the psyfocus shown and 8 neural heat.\n\nNeeds a voice: no command while Talking is under 30%.</description>
+    <iconPath>Abilities/Yuta/Speech/BlastAway</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_CS_BlastAway</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>20</castTime>
+    <cooldownTime>900</cooldownTime>
+    <radius>4.9</radius>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_CursedSpeech</path>
+        <level>2</level>
+        <order>2</order>
+        <psyfocusCost>0.03</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_CS_RunAway</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_CS_Sleep</defName>
+    <label>Sleep</label>
+    <description>One target falls unconscious for about 3 hours (36 minutes to 6 hours, shorter for stronger targets), or until they're hurt.\n\nEvery command strains the speaker's throat, more against stronger targets; at full strain they lose their voice for a day. Yuta Okkotsu takes no strain.\n\nThe listener has to hear it: deaf listeners are immune, and poor hearing weakens it. Stronger and more psychically sensitive listeners cost more psyfocus and neural heat; one the speaker can't pay for can't be commanded. An ordinary person costs the psyfocus shown and 10 neural heat.\n\nNeeds a voice: no command while Talking is under 30%.</description>
+    <iconPath>Abilities/Yuta/Speech/Sleep</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_CS_Sleep</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <castTime>30</castTime>
+    <cooldownTime>30000</cooldownTime>
+    <range>24.9</range>
+    <requireLineOfSight>false</requireLineOfSight>   <!-- a voice carries round cover and through walls (her call 2026-11-11) -->
+    <targetingParameters>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+      <canTargetLocations>false</canTargetLocations>
+    </targetingParameters>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_CursedSpeech</path>
+        <level>3</level>
+        <order>1</order>
+        <psyfocusCost>0.04</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_CS_DontMove</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_CS_GetCrushed</defName>
+    <label>Get Crushed</label>
+    <description>One target is crushed: 30 blunt damage against an equal, more against weaker targets, less against stronger ones.\n\nEvery command strains the speaker's throat, more against stronger targets; at full strain they lose their voice for a day. Yuta Okkotsu takes no strain.\n\nThe listener has to hear it: deaf listeners are immune, and poor hearing weakens it. Stronger and more psychically sensitive listeners cost more psyfocus and neural heat; one the speaker can't pay for can't be commanded. An ordinary person costs the psyfocus shown and 12 neural heat.\n\nNeeds a voice: no command while Talking is under 30%.</description>
+    <iconPath>Abilities/Yuta/Speech/GetCrushed</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_CS_GetCrushed</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <castTime>30</castTime>
+    <cooldownTime>1800</cooldownTime>
+    <range>24.9</range>
+    <requireLineOfSight>false</requireLineOfSight>   <!-- a voice carries round cover and through walls (her call 2026-11-11) -->
+    <targetingParameters>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+      <canTargetLocations>false</canTargetLocations>
+    </targetingParameters>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_CursedSpeech</path>
+        <level>3</level>
+        <order>2</order>
+        <psyfocusCost>0.04</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_CS_BlastAway</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_CS_Explode</defName>
+    <label>Explode</label>
+    <description>One target explodes: 45 damage against an equal, less against stronger targets. A much weaker target is destroyed outright. Strains the throat badly.\n\nEvery command strains the speaker's throat, more against stronger targets; at full strain they lose their voice for a day. Yuta Okkotsu takes no strain.\n\nThe listener has to hear it: deaf listeners are immune, and poor hearing weakens it. Stronger and more psychically sensitive listeners cost more psyfocus and neural heat; one the speaker can't pay for can't be commanded. An ordinary person costs the psyfocus shown and 18 neural heat.\n\nNeeds a voice: no command while Talking is under 30%.</description>
+    <iconPath>Abilities/Yuta/Speech/Explode</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_CS_Explode</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <castTime>45</castTime>
+    <cooldownTime>3600</cooldownTime>
+    <range>24.9</range>
+    <requireLineOfSight>false</requireLineOfSight>   <!-- a voice carries round cover and through walls (her call 2026-11-11) -->
+    <targetingParameters>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+      <canTargetLocations>false</canTargetLocations>
+    </targetingParameters>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_CursedSpeech</path>
+        <level>4</level>
+        <order>2</order>
+        <psyfocusCost>0.06</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_CS_GetCrushed</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_CS_Die</defName>
+    <label>Die</label>
+    <description>Every enemy within 15 cells hears it: Anomaly entities and mutants weaker than the speaker die on the spot; anyone else takes 40 cursed energy damage, less if they are stronger. Yuta needs Rika fully manifested to give it.\n\nThe listener has to hear it: deaf listeners are immune, and poor hearing weakens it. Stronger and more psychically sensitive listeners cost more psyfocus and neural heat; one the speaker can't pay for can't be commanded. An ordinary person costs the psyfocus shown and 25 neural heat.\n\nNeeds a voice: no command while Talking is under 30%.</description>
+    <iconPath>Abilities/Yuta/Speech/Die</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_CS_Die</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>60</castTime>
+    <cooldownTime>15000</cooldownTime>
+    <radius>14.9</radius>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_CursedSpeech</path>
+        <level>5</level>
+        <order>2</order>
+        <psyfocusCost>0.08</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_CS_Explode</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- Inumaki's backlash (canon; numbers proposals): fades by 0.75 a day; at 1 he loses his voice (JJK_VoiceLost). -->
+  <HediffDef>
+    <defName>JJK_ThroatStrain</defName>
+    <label>throat strain</label>
+    <description>Strain from giving Cursed Speech commands. The stronger the listener, the worse it is. At full strain the voice goes for a while.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.8, 0.55, 0.55)</defaultLabelColor>
+    <isBad>true</isBad>
+    <initialSeverity>0.05</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.75</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>sore</label>
+      </li>
+      <li>
+        <minSeverity>0.4</minSeverity>
+        <label>strained</label>
+        <capMods>
+          <li>
+            <capacity>Talking</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.75</minSeverity>
+        <label>raw</label>
+        <painOffset>0.05</painOffset>
+        <capMods>
+          <li>
+            <capacity>Talking</capacity>
+            <offset>-0.3</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>JJK_VoiceLost</defName>
+    <label>voice lost</label>
+    <description>The throat is too damaged from Cursed Speech to speak, let alone give a command. It comes back in a day.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.8, 0.45, 0.45)</defaultLabelColor>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>60000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <painOffset>0.1</painOffset>
+        <capMods>
+          <li>
+            <capacity>Talking</capacity>
+            <setMax>0.1</setMax>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Sleep's command: unconscious; Ability_CS_Sleep sets how long. -->
+  <HediffDef>
+    <defName>JJK_CS_Asleep</defName>
+    <label>commanded to sleep</label>
+    <description>Ordered to sleep by Cursed Speech, and asleep until the command wears off or something hurts them.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>7500</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="JujutsuFundamentals.HediffCompProperties_WakeWhenHurt" />
+    </comps>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.1</setMax>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Inumaki's crest, the snake eye and fangs at both corners of his mouth (tools/yuta/art_speech.py). -->
+  <TattooDef>
+    <defName>JJK_InumakiCrest</defName>
+    <label>snake-and-fang crest</label>
+    <texPath>Things/Pawn/Humanlike/Tattoos/JJK_InumakiCrest/JJK_InumakiCrest</texPath>
+    <tattooType>Face</tattooType>
+    <visibleNorth>false</visibleNorth>
+    <overrideShaderTypeDef>Cutout</overrideShaderTypeDef>
+    <category>Tribal</category>
+  </TattooDef>
+
+  <!-- He asks to join (a choice letter, her call 2026-11-11); once he's joined, never again; same numbers as Maki's. -->
+  <IncidentDef>
+    <defName>JJK_InumakiJoins</defName>
+    <label>Toge Inumaki asks to join</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>JujutsuFundamentals.IncidentWorker_InumakiJoins</workerClass>
+    <baseChance>0.4</baseChance>
+    <minRefireDays>15</minRefireDays>
+    <letterDef>JJK_JoinOffer</letterDef>
+  </IncidentDef>
+
+  <!-- Inumaki's childhood (her call 2026-11-11): "jujutsu student" like JJK_JujutsuStudent, but his Social is disabled. -->
+  <BackstoryDef>
+    <defName>JJK_InumakiStudent</defName>
+    <title>jujutsu student</title>
+    <titleShort>student</titleShort>
+    <description>[PAWN_nameDef] was trained in jujutsu as a student. [PAWN_pronoun] speaks only in rice ball fillings, so no stray word becomes a command.</description>
+    <slot>Childhood</slot>
+    <spawnCategories>
+      <li>JJKUnique</li>
+    </spawnCategories>
+    <skillGains>
+      <Melee>3</Melee>
+    </skillGains>
+    <workDisables>Social</workDisables>
+  </BackstoryDef>
+
+</Defs>

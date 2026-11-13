@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  <!-- The space around Thin Ice-Breaker's target cracking like ice (her call 2026-11-11; canon: the manga draws the air
+       shattering into shards from the point of impact). Art: tools/yuta/art_sky_crack.py. -->
+  <FleckDef Name="JJK_SkyCrackBase" ParentName="FleckBase" Abstract="True">
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.04</fadeInTime>
+    <solidTime>0.35</solidTime>
+    <fadeOutTime>0.7</fadeOutTime>
+  </FleckDef>
+
+  <FleckDef ParentName="JJK_SkyCrackBase">
+    <defName>JJK_Fleck_SkyCrackA</defName>
+    <graphicData>
+      <texPath>Things/Yuta/Sky/SkyCrackA</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <FleckDef ParentName="JJK_SkyCrackBase">
+    <defName>JJK_Fleck_SkyCrackB</defName>
+    <graphicData>
+      <texPath>Things/Yuta/Sky/SkyCrackB</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <FleckDef ParentName="JJK_SkyCrackBase">
+    <defName>JJK_Fleck_SkyCrackC</defName>
+    <graphicData>
+      <texPath>Things/Yuta/Sky/SkyCrackC</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+  </FleckDef>
+</Defs>

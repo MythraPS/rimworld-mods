@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Yuta's Copy part (her design 2026-11-11, design doc 3d). Numbers are proposals.
+       Copy's prerequisite (Manifest Rika) is left for when the Rika part's defs are in. -->
+
+  <!-- L3 · Copy -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Yuta_Copy</defName>
+    <label>Copy</label>
+    <description>Needs Yuta connected to Rika through his ring (Put On The Ring). Rika eats part of someone who is down or held, beside her or Yuta, and Yuta gains some of their techniques, picked at random from those he doesn't have: a finger or toe gives one, a hand, foot or ear two, an arm, leg, eye or any organ but the brain and heart three, and the head, brain or heart all of them, which kills. He chooses the part.\n\nShrine can only be copied from Yuji, or from a Sukuna finger Rika eats: that gives Yuta one psycast level, spent on the next Shrine technique as a vessel's finger would be, with no vessel and no risk of Sukuna taking over.\n\nTechniques that are Yuta's own can't be copied.</description>
+    <iconPath>Abilities/Yuta/Copy/Copy</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Copy</abilityClass>
+    <targetMode>Thing</targetMode>
+    <castTime>60</castTime>
+    <cooldownTime>600</cooldownTime>
+    <range>24.9</range>
+    <showUndrafted>true</showUndrafted>
+    <targetingParameters>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetItems>true</canTargetItems>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+      <canTargetLocations>false</canTargetLocations>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_YutaPath</path>
+        <level>3</level>
+        <order>1</order>
+        <psyfocusCost>0.05</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_Yuta_ManifestRika</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L4 · Reverse Cursed Technique: Output -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Yuta_RctOutput</defName>
+    <label>Reverse Cursed Technique: Output</label>
+    <description>Needs Reverse Cursed Technique (Cursed Energy Fundamentals) first. Yuta heals someone else by touch, at twice the rate his own Reverse Cursed Technique heals him: wounds close and lost parts regrow. It lasts up to 20 seconds while he stays beside them and has psyfocus, which it slowly drains.</description>
+    <iconPath>Abilities/Yuta/Copy/RctOutput</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_RctOutput</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <castTime>30</castTime>
+    <cooldownTime>300</cooldownTime>
+    <range>1.9</range>
+    <showUndrafted>true</showUndrafted>
+    <targetingParameters>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+      <canTargetLocations>false</canTargetLocations>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_YutaPath</path>
+        <level>4</level>
+        <order>1</order>
+        <psyfocusCost>0.05</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L4 · Paste (hers, not canon) -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Yuta_Paste</defName>
+    <label>Paste</label>
+    <description>Needs Reverse Cursed Technique (Cursed Energy Fundamentals) first. Yuta gives one of his techniques to someone else: he loses it, and the psycast point he spent on it, and they gain it. They need psychic sensitivity and psycast level 1. What is Yuta's alone (Rika, Copy, Paste, healing others, his domain and Die) can't be given. Uro and Inumaki can't take anything.</description>
+    <iconPath>Abilities/Yuta/Copy/Paste</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Paste</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <castTime>60</castTime>
+    <cooldownTime>2500</cooldownTime>
+    <range>1.9</range>
+    <showUndrafted>true</showUndrafted>
+    <targetingParameters>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+      <canTargetLocations>false</canTargetLocations>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_YutaPath</path>
+        <level>4</level>
+        <order>2</order>
+        <psyfocusCost>0.1</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_Yuta_Copy</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L5 · Domain Expansion: Authentic Mutual Love -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Yuta_Domain</defName>
+    <label>Domain Expansion: Authentic Mutual Love</label>
+    <description>Yuta's domain, closed behind a barrier, with katanas stuck in the ground all over it, several for each of his attack techniques and a few right beside him. Each holds one; he doesn't know which until he takes it up. When he does, that technique hits everyone inside who isn't his ally as a sure hit, ignoring armour and shields; it costs him nothing more. It collapses if he leaves it, and the katanas go with it. A more refined domain overlapping it, or one with no barrier, makes it collapse.\n\nOpening it costs half a psyfocus bar times his psyfocus cost (a tenth of the bar for Yuta) and leaves his neural heat at 90% of his limit. Inside a barrier Dhruv's shikigami have traced, it costs half the psyfocus and half the neural heat, and stands on that circle. When three or more domains meet, all of them collapse and their casters burn out.</description>
+    <iconPath>Abilities/Yuta/Copy/Domain</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_MutualLove</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>120</castTime>
+    <cooldownTime>3600</cooldownTime>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_YutaPath</path>
+        <level>5</level>
+        <order>2</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_Yuta_Copy</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <HediffDef>
+    <defName>JJK_RctOutputHealing</defName>
+    <label>healed by Reverse Cursed Technique</label>
+    <description>Being healed by someone else's Reverse Cursed Technique.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="JujutsuFundamentals.HediffCompProperties_RctOutput">
+        <factor>2</factor>
+        <reach>1.9</reach>
+      </li>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1200</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>JJK_MutualLoveDomain</defName>
+    <label>authentic mutual love</label>
+    <description>Yuta's domain, Authentic Mutual Love, is open.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="JujutsuFundamentals.HediffCompProperties_MutualLove">
+        <radius>17.9</radius>   <!-- her calls 2026-11-11: 11.9 -> 17.9 -> 23.9 -> 17.9 (25% smaller); x psychic sensitivity and raised output -->
+        <maxRadius>41</maxRadius>   <!-- 55 -> 41 with the 25% cut (her call 2026-11-11) -->
+      </li>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>7200</disappearsAfterTicks>   <!-- 2 minutes (her call 2026-11-12; was 60 s) -->
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- Five seconds: long enough for a released technique's projectiles to land. -->
+  <HediffDef>
+    <defName>JJK_MutualLoveMark</defName>
+    <label>sure hit</label>
+    <description>Locked on by Authentic Mutual Love: Yuta's damage ignores armour.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>300</disappearsAfterTicks>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- The domain's katanas. Placeholder look: vanilla's longsword, tinted purple. -->
+  <ThingDef ParentName="BaseWeapon">
+    <defName>JJK_MutualLoveKatana</defName>
+    <label>Katana (Authentic Mutual Love)</label>
+    <description>A katana from Yuta's domain. It holds one of his techniques, and disappears when the domain collapses.</description>
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/LongSword</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(0.78, 0.6, 1)</color>
+    </graphicData>
+    <tradeability>None</tradeability>
+    <smeltable>false</smeltable>
+    <burnableByRecipe>false</burnableByRecipe>
+    <generateCommonality>0</generateCommonality>
+    <relicChance>0</relicChance>
+    <weaponClasses>
+      <li>Melee</li>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <statBases>
+      <MarketValue>0</MarketValue>
+      <Mass>1.5</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities><li>Stab</li></capacities>
+        <power>23</power>
+        <cooldownTime>2.6</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities><li>Cut</li></capacities>
+        <power>23</power>
+        <cooldownTime>2.6</cooldownTime>
+      </li>
+    </tools>
+    <comps>
+      <li Class="JujutsuFundamentals.CompProperties_MutualLoveKatana" />
+    </comps>
+  </ThingDef>
+
+  <!-- Arrival (her calls 2026-11-11): he asks to join. Stage 1 asks for help with Rika's curse; stages 2-4 come only
+       when a friend is a colonist. Declining lets it fire again later. -->
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>JJK_YutaAsks</defName>
+    <letterClass>JujutsuFundamentals.ChoiceLetter_YutaAsks</letterClass>
+  </LetterDef>
+
+  <IncidentDef>
+    <defName>JJK_YutaAsks</defName>
+    <label>Yuta Okkotsu asks to join</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>JujutsuFundamentals.IncidentWorker_YutaAsks</workerClass>
+    <baseChance>0.4</baseChance>
+    <minRefireDays>15</minRefireDays>
+    <letterDef>JJK_YutaAsks</letterDef>
+  </IncidentDef>
+
+</Defs>

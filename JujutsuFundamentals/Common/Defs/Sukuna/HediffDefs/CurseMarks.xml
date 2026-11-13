@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Sukuna's body markings (her note 2026-11-06: more tattoos). A hediff render node, not a body
+       tattoo, so each body type gets its own picture (tools/art_bodymarks.py). -->
+  <HediffDef>
+    <defName>Sukuna_CurseMarks</defName>
+    <label>curse markings</label>
+    <description>Black markings across the chest, stomach and back: the King of Curses showing through the skin.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.95, 0.55, 0.65)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <keepOnBodyPartRestoration>true</keepOnBodyPartRestoration>
+    <forceRenderTreeRecache>true</forceRenderTreeRecache>
+    <renderNodeProperties>
+      <li>
+        <debugLabel>Sukuna body markings</debugLabel>
+        <parentTagDef>Body</parentTagDef>
+        <texPath>Things/Pawn/Humanlike/Sukuna_CurseMarks/Sukuna_CurseMarks_Male</texPath>
+        <bodyTypeGraphicPaths>
+          <Male>Things/Pawn/Humanlike/Sukuna_CurseMarks/Sukuna_CurseMarks_Male</Male>
+          <Female>Things/Pawn/Humanlike/Sukuna_CurseMarks/Sukuna_CurseMarks_Female</Female>
+          <Thin>Things/Pawn/Humanlike/Sukuna_CurseMarks/Sukuna_CurseMarks_Thin</Thin>
+          <Fat>Things/Pawn/Humanlike/Sukuna_CurseMarks/Sukuna_CurseMarks_Fat</Fat>
+          <Hulk>Things/Pawn/Humanlike/Sukuna_CurseMarks/Sukuna_CurseMarks_Hulk</Hulk>
+        </bodyTypeGraphicPaths>
+        <shaderTypeDef>Cutout</shaderTypeDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <pawnType>HumanlikeOnly</pawnType>
+        <baseLayer>1</baseLayer>
+        <drawData>
+          <dataSouth><layer>1</layer></dataSouth>
+          <dataNorth><layer>1</layer></dataNorth>
+          <dataEast><layer>1</layer></dataEast>
+          <dataWest><layer>1</layer></dataWest>
+        </drawData>
+      </li>
+      <!-- His second pair of eyes over Facial Animation's face (her note 2026-11-07: with FA he had
+           just two; FA draws its face on layers 50-57, over the face tattoo). Only with FA on. -->
+      <li>
+        <debugLabel>Sukuna second eyes (Facial Animation)</debugLabel>
+        <workerClass>SukunaPsycasts.PawnRenderNodeWorker_OverFacialAnimation</workerClass>
+        <parentTagDef>Head</parentTagDef>
+        <texPath>Things/Pawn/Humanlike/Sukuna_FAEyes/Sukuna_FAEyes</texPath>
+        <shaderTypeDef>Cutout</shaderTypeDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <pawnType>HumanlikeOnly</pawnType>
+        <baseLayer>57.6</baseLayer>
+        <drawData>
+          <defaultData><layer>57.6</layer></defaultData>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </HediffDef>
+
+  <!-- The true form's mask over his right eyes (her note 2026-11-06: the same colour as his skin, not
+       bone white): drawn grey and coloured by his skin, on the head. art_hair2.py king_mask. -->
+  <HediffDef>
+    <defName>Sukuna_Mask</defName>
+    <label>mask of flesh</label>
+    <description>A mask of his own skin grown over the right side of his face, hiding two of his four eyes.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.95, 0.55, 0.65)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <keepOnBodyPartRestoration>true</keepOnBodyPartRestoration>
+    <forceRenderTreeRecache>true</forceRenderTreeRecache>
+    <renderNodeProperties>
+      <li>
+        <debugLabel>Sukuna mask</debugLabel>
+        <parentTagDef>Head</parentTagDef>
+        <texPath>Things/Pawn/Humanlike/Sukuna_Mask/Sukuna_Mask</texPath>
+        <colorType>Skin</colorType>
+        <useSkinShader>true</useSkinShader>
+        <useRottenColor>true</useRottenColor>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <pawnType>HumanlikeOnly</pawnType>
+        <!-- 58: above Facial Animation's face (50-57) and the second eyes, so it covers his right eyes there too -->
+        <baseLayer>58</baseLayer>
+        <drawData>
+          <defaultData><layer>58</layer></defaultData>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </HediffDef>
+</Defs>

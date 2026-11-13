@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Her call 2026-11-11: Sukuna's fingers, Death Paintings and every cursed tool can be studied for Anomaly
+       knowledge, like the golden cube (CompProperties_Studiable). Only with Anomaly. Proposals: fingers, paintings and
+       the Prison Realm give dark (advanced) knowledge 2 per study, the Malice Cloak dark 1, the other cursed tools basic 1;
+       a study every 2 days, once the monolith is woken. -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Anomaly</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[@Name="JJK_CursedToolBase"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[@Name="JJK_CursedToolBase"]/comps</xpath>
+            <value>
+          <li Class="CompProperties_Studiable">
+            <frequencyTicks>120000</frequencyTicks>
+            <knowledgeCategory>Basic</knowledgeCategory>
+            <anomalyKnowledge>1</anomalyKnowledge>
+            <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+            <showToggleGizmo>true</showToggleGizmo>
+          </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[@Name="JJK_CursedToolBase"]</xpath>
+            <value>
+              <comps>
+          <li Class="CompProperties_Studiable">
+            <frequencyTicks>120000</frequencyTicks>
+            <knowledgeCategory>Basic</knowledgeCategory>
+            <anomalyKnowledge>1</anomalyKnowledge>
+            <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+            <showToggleGizmo>true</showToggleGizmo>
+          </li>
+              </comps>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="JJK_PrisonRealm"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="JJK_PrisonRealm"]/comps</xpath>
+            <value>
+          <li Class="CompProperties_Studiable">
+            <frequencyTicks>120000</frequencyTicks>
+            <knowledgeCategory>Advanced</knowledgeCategory>
+            <anomalyKnowledge>2</anomalyKnowledge>
+            <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+            <showToggleGizmo>true</showToggleGizmo>
+          </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="JJK_PrisonRealm"]</xpath>
+            <value>
+              <comps>
+          <li Class="CompProperties_Studiable">
+            <frequencyTicks>120000</frequencyTicks>
+            <knowledgeCategory>Advanced</knowledgeCategory>
+            <anomalyKnowledge>2</anomalyKnowledge>
+            <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+            <showToggleGizmo>true</showToggleGizmo>
+          </li>
+              </comps>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="JJK_YutaRing"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="JJK_YutaRing"]/comps</xpath>
+            <value>
+          <li Class="CompProperties_Studiable">
+            <frequencyTicks>120000</frequencyTicks>
+            <knowledgeCategory>Basic</knowledgeCategory>
+            <anomalyKnowledge>1</anomalyKnowledge>
+            <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+            <showToggleGizmo>true</showToggleGizmo>
+          </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="JJK_YutaRing"]</xpath>
+            <value>
+              <comps>
+          <li Class="CompProperties_Studiable">
+            <frequencyTicks>120000</frequencyTicks>
+            <knowledgeCategory>Basic</knowledgeCategory>
+            <anomalyKnowledge>1</anomalyKnowledge>
+            <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+            <showToggleGizmo>true</showToggleGizmo>
+          </li>
+              </comps>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="JJK_Gauntlets"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="JJK_Gauntlets"]/comps</xpath>
+            <value>
+          <li Class="CompProperties_Studiable">
+            <frequencyTicks>120000</frequencyTicks>
+            <knowledgeCategory>Basic</knowledgeCategory>
+            <anomalyKnowledge>1</anomalyKnowledge>
+            <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+            <showToggleGizmo>true</showToggleGizmo>
+          </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="JJK_Gauntlets"]</xpath>
+            <value>
+              <comps>
+          <li Class="CompProperties_Studiable">
+            <frequencyTicks>120000</frequencyTicks>
+            <knowledgeCategory>Basic</knowledgeCategory>
+            <anomalyKnowledge>1</anomalyKnowledge>
+            <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+            <showToggleGizmo>true</showToggleGizmo>
+          </li>
+              </comps>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="JJK_MaliceCloak"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="JJK_MaliceCloak"]/comps</xpath>
+            <value>
+          <li Class="CompProperties_Studiable">
+            <frequencyTicks>120000</frequencyTicks>
+            <knowledgeCategory>Advanced</knowledgeCategory>
+            <anomalyKnowledge>1</anomalyKnowledge>
+            <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+            <showToggleGizmo>true</showToggleGizmo>
+          </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="JJK_MaliceCloak"]</xpath>
+            <value>
+              <comps>
+          <li Class="CompProperties_Studiable">
+            <frequencyTicks>120000</frequencyTicks>
+            <knowledgeCategory>Advanced</knowledgeCategory>
+            <anomalyKnowledge>1</anomalyKnowledge>
+            <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+            <showToggleGizmo>true</showToggleGizmo>
+          </li>
+              </comps>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="Sukuna_Finger"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="Sukuna_Finger"]/comps</xpath>
+            <value>
+          <li Class="CompProperties_Studiable">
+            <frequencyTicks>120000</frequencyTicks>
+            <knowledgeCategory>Advanced</knowledgeCategory>
+            <anomalyKnowledge>2</anomalyKnowledge>
+            <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+            <showToggleGizmo>true</showToggleGizmo>
+          </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="Sukuna_Finger"]</xpath>
+            <value>
+              <comps>
+          <li Class="CompProperties_Studiable">
+            <frequencyTicks>120000</frequencyTicks>
+            <knowledgeCategory>Advanced</knowledgeCategory>
+            <anomalyKnowledge>2</anomalyKnowledge>
+            <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+            <showToggleGizmo>true</showToggleGizmo>
+          </li>
+              </comps>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="Sukuna_DeathPainting"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="Sukuna_DeathPainting"]/comps</xpath>
+            <value>
+          <li Class="CompProperties_Studiable">
+            <frequencyTicks>120000</frequencyTicks>
+            <knowledgeCategory>Advanced</knowledgeCategory>
+            <anomalyKnowledge>2</anomalyKnowledge>
+            <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+            <showToggleGizmo>true</showToggleGizmo>
+          </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="Sukuna_DeathPainting"]</xpath>
+            <value>
+              <comps>
+          <li Class="CompProperties_Studiable">
+            <frequencyTicks>120000</frequencyTicks>
+            <knowledgeCategory>Advanced</knowledgeCategory>
+            <anomalyKnowledge>2</anomalyKnowledge>
+            <minMonolithLevelForStudy>1</minMonolithLevelForStudy>
+            <showToggleGizmo>true</showToggleGizmo>
+          </li>
+              </comps>
+            </value>
+          </nomatch>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

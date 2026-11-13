@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Ryu Ishigori (her calls 2026-11-10). Arrives once, as an enemy; capture him to recruit. -->
+  <IncidentDef>
+    <defName>JJK_RyuChallenge</defName>
+    <label>Ryu Ishigori's challenge</label>
+    <category>ThreatSmall</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>JujutsuFundamentals.IncidentWorker_RyuChallenge</workerClass>
+    <baseChance>0.3</baseChance>
+    <minRefireDays>9999</minRefireDays>
+    <earliestDay>20</earliestDay>
+    <minThreatPoints>400</minThreatPoints>
+  </IncidentDef>
+
+  <!-- Granite Blast: a much stronger Cursed Energy Blast (numbers are proposals). Her call 2026-11-10: a larger
+       build-up (a ball of cursed energy grows in front of him) and a longer-lasting, wider beam. -->
+  <VEF.Abilities.AbilityDef>
+    <defName>JJK_GraniteBlast</defName>
+    <label>Granite Blast</label>
+    <description>Ryu's cursed technique, Cursed Energy Discharge, at full power: a ball of cursed energy builds up in front of him, then lets go as a huge beam that lasts two and a half seconds, out to its full range, hitting everything along it until a wall stops it. Damage and range grow with psychic sensitivity.</description>
+    <iconPath>Abilities/Jujutsu/GraniteBlast</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_GraniteBlast</abilityClass>
+    <targetMode>Location</targetMode>
+    <castTime>180</castTime>
+    <cooldownTime>900</cooldownTime>
+    <range>34.9</range>
+    <rangeStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </rangeStatFactors>
+    <power>60</power>
+    <powerStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </powerStatFactors>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>true</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_GraniteBlastPath</path>
+        <level>1</level>
+        <order>1</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef>
+    <defName>JJK_GraniteRapidFire</defName>
+    <label>Granite Blast: Rapid Fire</label>
+    <description>Eight smaller Granite Blasts fired one after another. Damage and range grow with psychic sensitivity.</description>
+    <iconPath>Abilities/Jujutsu/GraniteRapidFire</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_GraniteRapidFire</abilityClass>
+    <targetMode>Thing</targetMode>
+    <castTime>15</castTime>
+    <cooldownTime>240</cooldownTime>
+    <range>24.9</range>
+    <rangeStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </rangeStatFactors>
+    <power>8</power>
+    <powerStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </powerStatFactors>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>true</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VEF.Abilities.AbilityExtension_Projectile">
+        <projectile>JJK_GraniteRapidProjectile</projectile>
+      </li>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_GraniteBlastPath</path>
+        <level>2</level>
+        <order>1</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_GraniteBlast</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- His domain, Granite Tsunami (her name 2026-11-10): canon never shows it; hers: granite blasts from the sky on every enemy inside, behind a barrier. -->
+  <VEF.Abilities.AbilityDef>
+    <defName>JJK_RyuDomainExpansion</defName>
+    <label>Domain Expansion: Granite Tsunami</label>
+    <description>Granite Tsunami, Ryu's domain, closed behind a barrier. Every second and a half, a granite blast falls from the sky on everyone inside who isn't his ally, a sure hit. It collapses if he leaves it, and an overlapping domain whose caster has higher psychic sensitivity (a tie goes to the one already open), or Sukuna's Malevolent Shrine, makes it collapse.\n\nOpening it costs half a psyfocus bar (less with a lower psyfocus cost: a fifth for Ryu himself) and leaves his neural heat at 90% of his limit. When three or more domains meet, all of them collapse and their casters burn out.</description>
+    <iconPath>Abilities/Jujutsu/RyuDomain</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_RyuDomain</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>120</castTime>
+    <cooldownTime>3600</cooldownTime>
+    <castFleck>PsycastAreaEffect</castFleck>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_GraniteBlastPath</path>
+        <level>5</level>
+        <order>1</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_GraniteBlast</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- His huge output (her call 2026-11-11: he used his techniques far more in one fight than he could here).
+       Proposal: his psyfocus costs x0.4 (raised Reinforcement, Air Step, his domain: a fifth of a bar), and focus
+       comes back faster while meditating. Granite Blast and Rapid Fire never cost psyfocus, only cooldowns. -->
+  <HediffDef>
+    <defName>JJK_RyuOutput</defName>
+    <label>enormous cursed energy output</label>
+    <description>Ryu Ishigori's cursed energy output is among the greatest of any sorcerer: everything he does costs him far less psyfocus.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <statOffsets>
+          <VPE_PsyfocusCostFactor>-0.6</VPE_PsyfocusCostFactor>
+          <MeditationFocusGain>0.5</MeditationFocusGain>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>JJK_RyuDomain</defName>
+    <label>granite tsunami</label>
+    <description>Ryu's domain, Granite Tsunami, is open.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="JujutsuFundamentals.HediffCompProperties_RyuDomain">
+        <radius>11.9</radius>
+        <maxRadius>30</maxRadius>
+        <interval>90</interval>
+        <damage>24</damage>
+      </li>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1200</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>JJK_GraniteRapidProjectile</defName>
+    <label>granite shot</label>
+    <thingClass>VEF.Abilities.AbilityProjectile</thingClass>
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>Things/Projectile/ChargeLanceShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>JJK_CursedEnergy</damageDef>
+      <damageAmountBase>8</damageAmountBase>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <speed>90</speed>
+    </projectile>
+  </ThingDef>
+
+  <!-- A domain's barrier block (Gojo's, moved here; his texture). -->
+  <ThingDef>
+    <defName>JJK_DomainBarrier</defName>
+    <label>domain barrier</label>
+    <description>The shell of a closed domain. Nobody but its owner walks through it; anyone else has to break it.</description>
+    <thingClass>JujutsuFundamentals.Building_DomainBarrier</thingClass>
+    <tickerType>Normal</tickerType>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Jujutsu/Barrier</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(1.1, 1.1)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <coversFloor>false</coversFloor>
+    <neverMultiSelect>true</neverMultiSelect>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <isInert>true</isInert>
+      <claimable>false</claimable>
+      <deconstructible>false</deconstructible>
+      <repairable>false</repairable>
+      <isTargetable>true</isTargetable>
+      <ai_chillDestination>false</ai_chillDestination>
+      <soundDoorOpenPowered>Door_OpenPowered</soundDoorOpenPowered>
+      <soundDoorClosePowered>Door_ClosePowered</soundDoorClosePowered>
+      <soundDoorOpenManual>Door_OpenPowered</soundDoorOpenManual>
+      <soundDoorCloseManual>Door_ClosePowered</soundDoorCloseManual>
+    </building>
+    <drawerType>RealtimeOnly</drawerType>
+    <holdsRoof>false</holdsRoof>
+    <destroyable>true</destroyable>
+  </ThingDef>
+
+</Defs>

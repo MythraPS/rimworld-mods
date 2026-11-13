@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Selfish: no joy in other people's happy days (a wedding's mood bonus goes to the guests). -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThoughtDef[defName="AttendedWedding"]/nullifyingTraits</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/ThoughtDef[defName="AttendedWedding"]/nullifyingTraits</xpath>
+      <value><li>Gojo_Selfish</li></value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/ThoughtDef[defName="AttendedWedding"]</xpath>
+      <value><nullifyingTraits><li>Gojo_Selfish</li></nullifyingTraits></value>
+    </nomatch>
+  </Operation>
+</Patch>

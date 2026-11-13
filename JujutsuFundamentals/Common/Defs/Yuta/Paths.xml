@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Yuta Okkotsu's path (her design 2026-11-11, design doc 3d). Yuta only (Patch_YutaPathGate).
+       Layout: VPE holds at most three nodes a level, five levels.
+       L1 Manifest Rika, Rika's Arm, G Warstaff · L2 Rika's Bite, Rika's Grapple, Dhruv's Shikigami
+       L3 Copy, Flight, Redirect · L4 Reverse Cursed Technique: Output, Paste, Thin Ice-Breaker · L5 Authentic Mutual Love
+       Backgrounds: placeholders until she picks. -->
+  <VanillaPsycastsExpanded.PsycasterPathDef>
+    <defName>JJK_YutaPath</defName>
+    <label>copy</label>
+    <description>Copy — Yuta Okkotsu's cursed technique, through Rika. With Rika fully manifested, she eats part of a sorcerer and Yuta gains their techniques. Also: Rika's partial manifestations, the techniques he copied in the Culling Game, and his domain, Authentic Mutual Love.</description>
+    <background>UI/Backgrounds/YutaPath</background>
+    <altBackground>UI/AlternativeBackgrounds/PathBG_Yuta</altBackground>
+    <tab>Psycasts</tab>
+    <tooltip>Rika Orimoto died when she and Yuta were children, and became the curse that haunted him. What she is now, he made: a reserve of cursed energy beyond anyone's, and the technique to take anyone else's.</tooltip>
+    <lockedReason>Yuta Okkotsu only</lockedReason>
+    <ignoreLockRestrictionsForNeurotrainers>False</ignoreLockRestrictionsForNeurotrainers>
+    <ensureLockRequirement>True</ensureLockRequirement>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+
+  <!-- Cursed Speech (her call 2026-11-11: its own path). Yuta and Inumaki, both with every command (her call 2026-11-11). -->
+  <VanillaPsycastsExpanded.PsycasterPathDef>
+    <defName>JJK_CursedSpeech</defName>
+    <label>cursed speech</label>
+    <description>Cursed Speech — the Inumaki clan's inherited technique. Words charged with cursed energy become commands the listener can't refuse. The stronger the listener, the less a command does to them and the more it costs the speaker.</description>
+    <background>UI/Backgrounds/CursedSpeech</background>
+    <altBackground>UI/AlternativeBackgrounds/PathBG_CursedSpeech</altBackground>
+    <tab>Psycasts</tab>
+    <tooltip>Toge Inumaki speaks only in rice ball fillings, so no stray word becomes a command. Every command strains his throat. Yuta, who copied it, takes no strain at all.</tooltip>
+    <lockedReason>Yuta Okkotsu and Toge Inumaki only</lockedReason>
+    <ignoreLockRestrictionsForNeurotrainers>False</ignoreLockRestrictionsForNeurotrainers>
+    <ensureLockRequirement>True</ensureLockRequirement>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+
+  <!-- Yuta's huge reserve, innate for him and lent by his ring to anyone else; the same hediff, so it never stacks.
+       Same numbers the ring had (2026-11-11). -->
+  <HediffDef>
+    <defName>JJK_VastCursedEnergy</defName>
+    <label>vast cursed energy</label>
+    <description>A reserve of cursed energy beyond anyone's: Yuta Okkotsu's own, or lent by his ring. Psycasts cost a fifth of the usual psyfocus, and psyfocus refills on its own, about a fifth of the bar every hour.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <statOffsets>
+          <PsychicEntropyMax>60</PsychicEntropyMax>
+          <PsychicEntropyRecoveryRate>0.5</PsychicEntropyRecoveryRate>
+          <MeditationFocusGain>1</MeditationFocusGain>
+          <VPE_PsyfocusCostFactor>-0.8</VPE_PsyfocusCostFactor>   <!-- -0.5 until her call 2026-11-11: running out should take real effort -->
+        </statOffsets>
+      </li>
+    </stages>
+    <comps>
+      <li Class="JujutsuFundamentals.HediffCompProperties_PsyfocusRegen">
+        <interval>250</interval>
+        <amount>0.02</amount>
+      </li>
+    </comps>
+  </HediffDef>
+
+</Defs>

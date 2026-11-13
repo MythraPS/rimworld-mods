@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- The cursed finger in Anomaly's entity codex (her call 2026-11-07: an indestructible anomaly). -->
+  <EntityCodexEntryDef MayRequire="Ludeon.RimWorld.Anomaly">
+    <defName>Sukuna_Finger</defName>
+    <label>cursed finger</label>
+    <useDescriptionFrom>Sukuna_Finger</useDescriptionFrom>
+    <uiIconPath>Things/Sukuna/Finger</uiIconPath>
+    <category>Advanced</category>
+    <linkedThings>
+      <li>Sukuna_Finger</li>
+    </linkedThings>
+    <orderInCategory>1550</orderInCategory>
+  </EntityCodexEntryDef>
+</Defs>

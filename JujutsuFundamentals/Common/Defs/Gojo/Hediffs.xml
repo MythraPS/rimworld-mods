@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Carried by whoever has the Six Eyes trait (added by SixEyesKeeper). It holds
+       the mode buttons for Red and Purple, the far teleport, the Six Eyes' sight,
+       and keeps the passive nodes' hediffs in step with the tree. -->
+  <HediffDef>
+    <defName>Gojo_Limitless</defName>
+    <label>six eyes</label>
+    <description>Eyes that see cursed energy down to the last particle, and a brain that can keep up with them. Every technique runs at almost no waste.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.55, 0.85, 1.0)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="GojoPsycasts.HediffCompProperties_Limitless" />
+    </comps>
+    <!-- Light blue eyes on every Six Eyes pawn, drawn the way Biotech's eye-colour genes are
+         (on each head's own eye anchors) and one layer above them, so they win over any xenotype's eyes. -->
+    <renderNodeProperties>
+      <li Class="PawnRenderNodeProperties_Eye">
+        <workerClass>GojoPsycasts.PawnRenderNodeWorker_SixEyes</workerClass>
+        <texPath>Things/Pawn/Humanlike/HeadAttachments/Gojo_SixEyes/Male/Gojo_SixEyes_Male</texPath>
+        <texPathFemale>Things/Pawn/Humanlike/HeadAttachments/Gojo_SixEyes/Female/Gojo_SixEyes_Female</texPathFemale>
+        <anchorTag>RightEye</anchorTag>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.2</drawSize>
+        <side>Right</side>
+        <drawData>
+          <defaultData>
+            <layer>55</layer>
+            <offset>(0, 0, -0.25)</offset>
+          </defaultData>
+        </drawData>
+      </li>
+      <li Class="PawnRenderNodeProperties_Eye">
+        <workerClass>GojoPsycasts.PawnRenderNodeWorker_SixEyes</workerClass>
+        <texPath>Things/Pawn/Humanlike/HeadAttachments/Gojo_SixEyes/Male/Gojo_SixEyes_Male</texPath>
+        <texPathFemale>Things/Pawn/Humanlike/HeadAttachments/Gojo_SixEyes/Female/Gojo_SixEyes_Female</texPathFemale>
+        <anchorTag>LeftEye</anchorTag>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.2</drawSize>
+        <side>Left</side>
+        <drawData>
+          <defaultData>
+            <layer>55</layer>
+            <offset>(0, 0, -0.25)</offset>
+            <flip>true</flip>
+          </defaultData>
+          <dataWest>
+            <flip>false</flip>
+          </dataWest>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+    <stages>
+      <li>
+        <capMods>
+          <li><capacity>Sight</capacity><offset>0.5</offset></li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Limitless without the Six Eyes (her call 2026-11-12: they pass on separately): the same passives and mode
+       buttons, without the Six Eyes' sight, light blue eyes or psyfocus return. -->
+  <HediffDef>
+    <defName>Gojo_LimitlessInnate</defName>
+    <label>limitless</label>
+    <description>The Gojo clan's inherited technique: control over infinity, brought into reality. Without the Six Eyes it takes far more care to use.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.55, 0.85, 1.0)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="GojoPsycasts.HediffCompProperties_Limitless" />
+    </comps>
+  </HediffDef>
+
+  <!-- Infinity. VEF's shield destroys incoming projectiles and absorbs melee; the
+       comp adds the neural heat cost per stopped attack and the canon rule that a
+       mind at its limit cannot hold it. -->
+  <HediffDef>
+    <defName>Gojo_Infinity</defName>
+    <label>infinity</label>
+    <description>Nothing arrives. Things approaching slow down, and slow down, and never quite touch him.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="VEF.Hediffs.HediffCompProperties_Shield">
+        <compClass>GojoPsycasts.HediffComp_Infinity</compClass>
+        <absorbAttackType>Both</absorbAttackType>
+        <maxEnergy>400</maxEnergy>
+        <energyLossPerDamage>0.25</energyLossPerDamage>
+        <rechargeDelay>60</rechargeDelay>
+        <energyPerTick>0.2</energyPerTick>
+        <fullOnAdd>true</fullOnAdd>
+        <doDust>false</doDust>
+        <!-- no absorbedFleck: Infinity shows nothing when it stops a hit (her call 2026-11-07) -->
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>Gojo_BlueFist</defName>
+    <label>blue fist</label>
+    <description>Whatever Gojo punches is already falling into his fist.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <statOffsets>
+          <MeleeHitChance>10</MeleeHitChance>
+        </statOffsets>
+        <!-- her call 2026-11-04: harder fists -->
+        <statFactors>
+          <MeleeDamageFactor>1.5</MeleeDamageFactor>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Same numbers as Sukuna's except the chance, doubled: user 2026-10-16,
+       "more likely for him to pull it off". -->
+  <HediffDef>
+    <defName>Gojo_BlackFlash</defName>
+    <label>black flash</label>
+    <description>Cursed energy arriving within a millionth of a second of the blow. It happens to Gojo more often than to anyone.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="GojoPsycasts.HediffCompProperties_BlackFlash">
+        <baseChance>0.06</baseChance>
+        <damageMultiplier>2.5</damageMultiplier>
+        <armorPenetrationBonus>0.50</armorPenetrationBonus>
+        <armorPenetrationBonusMax>1.00</armorPenetrationBonusMax>
+        <armorPenetrationCeiling>1.90</armorPenetrationCeiling>
+        <lifestealFraction>0.30</lifestealFraction>
+        <psyfocusRestored>0.05</psyfocusRestored>
+        <entropyPurged>12</entropyPurged>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- Sukuna's numbers with the Six Eyes applied: 1.5x the heal, half the cost. -->
+  <HediffDef>
+    <defName>Gojo_ReverseCursedTechnique</defName>
+    <label>reverse cursed technique</label>
+    <description>Positive energy, made by multiplying negative energy against itself. Wounds close on their own.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="GojoPsycasts.HediffCompProperties_ReverseCursedTechnique">
+        <selfHealPerTickAtFullPsyfocus>0.09</selfHealPerTickAtFullPsyfocus>
+        <allyHealFraction>0.35</allyHealFraction>
+        <allyRadius>3.9</allyRadius>
+        <psyfocusPerTick>0.00006</psyfocusPerTick>
+        <entropyPerTick>0.025</entropyPerTick>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>Gojo_Reinforcement</defName>
+    <label>cursed energy reinforcement</label>
+    <description>Cursed energy coating the body: harder skin, heavier blows, faster feet.</description>
+    <hediffClass>GojoPsycasts.Hediff_GojoReinforcement</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>Gojo_Speed</defName>
+    <label>blue: acceleration</label>
+    <description>Pulled forward by small Blues, faster than the eye can follow.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <statOffsets>
+          <MoveSpeed>4.0</MoveSpeed>
+          <MeleeDodgeChance>20</MeleeDodgeChance>
+        </statOffsets>
+        <statFactors>
+          <MeleeCooldownFactor>0.45</MeleeCooldownFactor>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- The domain lives on Gojo while it is open; duration comes from the ability. -->
+  <HediffDef>
+    <defName>Gojo_InfiniteVoid</defName>
+    <label>infinite void</label>
+    <description>Gojo's domain is open.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="GojoPsycasts.HediffCompProperties_InfiniteVoid">
+        <radius>11.9</radius>
+        <maxRadius>30</maxRadius>
+        <lingerTicks>600</lingerTicks>
+      </li>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>3600</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+
+  <!-- Black Flash (her call 2026-11-07): a black star with a red rim and red cracks bursting out
+       of the hit, growing (tools/art_blackflash.py). -->
+  <FleckDef ParentName="FleckBase">
+    <defName>Gojo_Fleck_BlackFlashBurst</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.12</solidTime>
+    <fadeOutTime>0.4</fadeOutTime>
+    <growthRate>4</growthRate>
+    <graphicData>
+      <texPath>Things/Gojo/BlackFlashBurst</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <!-- After a Black Flash the sorcerer is "in the zone" for a few seconds: sharper in melee, and
+       the next Black Flash comes easier (x1.5 chance, in the code), as when Yuji chains them. -->
+  <HediffDef>
+    <defName>Gojo_BlackFlashZone</defName>
+    <label>in the zone</label>
+    <description>Right after a Black Flash, cursed energy flows perfectly for a few seconds. They hits more surely in melee, and another Black Flash comes easier.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.86, 0.15, 0.18)</defaultLabelColor>
+    <isBad>false</isBad>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600~600</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statOffsets>
+          <MeleeHitChance>0.15</MeleeHitChance>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <HediffDef>
+    <defName>JJK_Reinforcement</defName>
+    <label>cursed energy reinforcement</label>
+    <description>Cursed energy coating the body and the weapon in hand: harder skin, heavier blows, faster feet.</description>
+    <hediffClass>JujutsuFundamentals.Hediff_Reinforcement</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <!-- Numbers from Sukuna's version (Gojo's chance is x2, through Jujutsu.BlackFlashChanceFactors). -->
+  <HediffDef>
+    <defName>JJK_BlackFlash</defName>
+    <label>black flash</label>
+    <description>Any melee hit may become a Black Flash.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="JujutsuFundamentals.HediffCompProperties_BlackFlash">
+        <baseChance>0.03</baseChance>
+        <damageMultiplier>2.5</damageMultiplier>
+        <armorPenetrationBonus>0.50</armorPenetrationBonus>
+        <armorPenetrationBonusMax>1.00</armorPenetrationBonusMax>
+        <armorPenetrationCeiling>1.90</armorPenetrationCeiling>
+        <lifestealFraction>0.30</lifestealFraction>
+        <psyfocusRestored>0.05</psyfocusRestored>
+        <entropyPurged>12</entropyPurged>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>JJK_BlackFlashZone</defName>
+    <label>in the zone</label>
+    <description>Right after a Black Flash: more accurate in melee, and another Black Flash comes easier.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.86, 0.15, 0.18)</defaultLabelColor>
+    <isBad>false</isBad>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600~600</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statOffsets>
+          <MeleeHitChance>0.15</MeleeHitChance>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Sukuna's numbers (Gojo's x1.5 heal and half cost come through Jujutsu.RctHealFactors / RctCostFactors). -->
+  <HediffDef>
+    <defName>JJK_ReverseCursedTechnique</defName>
+    <label>reverse cursed technique</label>
+    <description>Wounds close and lost parts regrow, at whatever speed there is psyfocus for.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="JujutsuFundamentals.HediffCompProperties_ReverseCursedTechnique">
+        <selfHealPerTickAtFullPsyfocus>1.5</selfHealPerTickAtFullPsyfocus>
+        <allyHealFraction>0.35</allyHealFraction>
+        <allyRadius>3.9</allyRadius>
+        <psyfocusPerTick>0.00012</psyfocusPerTick>
+        <entropyPerTick>0</entropyPerTick>   <!-- no neural heat from the shared trees (her call 2026-11-10) -->
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>JJK_DomainAmplification</defName>
+    <label>domain amplification</label>
+    <description>Melee hits neutralize psycast buffs and shields. No psycasts of one's own.</description>
+    <hediffClass>JujutsuFundamentals.Hediff_DomainAmplification</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>JJK_HollowWickerBasket</defName>
+    <label>hollow wicker basket</label>
+    <description>Holding the sign: safe from a domain's sure hit, but can't attack, and moving drops it.</description>
+    <hediffClass>JujutsuFundamentals.Hediff_HollowWickerBasket</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>JJK_SimpleDomain</defName>
+    <label>simple domain</label>
+    <description>A circle that shields everyone of this side inside it from a domain's sure hit, and speeds up attacks on anything inside it.</description>
+    <hediffClass>JujutsuFundamentals.Hediff_SimpleDomain</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>JJK_Batto</defName>
+    <label>batto</label>
+    <description>Drawing and striking far faster than normal.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600~600</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <MeleeCooldownFactor>0.5</MeleeCooldownFactor>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- The blade is a hediff weapon; Patch_HazyMoon_OnlyBlade makes it the only melee attack while up,
+       and HazyMoon.Scale multiplies its hits by the user's power. -->
+  <HediffDef>
+    <defName>JJK_HazyMoon</defName>
+    <label>hazy moon</label>
+    <description>A blade of cursed energy in hand.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>cursed energy blade</label>
+            <capacities>
+              <li>Cut</li>
+            </capacities>
+            <power>14</power>
+            <cooldownTime>1.6</cooldownTime>
+            <armorPenetration>0.30</armorPenetration>
+          </li>
+          <li>
+            <label>cursed energy blade point</label>
+            <capacities>
+              <li>Stab</li>
+            </capacities>
+            <power>14</power>
+            <cooldownTime>1.6</cooldownTime>
+            <armorPenetration>0.30</armorPenetration>
+          </li>
+        </tools>
+      </li>
+    </comps>
+  </HediffDef>
+
+</Defs>

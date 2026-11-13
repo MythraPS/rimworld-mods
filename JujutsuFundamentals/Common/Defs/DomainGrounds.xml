@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Domain grounds (her call 2026-11-11): each domain's own landscape drawn over the inside, like Infinite
+       Void's space and white paint. Drawn by GojoPsycasts.DomainOverlay, scaled to the radius; spawned by
+       JujutsuFundamentals.Barrier.Ground into the barrier list. Art: tools/art_domain_grounds.py. -->
+  <!-- Yuta's domain: dark grey ground in his purple, ruined crosses, scattered katanas, giant ropes in mizuhiki knots round the edge (canon ch. 249). -->
+  <ThingDef>
+    <defName>JJK_GroundMutualLove</defName>
+    <label>authentic mutual love</label>
+    <thingClass>GojoPsycasts.DomainOverlay</thingClass>
+    <category>Ethereal</category>
+    <tickerType>Never</tickerType>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>Things/Domains/MutualLove</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(2, 2)</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <!-- Yuji's domain: an empty street of his hometown (canon ch. 264-265). -->
+  <ThingDef>
+    <defName>JJK_GroundBenevolent</defName>
+    <label>Yuji's domain</label>
+    <thingClass>GojoPsycasts.DomainOverlay</thingClass>
+    <category>Ethereal</category>
+    <tickerType>Never</tickerType>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>Things/Domains/Benevolent</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(2, 2)</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <!-- Ryu's domain: scorched ground with blue blast craters (no canon interior; her pick). -->
+  <ThingDef>
+    <defName>JJK_GroundGraniteTsunami</defName>
+    <label>granite tsunami</label>
+    <thingClass>GojoPsycasts.DomainOverlay</thingClass>
+    <category>Ethereal</category>
+    <tickerType>Never</tickerType>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>Things/Domains/GraniteTsunami</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(2, 2)</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <!-- Uro's domain: the ground turned to open sky, cracked (no canon interior; her pick). -->
+  <ThingDef>
+    <defName>JJK_GroundSkyfall</defName>
+    <label>skyfall</label>
+    <thingClass>GojoPsycasts.DomainOverlay</thingClass>
+    <category>Ethereal</category>
+    <tickerType>Never</tickerType>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>Things/Domains/Skyfall</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(2, 2)</drawSize>
+    </graphicData>
+  </ThingDef>
+
+</Defs>

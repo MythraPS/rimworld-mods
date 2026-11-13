@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- The Six Eyes as a gene (her call 2026-11-12): passed on by normal Biotech rules (half the time from one
+       parent, always from two). It brings the Six Eyes trait. Kept out of random genepacks. Icon: tools/gojo/art_icons.py. -->
+  <GeneDef>
+    <defName>Gojo_SixEyesGene</defName>
+    <label>six eyes</label>
+    <description>Carriers are born with the Six Eyes: eyes that see cursed energy down to the particle and through walls, and a brain that wastes almost nothing on any technique.</description>
+    <iconPath>UI/Icons/Genes/Gojo_SixEyes</iconPath>
+    <displayCategory>Psychic</displayCategory>
+    <forcedTraits>
+      <li>
+        <def>Gojo_SixEyes</def>
+      </li>
+    </forcedTraits>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+</Defs>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== Maki before her awakening
+       Her call 2026-11-11: two Makis, clearly distinct. Before Shibuya / Mai's death, Maki's Heavenly Restriction is
+       incomplete: she still has a tiny bit of cursed energy (Mai, her twin, held part of what should have been hers).
+       Canon: she can't see curses without her special glasses; physically far beyond a normal sorcerer, but not
+       Toji's level. Numbers are proposals: about half of the full restriction's body. -->
+  <TraitDef>
+    <defName>JJK_HeavenlyRestrictionPartial</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>heavenly restriction (incomplete)</label>
+        <description>[PAWN_nameDef] was born under a Heavenly Restriction that never quite finished: [PAWN_pronoun] has a tiny bit of cursed energy, too little to use for anything, and a body stronger than any trained sorcerer's, though nothing like a complete restriction's. [PAWN_pronoun] can barely sense curses, and a domain's sure hit still reaches [PAWN_objective].</description>
+        <statOffsets>
+          <MoveSpeed>0.8</MoveSpeed>
+          <MeleeHitChance>4</MeleeHitChance>
+          <MeleeDodgeChance>6</MeleeDodgeChance>
+          <PainShockThreshold>0.1</PainShockThreshold>
+          <ToxicResistance>0.25</ToxicResistance>
+        </statOffsets>
+        <statFactors>
+          <PsychicSensitivity>0.2</PsychicSensitivity>
+          <MeleeDamageFactor>1.6</MeleeDamageFactor>
+          <CarryingCapacity>1.5</CarryingCapacity>
+          <IncomingDamageFactor>0.9</IncomingDamageFactor>
+          <MeleeCooldownFactor>0.85</MeleeCooldownFactor>
+          <InjuryHealingFactor>1.4</InjuryHealingFactor>
+          <ImmunityGainSpeed>1.2</ImmunityGainSpeed>
+        </statFactors>
+      </li>
+      <!-- Her first eaten finger (her call 2026-11-12, the same loophole as the full restriction) -->
+      <li>
+        <degree>1</degree>
+        <label>heavenly restriction (incomplete, bypassed)</label>
+        <description>[PAWN_nameDef] was born under a Heavenly Restriction that never quite finished, with a body stronger than any trained sorcerer's. The restriction is still there, but a loophole bypasses it: [PAWN_pronoun] has cursed energy, psychic sensitivity and psycasts all the same, and a domain's sure hit still reaches [PAWN_objective].</description>
+        <statOffsets>
+          <MoveSpeed>0.8</MoveSpeed>
+          <MeleeHitChance>4</MeleeHitChance>
+          <MeleeDodgeChance>6</MeleeDodgeChance>
+          <PainShockThreshold>0.1</PainShockThreshold>
+          <ToxicResistance>0.25</ToxicResistance>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>1.6</MeleeDamageFactor>
+          <CarryingCapacity>1.5</CarryingCapacity>
+          <IncomingDamageFactor>0.9</IncomingDamageFactor>
+          <MeleeCooldownFactor>0.85</MeleeCooldownFactor>
+          <InjuryHealingFactor>1.4</InjuryHealingFactor>
+          <ImmunityGainSpeed>1.2</ImmunityGainSpeed>
+        </statFactors>
+      </li>
+    </degreeDatas>
+  </TraitDef>
+
+  <!-- Her glasses (canon: cursed-spirit-seeing glasses; second-year Maki's are square, under-rim). Looks only, like
+       Gojo's blindfold and sunglasses. tools/art_maki_glasses.py -->
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>JJK_MakiGlasses</defName>
+    <smeltable>false</smeltable>
+    <label>Maki's Glasses</label>
+    <description>Square glasses with a frame only under the lenses. Maki Zenin wore them before her Heavenly Restriction was complete: with so little cursed energy, she couldn't see curses without them.</description>
+    <graphicData>
+      <texPath>Things/Item/Apparel/JJK_MakiGlasses/JJK_MakiGlasses</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <Mass>0.05</Mass>
+      <EquipDelay>0.5</EquipDelay>
+    </statBases>
+    <thingCategories>
+      <li>Headgear</li>
+    </thingCategories>
+    <tradeability>None</tradeability>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <bodyPartGroups>
+        <li>Eyes</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/JJK_MakiGlasses/JJK_MakiGlasses</wornGraphicPath>
+      <layers>
+        <li>EyeCover</li>
+      </layers>
+      <drawData>
+        <defaultData>
+          <layer>61</layer>
+        </defaultData>
+      </drawData>
+      <renderSkipFlags>
+        <li>None</li>
+      </renderSkipFlags>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+    </apparel>
+    <generateCommonality>0</generateCommonality>
+  </ThingDef>
+
+  <!-- ===================================================================== Maki's grudge
+       Her call 2026-11-11: Maki is vengeful toward the Zen'in clan; she hates them, except Mai, Megumi, Megumi's
+       sister Tsumiki and Toji. Both forms. Proposal: -50 opinion. -->
+  <ThoughtDef>
+    <defName>JJK_MakiZeninGrudge</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>JujutsuFundamentals.ThoughtWorker_MakiZeninGrudge</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>Zen'in clan</label>
+        <baseOpinionOffset>-50</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

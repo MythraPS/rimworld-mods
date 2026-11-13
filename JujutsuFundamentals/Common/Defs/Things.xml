@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <DamageDef>
+    <defName>JJK_CursedEnergy</defName>
+    <label>cursed energy</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been killed by cursed energy.</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSkin>Crush</hediffSkin>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+    <defaultArmorPenetration>0.20</defaultArmorPenetration>
+  </DamageDef>
+
+  <!-- Black Flash's burst: Sukuna's texture (tools/art_blackflash.py in that mod). -->
+  <FleckDef ParentName="FleckBase">
+    <defName>JJK_Fleck_BlackFlashBurst</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.12</solidTime>
+    <fadeOutTime>0.4</fadeOutTime>
+    <growthRate>4</growthRate>
+    <graphicData>
+      <texPath>Things/Jujutsu/BlackFlashBurst</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <!-- Air Step's push-off (her ask 2026-11-11): a small burst of cursed energy at the feet. White texture, tinted
+       per pawn: blue, Sukuna red, Yuta purple (Patch_WeaponGlow.EnergyColor). -->
+  <FleckDef ParentName="FleckBase">
+    <defName>JJK_Fleck_AirStepBurst</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.08</solidTime>
+    <fadeOutTime>0.35</fadeOutTime>
+    <growthRate>2.5</growthRate>
+    <graphicData>
+      <texPath>Things/Jujutsu/AirStepBurst</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>(1.6, 1.6)</drawSize>
+    </graphicData>
+  </FleckDef>
+
+  <!-- Hazy Moon's blade, only ever drawn in the pawn's hands (HazyMoonDraw), never spawned. Melee angle as vanilla. -->
+  <ThingDef>
+    <defName>JJK_HazyMoonBlade</defName>
+    <label>cursed energy blade</label>
+    <thingClass>ThingWithComps</thingClass>
+    <category>Ethereal</category>
+    <tickerType>Never</tickerType>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <graphicData>
+      <texPath>Things/Jujutsu/HazyMoonBlade</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+  </ThingDef>
+
+</Defs>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Character art (tools/art_characters.py). No styleTags, so random pawns never roll them. -->
+  <!-- Uraume's white bob with the red streak (her ask 2026-11-11; tools/art_uraume_hair.py). -->
+  <HairDef>
+    <defName>JJK_UraumeHair</defName>
+    <label>white bob with red streak</label>
+    <styleGender>Any</styleGender>
+    <texPath>Things/Pawn/Humanlike/Hairs/JJK_UraumeHair</texPath>
+  </HairDef>
+
+  <HairDef>
+    <defName>JJK_TodoHair</defName>
+    <label>spiky ponytail</label>
+    <styleGender>Male</styleGender>
+    <texPath>Things/Pawn/Humanlike/Hairs/JJK_TodoHair</texPath>
+  </HairDef>
+
+  <HairDef>
+    <defName>JJK_RyuHair</defName>
+    <label>pompadour</label>
+    <styleGender>Male</styleGender>
+    <texPath>Things/Pawn/Humanlike/Hairs/JJK_RyuHair</texPath>
+  </HairDef>
+
+  <!-- Todo's scar: from his left hairline down to the cheek (canon). Has its own west texture,
+       because the scar is only on his left side. -->
+  <TattooDef>
+    <defName>JJK_TodoScar</defName>
+    <label>facial scar</label>
+    <texPath>Things/Pawn/Humanlike/Tattoos/JJK_TodoScar/JJK_TodoScar</texPath>
+    <tattooType>Face</tattooType>
+    <visibleNorth>false</visibleNorth>
+    <overrideShaderTypeDef>Cutout</overrideShaderTypeDef>
+    <category>Tribal</category>
+  </TattooDef>
+
+  <!-- Backstories (her call 2026-11-10): Jujutsu Student as a child; Sorcerer as an adult, or Jujutsu Teacher
+       for Kusakabe (Gojo's is in his mod). Only ever set in code (spawnCategories nobody else uses). -->
+  <BackstoryDef>
+    <defName>JJK_JujutsuStudent</defName>
+    <title>jujutsu student</title>
+    <titleShort>student</titleShort>
+    <description>[PAWN_nameDef] was trained in jujutsu as a student.</description>
+    <slot>Childhood</slot>
+    <spawnCategories>
+      <li>JJKUnique</li>
+    </spawnCategories>
+    <skillGains>
+      <Melee>3</Melee>
+    </skillGains>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>JJK_Sorcerer</defName>
+    <title>jujutsu sorcerer</title>
+    <titleShort>sorcerer</titleShort>
+    <description>[PAWN_nameDef] is a jujutsu sorcerer.</description>
+    <slot>Adulthood</slot>
+    <spawnCategories>
+      <li>JJKUnique</li>
+    </spawnCategories>
+    <skillGains>
+      <Melee>4</Melee>
+    </skillGains>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>JJK_JujutsuTeacher</defName>
+    <title>jujutsu teacher</title>
+    <titleShort>teacher</titleShort>
+    <description>[PAWN_nameDef] is a jujutsu sorcerer who teaches at a jujutsu high school.</description>
+    <slot>Adulthood</slot>
+    <spawnCategories>
+      <li>JJKUnique</li>
+    </spawnCategories>
+    <skillGains>
+      <Melee>4</Melee>
+      <Social>2</Social>
+    </skillGains>
+  </BackstoryDef>
+
+</Defs>

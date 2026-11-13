@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Cursed tools (her calls 2026-11-10): rarely sold by exotic traders, and found in ancient ruins.
+       Quest rewards come from the RewardStandardLowFreq tag on the tools themselves. -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TraderKindDef[defName="Orbital_Exotic" or defName="Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+    <value>
+      <li Class="StockGenerator_Tag">
+        <tradeTag>JJK_CursedTool</tradeTag>
+        <thingDefCountRange>0~1</thingDefCountRange>
+        <countRange>1~1</countRange>
+      </li>
+    </value>
+  </Operation>
+
+  <!-- Ancient temples (the "misc cool items" pick) -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingSetMakerDef[defName="MapGen_AncientTempleContents"]/root/options/li[thingSetMaker/fixedParams/filter/thingDefs/li="Gun_ChargeLance"]/thingSetMaker/fixedParams/filter/thingSetMakerTagsToAllow</xpath>
+    <value>
+      <li>JJK_CursedTool</li>
+    </value>
+  </Operation>
+
+  <!-- Ideology ancient complexes: the better room loot -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Ideology</li>
+    </mods>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/ThingSetMakerDef[defName="MapGen_AncientComplexRoomLoot_Better"]/root/options</xpath>
+      <value>
+        <li>
+          <weight>0.1</weight>
+          <thingSetMaker Class="ThingSetMaker_Count">
+            <fixedParams>
+              <filter>
+                <thingSetMakerTagsToAllow>
+                  <li>JJK_CursedTool</li>
+                </thingSetMakerTagsToAllow>
+              </filter>
+              <countRange>1</countRange>
+            </fixedParams>
+          </thingSetMaker>
+        </li>
+      </value>
+    </match>
+  </Operation>
+
+</Patch>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Neither tree makes any neural heat (her call 2026-11-10).
+       Tree from her canvas (2026-11-10), Guides/Cursed Energy Fundamentals and New Shadow Style
+       Psycast Paths for Rimworld Mods.canvas. Levels read from the canvas heights. -->
+
+  <!-- ===================== CURSED ENERGY FUNDAMENTALS ===================== -->
+
+  <!-- L1 · Cursed Energy Reinforcement: passive at half strength, toggle raises it. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Reinforcement</defName>
+    <label>Cursed Energy Reinforcement</label>
+    <description>Passive, with a toggle. Once learned it is always on at half strength: raised sharp, blunt and heat armour, less damage taken, more melee damage, faster movement and less chance to catch fire. A melee weapon in hand is coated too: its hits deal more damage and go through armour more easily. Everything scales with psychic sensitivity.\n\nSwitch on Raise Cursed Energy Output to double all of it, at a steady psyfocus cost.</description>
+    <iconPath>Abilities/Jujutsu/Reinforcement</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Toggle</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_CursedEnergyFundamentals</path>
+        <level>1</level>
+        <order>1</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+      <li Class="JujutsuFundamentals.ToggleExtension">
+        <key>reinforcement</key>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L2 · Cursed Energy Blast (her name; Discharge is Ryu's). Built up, then one continuous powerful
+       beam (her call 2026-11-10), longer cooldown. Damage (total over the beam) and range follow sensitivity. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Blast</defName>
+    <label>Cursed Energy Blast</label>
+    <description>Cursed energy is built up, then let out as one continuous, powerful beam in the target's direction, out to its full range. For a second it hits everything along it, until a wall stops it. Its damage and its range both grow with psychic sensitivity.</description>
+    <iconPath>Abilities/Jujutsu/Blast</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_CursedEnergyBlast</abilityClass>
+    <targetMode>Location</targetMode>
+    <castTime>120</castTime>
+    <range>19.9</range>
+    <rangeStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </rangeStatFactors>
+    <power>36</power>
+    <powerStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </powerStatFactors>
+    <cooldownTime>1200</cooldownTime>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>true</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_CursedEnergyFundamentals</path>
+        <level>2</level>
+        <order>1</order>
+        <psyfocusCost>0.04</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_Reinforcement</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L2 · Domain Amplification. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_DomainAmplification</defName>
+    <label>Domain Amplification</label>
+    <description>Toggle. The user's melee hits strip the target's psycast buffs and shields and drop a raised Cursed Energy Reinforcement, and deal 2.5 times their damage to Anomaly creatures. The user is safe from a domain's sure hit. While it is on, the user can't cast their own psycasts.\n\nCosts psyfocus every second while on.</description>
+    <iconPath>Abilities/Jujutsu/DomainAmplification</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Toggle</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_CursedEnergyFundamentals</path>
+        <level>2</level>
+        <order>2</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_Reinforcement</li>
+        </prerequisites>
+      </li>
+      <li Class="JujutsuFundamentals.ToggleExtension">
+        <key>amplification</key>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L2 · Air Step (her call 2026-11-10), after Reinforcement. Moved from the Sukuna mod; Sukuna's icon.
+       Range x sensitivity, cooldown / sensitivity (Ability_AirStep). -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_AirStep</defName>
+    <castSound>JJK_Snd_AirStep</castSound>
+    <label>Air Step</label>
+    <description>Cursed energy pushed out through the soles, hard enough to stand on the air for a step, then another. A long leap to a chosen spot, over walls, water and anyone in the way, but not over a mountain, and never landing inside a building.\n\nMore psychic sensitivity leaps farther and recovers sooner. Colonists only leap when ordered.</description>
+    <iconPath>Abilities/Jujutsu/AirStep</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_AirStep</abilityClass>
+    <targetMode>Location</targetMode>
+    <range>29.9</range>
+    <rangeStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </rangeStatFactors>
+    <castTime>10</castTime>
+    <cooldownTime>120</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>false</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_CursedEnergyFundamentals</path>
+        <level>2</level>
+        <order>3</order>
+        <psyfocusCost>0.02</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_Reinforcement</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L3 · Black Flash. Passive. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_BlackFlash</defName>
+    <label>Black Flash</label>
+    <description>Passive. Any melee hit may become a Black Flash: 2.5 times the damage with much higher armour penetration, healing the user, returning psyfocus and purging neural heat. Chance and every number scale with psychic sensitivity, and the chance grows with psycast level. After one lands, the user is in the zone for 10 seconds: more accurate in melee, and the next Black Flash comes easier.</description>
+    <iconPath>Abilities/Jujutsu/BlackFlash</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Passive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_CursedEnergyFundamentals</path>
+        <level>3</level>
+        <order>1</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_Reinforcement</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L3 · Reverse Cursed Technique. Toggle. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_ReverseCursedTechnique</defName>
+    <label>Reverse Cursed Technique</label>
+    <description>Toggle. Wounds close and lost body parts regrow, faster the more psyfocus is in the pool. Nearby allies heal more slowly from the same pool. Stops at zero psyfocus and resumes on its own. Makes no neural heat. Poison makes healing cost more.\n\nDeals double damage to anomalies (entities and mutants), with every kind of attack.</description>
+    <iconPath>Abilities/Jujutsu/ReverseCursedTechnique</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Toggle</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_CursedEnergyFundamentals</path>
+        <level>3</level>
+        <order>2</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_Reinforcement</li>
+        </prerequisites>
+      </li>
+      <li Class="JujutsuFundamentals.ToggleExtension">
+        <key>rct</key>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- ========================== NEW SHADOW STYLE ========================== -->
+
+  <!-- L1 · Hollow Wicker Basket. Hidden once Simple Domain is learned (it turns into it). -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_HollowWickerBasket</defName>
+    <label>Hollow Wicker Basket</label>
+    <description>Toggle. The user holds a hand sign: a domain's sure hit doesn't affect them. Other techniques still get through. While it is up the user can't attack, and moving drops it. Must be on the ground.\n\nTurns into Simple Domain once that is learned. Costs psyfocus every second while up.</description>
+    <iconPath>Abilities/Jujutsu/HollowWickerBasket</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Toggle</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_NewShadowStyle</path>
+        <level>1</level>
+        <order>1</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+      <li Class="JujutsuFundamentals.ToggleExtension">
+        <key>basket</key>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L2 · Simple Domain. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_SimpleDomain</defName>
+    <label>Simple Domain</label>
+    <description>Toggle. A circle around the user, larger with psychic sensitivity. Everyone on the user's side inside it (their faction and allied factions) is shielded as by Hollow Wicker Basket: a domain's sure hit doesn't affect them. Other techniques still get through, unless Evening Moon cuts them down. The user's attacks on anything inside the circle are faster. The user must stand still on the ground; moving drops it.\n\nCosts psyfocus every second while up.</description>
+    <iconPath>Abilities/Jujutsu/SimpleDomain</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Toggle</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_NewShadowStyle</path>
+        <level>2</level>
+        <order>1</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_HollowWickerBasket</li>
+        </prerequisites>
+      </li>
+      <li Class="JujutsuFundamentals.ToggleExtension">
+        <key>simpledomain</key>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L3 · Hazy Moon. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_HazyMoon</defName>
+    <label>Hazy Moon</label>
+    <description>Toggle. With no melee weapon, a blade of cursed energy appears in hand and every melee attack is made with it; a gun stays in hand. With a melee weapon, cursed energy coats it instead: a blue aura, and it hits harder. Damage grows with psychic sensitivity.\n\nCosts psyfocus every second while up.</description>
+    <iconPath>Abilities/Jujutsu/HazyMoon</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Toggle</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_NewShadowStyle</path>
+        <level>3</level>
+        <order>1</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_SimpleDomain</li>
+        </prerequisites>
+      </li>
+      <li Class="JujutsuFundamentals.ToggleExtension">
+        <key>hazymoon</key>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L3 · Batto Sword Drawing. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Batto</defName>
+    <label>Batto Sword Drawing</label>
+    <description>The style's fastest draw: melee attacks come much faster for a short time. Needs a melee weapon in hand, or Hazy Moon's blade.</description>
+    <iconPath>Abilities/Jujutsu/Batto</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Batto</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <cooldownTime>1800</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_NewShadowStyle</path>
+        <level>3</level>
+        <order>2</order>
+        <psyfocusCost>0.02</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_SimpleDomain</li>
+        </prerequisites>
+      </li>
+      <li Class="VEF.Abilities.AbilityExtension_Hediff">
+        <hediff>JJK_Batto</hediff>
+        <applyToCaster>true</applyToCaster>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L4 · Evening Moon Sword Drawing. Passive: works inside Simple Domain. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_EveningMoon</defName>
+    <label>Evening Moon Sword Drawing</label>
+    <description>Passive. While Simple Domain is up, the user's blade strikes every enemy that comes into the circle and every enemy that attacks someone inside it, and cuts down every hostile projectile crossing it and every hostile psycast aimed at anyone inside it.</description>
+    <iconPath>Abilities/Jujutsu/EveningMoon</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Passive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_NewShadowStyle</path>
+        <level>4</level>
+        <order>1</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_HazyMoon</li>
+          <li>JJK_Batto</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+</Defs>

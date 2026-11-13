@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Yuta's path, the Sky part (her design 2026-11-11): Uro's Sky Manipulation, Dhruv's shikigami, Charles's G Warstaff.
+       Positions from Common/Defs/Yuta/Paths.xml. Every number is a proposal. Icons are placeholder letter tiles
+       (tools/yuta/art_sky.py). -->
+
+  <!-- L1 · G Warstaff (Charles Bernard's technique). Passive. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Yuta_GWarstaff</defName>
+    <label>G Warstaff</label>
+    <description>Passive. Charles Bernard's technique, copied. Once the user draws someone's blood with a melee hit, he sees that person's future for 30 seconds: +25% chance to hit them and +30% chance to dodge their melee attacks. Every further hit that draws blood adds 10 seconds, up to 60.</description>
+    <iconPath>Abilities/Yuta/Sky/GWarstaff</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Passive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_YutaPath</path>
+        <level>1</level>
+        <order>3</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L2 · Dhruv's shikigami. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Yuta_Dhruv</defName>
+    <label>Dhruv's Shikigami</label>
+    <description>Dhruv Lakdawalla's technique, copied. Two small shikigami, bat-like with a head like Rika's, fly to the chosen spot and spiral outward round it, wider with every turn, until the circle is as wide as Yuta's domain could be. Their paths become cutting lines: anyone who isn't an ally and crosses one is slashed, and plants in the way are cut. They can be shot or struck, and any hit destroys one.\n\nEvery full turn closes a circle: for a minute Yuta, standing inside it, can open his domain on that circle (its centre and its size) for half the psyfocus and half the neural heat. Each later turn makes a larger circle he can use again. Damage grows with psychic sensitivity.</description>
+    <iconPath>Abilities/Yuta/Sky/Dhruv</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_DhruvShikigami</abilityClass>
+    <targetMode>Location</targetMode>
+    <castTime>30</castTime>
+    <cooldownTime>900</cooldownTime>
+    <range>29.9</range>
+    <power>8</power>
+    <powerStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </powerStatFactors>
+    <targetingParameters>
+      <canTargetLocations>true</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_YutaPath</path>
+        <level>2</level>
+        <order>3</order>
+        <psyfocusCost>0.03</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L3 · Flight (Sky Manipulation; her call: Yuta and Uro both fly). A shared toggle (SkyStartup). -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Yuta_Flight</defName>
+    <label>Flight</label>
+    <description>Toggle. Takako Uro's Sky Manipulation: the user flies wherever they're sent, over walls, water and everything else on the ground, around mountains, never under a roof. Costs psyfocus every second while up; with none left, they walk.</description>
+    <iconPath>Abilities/Yuta/Sky/Flight</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Toggle</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_YutaPath</path>
+        <level>3</level>
+        <order>2</order>
+        <psyfocusCost>0</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+      <li Class="JujutsuFundamentals.ToggleExtension">
+        <key>skyflight</key>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L3 · Redirect. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Yuta_Redirect</defName>
+    <label>Redirect</label>
+    <description>Sky Manipulation. For 10 seconds, shots fired at the user don't reach them: half go back at whoever fired them, the rest bend away and hit the ground.</description>
+    <iconPath>Abilities/Yuta/Sky/Redirect</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_SkyRedirect</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <cooldownTime>1800</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_YutaPath</path>
+        <level>3</level>
+        <order>3</order>
+        <psyfocusCost>0.03</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- L4 · Thin Ice-Breaker. -->
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>JJK_Yuta_ThinIceBreaker</defName>
+    <label>Thin Ice-Breaker</label>
+    <description>Sky Manipulation. A melee strike (she walks up to the target first) that cracks the space around them: a shockwave that goes through guard. The target and every enemy within four cells of them takes damage that ignores armour, loses their psycast shields and buffs, has their shield belt broken, and for 15 seconds their armour doesn't count against anything. Damage grows with psychic sensitivity.</description>
+    <iconPath>Abilities/Yuta/Sky/ThinIceBreaker</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_ThinIceBreaker</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>   <!-- a melee attack (her call 2026-11-11): walk up, then strike -->
+    <distanceToTarget>1.9</distanceToTarget>
+    <castTime>45</castTime>
+    <cooldownTime>1200</cooldownTime>
+    <range>999999</range>
+    <power>18</power>
+    <powerStatFactors>
+      <PsychicSensitivity>1</PsychicSensitivity>
+    </powerStatFactors>
+    <targetingParameters>
+      <canTargetLocations>false</canTargetLocations>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetSelf>false</canTargetSelf>
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>JJK_YutaPath</path>
+        <level>4</level>
+        <order>3</order>
+        <psyfocusCost>0.04</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>JJK_Yuta_Redirect</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <!-- ================================ hediffs -->
+
+  <HediffDef>
+    <defName>JJK_SkyFlight</defName>
+    <label>flying</label>
+    <description>Flying by Sky Manipulation.</description>
+    <hediffClass>JujutsuFundamentals.Hediff_SkyFlight</hediffClass>
+    <isBad>false</isBad>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>JJK_SkyRedirect</defName>
+    <label>redirecting</label>
+    <description>Shots fired at this person bend away or go back at the shooter.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>JJK_ThinIceBroken</defName>
+    <label>guard broken</label>
+    <description>Thin Ice-Breaker broke through this person's guard: their armour doesn't count against anything for now.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>900</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>JJK_GWarstaffReading</defName>
+    <label>reading the future</label>
+    <description>G Warstaff: this person drew someone's blood and sees their future, hitting them and dodging them more easily.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1800</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ================================ Takako Uro (her calls 2026-11-11). Arrives once, as an enemy, like Ryu. -->
+
+  <IncidentDef>
+    <defName>JJK_UroChallenge</defName>
+    <label>Takako Uro attacks</label>
+    <category>ThreatSmall</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>JujutsuFundamentals.IncidentWorker_UroChallenge</workerClass>
+    <baseChance>0.3</baseChance>
+    <minRefireDays>9999</minRefireDays>
+    <earliestDay>20</earliestDay>
+    <minThreatPoints>400</minThreatPoints>
+  </IncidentDef>
+
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>JJK_UroAsks</defName>
+    <letterClass>JujutsuFundamentals.ChoiceLetter_UroAsks</letterClass>
+  </LetterDef>
+
+  <!-- Uro's look (her calls 2026-11-11; tools/yuta/art_sky_uro.py): long pink hair, black sclera with pink irises. -->
+  <HairDef>
+    <defName>JJK_UroHair</defName>
+    <label>long straight hair with a fringe</label>
+    <styleGender>Female</styleGender>
+    <texPath>Things/Yuta/Sky/Hair/JJK_UroHair</texPath>
+  </HairDef>
+
+  <HediffDef>
+    <defName>JJK_UroEyes</defName>
+    <label>black sclera</label>
+    <description>Black where the whites of the eyes should be, around pink irises.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <renderNodeProperties>
+      <li Class="PawnRenderNodeProperties_Eye">
+        <workerClass>JujutsuFundamentals.PawnRenderNodeWorker_UroEyes</workerClass>
+        <texPath>Things/Yuta/Sky/UroEyes/Male/JJK_UroEyes_Male</texPath>
+        <texPathFemale>Things/Yuta/Sky/UroEyes/Female/JJK_UroEyes_Female</texPathFemale>
+        <anchorTag>RightEye</anchorTag>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.2</drawSize>
+        <side>Right</side>
+        <drawData>
+          <defaultData>
+            <layer>55</layer>
+            <offset>(0, 0, -0.25)</offset>
+          </defaultData>
+        </drawData>
+      </li>
+      <li Class="PawnRenderNodeProperties_Eye">
+        <workerClass>JujutsuFundamentals.PawnRenderNodeWorker_UroEyes</workerClass>
+        <texPath>Things/Yuta/Sky/UroEyes/Male/JJK_UroEyes_Male</texPath>
+        <texPathFemale>Things/Yuta/Sky/UroEyes/Female/JJK_UroEyes_Female</texPathFemale>
+        <anchorTag>LeftEye</anchorTag>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.2</drawSize>
+        <side>Left</side>
+        <drawData>
+          <defaultData>
+            <layer>55</layer>
+            <offset>(0, 0, -0.25)</offset>
+            <flip>true</flip>
+          </defaultData>
+          <dataWest>
+            <flip>false</flip>
+          </dataWest>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </HediffDef>
+
+  <!-- Uro's childhood (her OK 2026-11-11; canon says nothing of her childhood). Adulthood: JJK_Sorcerer. -->
+  <BackstoryDef>
+    <defName>JJK_HeianSorcererChild</defName>
+    <title>Heian-era sorcerer's child</title>
+    <titleShort>Heian child</titleShort>
+    <description>[PAWN_nameDef] was born a thousand years ago and trained in jujutsu at the Heian court.</description>
+    <slot>Childhood</slot>
+    <spawnCategories>
+      <li>JJKUnique</li>
+    </spawnCategories>
+    <skillGains>
+      <Melee>3</Melee>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+  </BackstoryDef>
+
+</Defs>

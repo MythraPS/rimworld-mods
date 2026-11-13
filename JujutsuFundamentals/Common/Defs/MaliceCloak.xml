@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The Malice Cloak (her design 2026-11-11; the name is a placeholder for her to change). A cursed tool: a cloak
+       of human leather filled with cursed, void-like energy. Its wearer can throw it; it rises as a shade (a temporary pawn) that draws
+       the eye and the aggression of anyone who isn't the wearer or the wearer's ally (a Six Eyes always). Recast: it comes
+       back to the wearer from anywhere. Code: Source/MaliceCloak.cs. Numbers are proposals. -->
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>JJK_MaliceCloak</defName>
+    <thingClass>JujutsuFundamentals.Apparel_MaliceCloak</thingClass>
+    <label>Malice Cloak</label>
+    <description>A cursed tool: a cloak stitched together from human leather and soaked through with cursed energy, so full of hate and malice that it pulls at the eye. Its wearer can throw it: where it lands it rises as a shade, a hovering shape anyone can see and strike. It draws the attention, and often the attack, of anyone who sees it, except the wearer and the wearer's allies; anyone with the Six Eyes can't look away from it at all. Blows on the shade wear the cloak down. Cast again, it returns to its wearer from anywhere.</description>
+    <graphicData>
+      <texPath>Things/Jujutsu/Tools/MaliceCloak</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.9</drawSize>
+    </graphicData>
+    <techLevel>Archotech</techLevel>
+    <tradeTags>
+      <li>JJK_CursedTool</li>
+    </tradeTags>
+    <thingSetMakerTags>
+      <li>JJK_CursedTool</li>
+    </thingSetMakerTags>
+    <smeltable>false</smeltable>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+    <thingCategories>
+      <li>ApparelArmor</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>600</MaxHitPoints>
+      <Mass>2.5</Mass>
+      <MarketValue>2400</MarketValue>
+      <WorkToMake>12000</WorkToMake>
+      <ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.2</ArmorRating_Heat>
+      <Insulation_Cold>8</Insulation_Cold>
+      <Flammability>0.5</Flammability>
+      <EquipDelay>2</EquipDelay>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/JJK_MaliceCloak/JJK_MaliceCloak</wornGraphicPath>
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <wearPerDay>0</wearPerDay>
+    </apparel>
+    <generateCommonality>0</generateCommonality>
+  </ThingDef>
+
+  <!-- The shade a thrown Malice Cloak rises as (her correction 2026-11-11: "It can simulate a temporary targetable
+       pawn/creature"): a hovering shape in the thrower's faction, there to be seen and struck. It never attacks.
+       Hits on it come off the cloak's hit points (Source/MaliceCloak.cs). No corpse, not a death. -->
+  <ThingDef ParentName="BasePawn">
+    <defName>JJK_MaliceShadeRace</defName>
+    <label>Malice Cloak</label>
+    <description>A thrown Malice Cloak, risen as a hovering shade of hate and malice. It draws the eye and the blows of anyone who sees it. Every blow wears the cloak down.</description>
+    <tradeability>None</tradeability>
+    <statBases>
+      <MoveSpeed>0.1</MoveSpeed>
+      <ComfyTemperatureMin>-200</ComfyTemperatureMin>
+      <ComfyTemperatureMax>500</ComfyTemperatureMax>
+      <PsychicSensitivity>0</PsychicSensitivity>
+      <ToxicResistance>1</ToxicResistance>
+      <MarketValue>0</MarketValue>
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">1</VacuumResistance>
+    </statBases>
+    <race>
+      <thinkTreeMain>JJK_MaliceShade</thinkTreeMain>
+      <thinkTreeConstant>JJK_RikaConstant</thinkTreeConstant>
+      <body>Bird</body>
+      <baseBodySize>1</baseBodySize>
+      <baseHealthScale>5</baseHealthScale>
+      <intelligence>Animal</intelligence>
+      <needsRest>false</needsRest>
+      <foodType>None</foodType>
+      <hasGenders>false</hasGenders>
+      <hasCorpse>false</hasCorpse>
+      <hasMeat>false</hasMeat>
+      <isImmuneToInfections>true</isImmuneToInfections>
+      <lifeExpectancy>1000</lifeExpectancy>
+      <trainability>None</trainability>
+      <disableIgniteVerb>true</disableIgniteVerb>
+      <lifeStageAges>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>0</minAge>
+        </li>
+      </lifeStageAges>
+    </race>
+    <tools>
+      <li>
+        <label>cloak</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>1</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <PawnKindDef>
+    <defName>JJK_MaliceShade</defName>
+    <label>Malice Cloak</label>
+    <race>JJK_MaliceShadeRace</race>
+    <combatPower>1</combatPower>
+    <canArriveManhunter>false</canArriveManhunter>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Jujutsu/MaliceShade/MaliceShade</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>1.8</drawSize>
+          <shadowData>
+            <volume>(0.4, 0.2, 0.3)</volume>
+            <offset>(0, 0, -0.6)</offset>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+  <!-- It only hovers where it landed; this keeps it idle (it never attacks). -->
+  <ThinkTreeDef>
+    <defName>JJK_MaliceShade</defName>
+    <thinkRoot Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="ThinkNode_Subtree">
+          <treeDef>Despawned</treeDef>
+        </li>
+        <li Class="JobGiver_Idle">
+          <ticks>600</ticks>
+        </li>
+      </subNodes>
+    </thinkRoot>
+  </ThinkTreeDef>
+
+  <!-- Made at Anomaly's bioferrite shaper from human leather and a sightstealer's dread leather (her call). Without
+       Anomaly the recipe doesn't exist, so it can't be made (it can still turn up, e.g. on the Prison Realm carrier). -->
+  <RecipeDef MayRequire="Ludeon.RimWorld.Anomaly">
+    <defName>JJK_Make_MaliceCloak</defName>
+    <label>make Malice Cloak</label>
+    <description>Stitch a Malice Cloak from human leather and the dread leather of a sightstealer.</description>
+    <jobString>Making Malice Cloak.</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <workAmount>12000</workAmount>
+    <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+    <recipeUsers>
+      <li>BioferriteShaper</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter><thingDefs><li>Leather_Human</li></thingDefs></filter>
+        <count>60</count>
+      </li>
+      <li>
+        <filter><thingDefs><li>Leather_Dread</li></thingDefs></filter>
+        <count>30</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Leather_Human</li>
+        <li>Leather_Dread</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <JJK_MaliceCloak>1</JJK_MaliceCloak>
+    </products>
+    <skillRequirements>
+      <Crafting>8</Crafting>
+    </skillRequirements>
+  </RecipeDef>
+
+</Defs>

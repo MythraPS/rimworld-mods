@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <!-- Dismantle. Canonically an invisible slash: no graphicData at all, so the
+       hit lands with nothing drawn travelling toward it. -->
+  <ThingDef ParentName="BaseBullet">
+    <defName>Sukuna_DismantleSlash</defName>
+    <label>slash</label>
+    <description>A cut you can only see because of what it is dragging with it.</description>
+    <thingClass>VEF.Abilities.AbilityProjectile</thingClass>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>Things/Sukuna/Slash</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(2.2, 1.1)</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Sukuna_Slash</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <speed>200</speed>
+    </projectile>
+  </ThingDef>
+
+  <!-- Furnace: Fire Arrow. Deliberately slow so it is visibly travelling and
+       can be scattered from. -->
+  <ThingDef ParentName="BaseBullet">
+    <defName>Sukuna_FireArrow</defName>
+    <label>fire arrow</label>
+    <description>A slow, gathering arrow of cursed flame.</description>
+    <thingClass>VEF.Abilities.AbilityProjectile</thingClass>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>Things/Sukuna/FireArrow</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.6</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Sukuna_Flame</damageDef>
+      <damageAmountBase>28</damageAmountBase>
+      <armorPenetrationBase>0.75</armorPenetrationBase>
+      <speed>12</speed>
+      <flyOverhead>false</flyOverhead>
+    </projectile>
+  </ThingDef>
+
+</Defs>
