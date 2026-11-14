@@ -93,11 +93,7 @@
       <li Class="VEF.Hediffs.HediffCompProperties_Shield">
         <compClass>GojoPsycasts.HediffComp_Infinity</compClass>
         <absorbAttackType>Both</absorbAttackType>
-        <maxEnergy>400</maxEnergy>
-        <energyLossPerDamage>0.25</energyLossPerDamage>
-        <rechargeDelay>60</rechargeDelay>
-        <energyPerTick>0.2</energyPerTick>
-        <fullOnAdd>true</fullOnAdd>
+        <!-- no maxEnergy (2026-11-14): no energy pool, neural heat and psyfocus are its only limits -->
         <doDust>false</doDust>
         <!-- no absorbedFleck: Infinity shows nothing when it stops a hit (her call 2026-11-07) -->
       </li>

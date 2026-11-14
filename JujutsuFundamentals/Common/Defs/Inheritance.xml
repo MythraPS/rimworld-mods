@@ -24,6 +24,7 @@
     <tab>Psycasts</tab>
     <lockedReason>Aoi Todo, or born with Boogie Woogie</lockedReason>
     <ensureLockRequirement>True</ensureLockRequirement>
+    <ignoreLockRestrictionsForNeurotrainers>False</ignoreLockRestrictionsForNeurotrainers>
     <tooltip>Aoi Todo's cursed technique. Only he and those born with it can learn it.</tooltip>
   </VanillaPsycastsExpanded.PsycasterPathDef>
 
@@ -36,6 +37,7 @@
     <tab>Psycasts</tab>
     <lockedReason>Ryu Ishigori, or born with Granite Blast</lockedReason>
     <ensureLockRequirement>True</ensureLockRequirement>
+    <ignoreLockRestrictionsForNeurotrainers>False</ignoreLockRestrictionsForNeurotrainers>
     <tooltip>Ryu Ishigori's cursed technique. Only he and those born with it can learn it.</tooltip>
   </VanillaPsycastsExpanded.PsycasterPathDef>
 </Defs>

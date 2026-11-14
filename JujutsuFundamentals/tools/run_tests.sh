@@ -19,6 +19,8 @@ if [ "${1:-}" != "--nobuild" ]; then
 fi
 [ -f "$DATA/Config/ModsConfig.xml" ] || { echo "no test data folder at $DATA (see JJKTestRunner/README)"; exit 1; }
 rm -f "$DATA/jjktest-results.txt" "$DATA/jjktest-progress.txt"
+# always muted (her ask 2026-11-14): every volume slider to 0, master and UI included
+sed -i -E 's#<volume(Master|Game|Music|Ambient|UI)>[^<]*</volume#<volume\1>0</volume#' "$DATA/Config/Prefs.xml"
 cd "$GAME"
 timeout "${JJK_TEST_TIMEOUT:-1500}" $EXE -savedatafolder="$DATA" -quicktest -jjktest > "$DATA/stdout.log" 2>&1
 echo "game exited: $?"

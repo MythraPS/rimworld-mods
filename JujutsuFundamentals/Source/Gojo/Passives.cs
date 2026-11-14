@@ -183,6 +183,10 @@ namespace GojoPsycasts
         {
             get
             {
+                // No energy pool (bug report 2026-11-14): VEF's shield also had one, 400 energy at 0.25 a point of damage,
+                // so 1600 damage at once (or quickly) broke it and let the rest through whatever his psyfocus and heat.
+                // Heat and psyfocus are Infinity's only limits; this also clears the pool in older saves.
+                useEnergy = false;
                 var tr = Pawn?.psychicEntropy;
                 if (tr != null)
                 {
@@ -200,11 +204,16 @@ namespace GojoPsycasts
         /// 2026-11-07: their techniques hit hard enough to strain Infinity).</summary>
         public const float HeatPerSukunaDamage = 0.1f;
 
-        /// <summary>Neural heat for one stopped hit, before the Six Eyes halve it.</summary>
+        /// <summary>Extra neural heat per point of damage for any other stopped hit (her call 2026-11-14, from a bug report:
+        /// a giant blow should strain Infinity more than a pebble). The number is a proposal.</summary>
+        public const float HeatPerDamage = 0.05f;
+
+        /// <summary>Neural heat for one stopped hit, before the Six Eyes halve it. amount is the damage before
+        /// the shield zeroes it.</summary>
         public static float HeatFor(DamageDef def, float amount, Thing instigator)
         {
             bool theirs = (def != null && def.defName.StartsWith("Sukuna_")) || SukunaSide(instigator as Pawn);
-            return theirs ? HeatPerBlock + HeatPerSukunaDamage * Mathf.Max(0f, amount) : HeatPerBlock;
+            return HeatPerBlock + (theirs ? HeatPerSukunaDamage : HeatPerDamage) * Mathf.Max(0f, amount);
         }
 
         private static System.Func<Pawn, bool> isSukuna, isYuji, isModulo;
@@ -261,9 +270,10 @@ namespace GojoPsycasts
         public override void PreApplyDamage(ref DamageInfo dinfo, ref bool absorbed)
         {
             if (GetsThrough(dinfo)) return;
+            float amount = dinfo.Amount;   // before the shield sets it to 0 (2026-11-14: read after, so the damage part never counted)
             base.PreApplyDamage(ref dinfo, ref absorbed);
             if (!absorbed || dinfo.Instigator == Pawn) return;
-            Pawn?.psychicEntropy?.TryAddEntropy(HeatFor(dinfo.Def, dinfo.Amount, dinfo.Instigator), Pawn, scale: true, overLimit: true);
+            Pawn?.psychicEntropy?.TryAddEntropy(HeatFor(dinfo.Def, amount, dinfo.Instigator), Pawn, scale: true, overLimit: true);
         }
     }
 
