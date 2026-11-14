@@ -125,6 +125,8 @@ namespace JujutsuFundamentals
 
         private static StatDef costStat; private static bool lookedCost;
         /// <summary>VPE's psyfocus cost factor (the Six Eyes halve it, as Gojo's own toggles did).</summary>
+        public static float CostFactorOf(Pawn p) => CostFactor(p);
+
         private static float CostFactor(Pawn p)
         {
             if (!lookedCost) { lookedCost = true; costStat = DefDatabase<StatDef>.GetNamedSilentFail("VPE_PsyfocusCostFactor"); }
@@ -247,6 +249,7 @@ namespace JujutsuFundamentals
             if (comp == null) return;
             Match(pawn, comp, JJKAbilityDefOf.JJK_BlackFlash, JJKDefOf.JJK_BlackFlash);
             Match(pawn, comp, JJKAbilityDefOf.JJK_Reinforcement, JJKDefOf.JJK_Reinforcement);
+            PositiveEnergy.Sync(pawn, comp);   // the Positive Energy toggle comes with Reverse Cursed Technique (2026-11-14)
         }
 
 

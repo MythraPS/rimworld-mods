@@ -166,19 +166,22 @@ namespace JujutsuFundamentals
         }
     }
 
-    /// <summary>Positive energy is what destroys curses: anyone who has learned Reverse Cursed Technique deals
-    /// double damage to anomalies (Anomaly's entities and mutants), with every kind of attack.</summary>
+    /// <summary>Positive energy is what destroys curses. Until 2026-11-14 anyone who had learned Reverse Cursed
+    /// Technique dealt double damage to anomalies (Anomaly's entities and mutants) for free; now (her call) it takes the
+    /// Positive Energy toggle (PositiveEnergy.cs), and each boosted hit costs a little psyfocus.</summary>
     [HarmonyPatch(typeof(Thing), nameof(Thing.TakeDamage))]
     public static class Patch_RctVsAnomalies
     {
-        public const float Factor = 2f;
+        public const float Factor = PositiveEnergy.Factor;
 
         public static bool IsAnomaly(Thing t) => ModsConfig.AnomalyActive && t is Pawn p && (p.RaceProps.IsAnomalyEntity || p.IsMutant);
 
         public static void Prefix(Thing __instance, ref DamageInfo dinfo)
         {
             if (!(dinfo.Instigator is Pawn attacker) || attacker == __instance) return;
-            if (!IsAnomaly(__instance) || !Jujutsu.Knows(attacker, JJKAbilityDefOf.JJK_ReverseCursedTechnique)) return;
+            if (!IsAnomaly(__instance) || !PositiveEnergy.Active(attacker)) return;
+            if (__instance is Pawn victim && victim.Dead) return;
+            if (!PositiveEnergy.TryPay(attacker)) return;
             dinfo.SetAmount(dinfo.Amount * Factor);
         }
     }

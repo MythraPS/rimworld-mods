@@ -55,6 +55,16 @@
     </stages>
   </HediffDef>
 
+  <!-- Positive Energy (2026-11-14): only a marker while the toggle is up; the x2 is in Patch_RctVsAnomalies. -->
+  <HediffDef>
+    <defName>JJK_PositiveEnergy</defName>
+    <label>positive energy</label>
+    <description>Reverse cursed energy flows into every attack: double damage to anomalies.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
   <!-- Sukuna's numbers (Gojo's x1.5 heal and half cost come through Jujutsu.RctHealFactors / RctCostFactors). -->
   <HediffDef>
     <defName>JJK_ReverseCursedTechnique</defName>

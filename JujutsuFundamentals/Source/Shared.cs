@@ -197,7 +197,7 @@ namespace JujutsuFundamentals
         /// <summary>Icons that are only a letter (kanji replace them in the middle setting).</summary>
         public static readonly HashSet<string> LetterIcons = new HashSet<string>
         {
-            "Reinforcement", "ReverseCursedTechnique", "Blast", "Batto", "EveningMoon", "HazyMoon",
+            "Reinforcement", "ReverseCursedTechnique", "PositiveEnergy", "Blast", "Batto", "EveningMoon", "HazyMoon",
             "BoogieWoogie", "BoogieWoogieFlurry", "BoogieWoogieDeflect", "GraniteBlast", "GraniteRapidFire", "RyuDomain",
         };
 

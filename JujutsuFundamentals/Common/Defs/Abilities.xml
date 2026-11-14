@@ -159,10 +159,28 @@
   </VEF.Abilities.AbilityDef>
 
   <!-- L3 · Reverse Cursed Technique. Toggle. -->
+  <!-- Positive Energy (her call 2026-11-14): comes with Reverse Cursed Technique (PassiveSync), not a tree node.
+       Replaces the old free x2 against anomalies. Icon: RCT's recoloured gold (her pick), tools/art_positive_energy_icon.py. -->
+  <VEF.Abilities.AbilityDef>
+    <defName>JJK_PositiveEnergy</defName>
+    <label>Positive Energy</label>
+    <description>Toggle. Reverse cursed energy flows into every attack: double damage to anomalies (entities, mutants and cursed spirits), with any weapon, fist or psycast. Costs nothing while up; each hit on an anomaly costs a little psyfocus, and with none left the hit lands without the bonus. Comes with Reverse Cursed Technique.</description>
+    <iconPath>Abilities/Jujutsu/PositiveEnergy</iconPath>
+    <abilityClass>JujutsuFundamentals.Ability_Toggle</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>1</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="JujutsuFundamentals.ToggleExtension">
+        <key>positiveenergy</key>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
   <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
     <defName>JJK_ReverseCursedTechnique</defName>
     <label>Reverse Cursed Technique</label>
-    <description>Toggle. Wounds close and lost body parts regrow, faster the more psyfocus is in the pool. Nearby allies heal more slowly from the same pool. Stops at zero psyfocus and resumes on its own. Makes no neural heat. Poison makes healing cost more.\n\nDeals double damage to anomalies (entities and mutants), with every kind of attack.</description>
+    <description>Toggle. Wounds close and lost body parts regrow, faster the more psyfocus is in the pool. Nearby allies heal more slowly from the same pool. Stops at zero psyfocus and resumes on its own. Makes no neural heat. Poison makes healing cost more.\n\nAlso gives Positive Energy: attacks that do double damage to anomalies.</description>
     <iconPath>Abilities/Jujutsu/ReverseCursedTechnique</iconPath>
     <abilityClass>JujutsuFundamentals.Ability_Toggle</abilityClass>
     <targetMode>Self</targetMode>

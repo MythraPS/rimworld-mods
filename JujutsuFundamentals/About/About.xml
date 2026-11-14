@@ -7,7 +7,7 @@
     <li>1.6</li>
     <li>1.7</li>
   </supportedVersions>
-  <modVersion>2.0.0</modVersion>
+  <modVersion>2.0.1</modVersion>
   <modDependencies>
     <li>
       <packageId>brrainz.harmony</packageId>
@@ -55,7 +55,7 @@
   <description>Jujutsu Kaisen for Vanilla Psycasts Expanded: the sorcerers' techniques, the characters, cursed tools and questlines, in one mod. This mod used to be "Satoru Gojo"; he is part of it now, and so is "Ryomen Sukuna &amp; Yuji Itadori". An add-on for Vanilla Psycasts Expanded, not made by the Vanilla Expanded team.
 
 TECHNIQUES ANYONE CAN LEARN
-- Cursed Energy Fundamentals: Cursed Energy Reinforcement, Cursed Energy Blast, Domain Amplification, Air Step, Black Flash, Reverse Cursed Technique.
+- Cursed Energy Fundamentals: Cursed Energy Reinforcement, Cursed Energy Blast, Domain Amplification, Air Step, Black Flash, Reverse Cursed Technique (with Positive Energy: double damage to anomalies).
 - New Shadow Style: Hollow Wicker Basket, Simple Domain, Hazy Moon, Batto Sword Drawing, Evening Moon Sword Drawing.
 
 CHARACTERS
@@ -82,7 +82,7 @@ Ability icons as pictures or kanji; Black Flash chance, and whether psycasts can
 REQUIREMENTS
 Requires Royalty, Biotech, Harmony, Vanilla Expanded Framework, Vanilla Psycasts Expanded and Vanilla Psycasts Expanded - Hemosage. Ideology and Anomaly are optional. Works with Simple Sidearms and Facial Animation.
 
-Current version: v2.0.0
+Current version: v2.0.1
 
 Please remember to rate my mod! Thank you!
 
